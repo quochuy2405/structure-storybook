@@ -1,0 +1,6 @@
+.next/**
+build/**
+out/**
+public/**
+lint-staged.config.js
+yarn-lock

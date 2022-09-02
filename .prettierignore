@@ -1,0 +1,6 @@
+.next/**
+buid/**
+out/**
+public/**
+next-env.d.ts
+pnpm-lock.yaml
