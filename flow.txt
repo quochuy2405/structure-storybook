@@ -1,0 +1,11 @@
+Bid: 
++ Thời gian phiên đấu giá hoạt động
++ Giá trị đặt phải lớn hơn giá lớn nhất tại thời điểm đó
++ Bid !=0
+Withdraw:
++ amount>0
++ rút amount = bid
++ sau khi rút send =0
+auctionEnded:
++ Khi nào kết thúc phiên
++ Sau khi kết thúc: transfer sản phẩm và số tiền cho chủ
