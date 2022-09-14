@@ -1,6 +1,7 @@
 import { getMainLayout } from '@/components/layouts/Layouts'
 import type { AppProps, NextPage } from '@/types/next'
 import '@/styles/global.scss'
+
 import { ReactElement, ReactNode } from 'react'
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode

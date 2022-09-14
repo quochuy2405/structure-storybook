@@ -1,6 +1,61 @@
+$color-green: #1aa174;
+$color-black: #36423e;
+$color-red: #e35353;
+$color-orange: #ff9d09;
+
 .button {
-  background-color: black;
+  height: 40px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  outline: none;
+  background-color: $color-black;
+  &.outline {
+    border: 1px solid $color-black;
+    color: $color-black;
+    background: none;
+  }
 }
 .buttonPrimary {
+  background-color: $color-green;
+  &.outline {
+    border: 1px solid $color-green;
+    color: $color-green;
+    background: none;
+  }
+}
+.buttonDanger {
+  background-color: $color-red;
+  color: white;
+  &.outline {
+    border: 1px solid $color-red;
+    color: $color-red;
+    background: none;
+  }
+}
+.buttonWarning {
+  background-color: $color-orange;
+  color: white;
+  &.outline {
+    border: 1px solid $color-orange;
+    color: $color-orange;
+    background: none;
+  }
+}
+
+.buttonMedium {
+  width: 30px;
+  height: 15px;
+  background-color: #00d2a0;
+}
+
+.buttonSmall {
+  width: 25px;
+  height: 10px;
   background-color: green;
 }

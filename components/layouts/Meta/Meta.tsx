@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import NextHead from 'next/head'
 
 interface MetaProps {
@@ -15,13 +16,32 @@ function Meta({ title, description, image = '/logo/logo512.png' }: MetaProps) {
 
       <meta key="meta-og:type" property="og:type" content="website" />
       <meta key="meta-og:title" property="og:title" content={title} />
-      <meta key="meta-og:description" property="og:description" content={description} />
+      <meta
+        key="meta-og:description"
+        property="og:description"
+        content={description}
+      />
       <meta key="meta-og:image" property="og:image" content={image} />
 
-      <meta key="meta-twitter:card" property="twitter:card" content="summary_large_image" />
+      <meta
+        key="meta-twitter:card"
+        property="twitter:card"
+        content="summary_large_image"
+      />
       <meta key="meta-twitter:title" property="twitter:title" content={title} />
-      <meta key="meta-twitter:description" property="twitter:description" content={description} />
+      <meta
+        key="meta-twitter:description"
+        property="twitter:description"
+        content={description}
+      />
       <meta key="meta-twitter:image" property="twitter:image" content={image} />
+
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+      />
     </NextHead>
   )
 }

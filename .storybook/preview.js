@@ -1,5 +1,6 @@
 import * as NextImage from 'next/image'
 import { RouterContext } from 'next/dist/shared/lib/router-context'
+import '!style-loader!css-loader!sass-loader!../styles/global.scss'
 
 const OriginalNextImage = NextImage.default
 
