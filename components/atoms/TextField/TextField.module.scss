@@ -54,6 +54,7 @@ $color-green: #1aa174;
 .InputError {
   border-color: #e35353;
 }
+
 .TextError {
   color: #e35353;
   font-weight: 600;
@@ -61,12 +62,19 @@ $color-green: #1aa174;
   padding: 0 5px;
   min-height: 20px;
 }
-.Title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 4px 2px;
-}
 
+.TitleBox {
+  display: flex;
+  align-items: center;
+  .Title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 4px 2px;
+  }
+  .DotRequired {
+    color: #e35353;
+  }
+}
 .Password {
   display: flex;
   justify-content: center;

@@ -1,8 +1,8 @@
 import type { NextPage } from '@/types/next'
-import Head from 'next/head'
+import HomePage from './home'
 
-const Home: NextPage = () => {
-  return <div>aaa</div>
+const App: NextPage = () => {
+  return <HomePage />
 }
 
-export default Home
+export default App

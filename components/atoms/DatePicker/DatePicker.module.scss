@@ -7,10 +7,13 @@
   border-radius: 6px;
   outline: none;
   padding: 0 10px;
-  font-weight: 600;
+
   display: flex;
   justify-content: center;
   align-items: center;
+  & > div {
+    width: 100%;
+  }
 
   @include sm {
     width: 100%;
@@ -36,7 +39,26 @@
   background: none;
   border: none;
   outline: none;
+
+  flex: 1;
+  height: 100%;
+  width: 100%;
 }
 .icon {
+  width: 24px;
+  height: 24px;
   opacity: 0.7;
+}
+
+.TitleBox {
+  display: flex;
+  align-items: center;
+  .Title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 4px 2px;
+  }
+  .DotRequired {
+    color: #e35353;
+  }
 }

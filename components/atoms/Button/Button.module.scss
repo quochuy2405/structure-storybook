@@ -1,24 +1,37 @@
+@use '../../responsive/mixins' as *;
+
 $color-green: #1aa174;
 $color-black: #36423e;
 $color-red: #e35353;
 $color-orange: #ff9d09;
+$color-shadow: #ebebeb87;
+$color-mint: #00d2a0;
 
 .button {
-  height: 40px;
+  height: 35px;
   width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px 20px;
   color: white;
   border: none;
   outline: none;
+  transition: all linear 0.1s;
   background-color: $color-black;
+  font-size: 0.9rem;
+
+  cursor: pointer;
   &.outline {
     border: 1px solid $color-black;
     color: $color-black;
     background: none;
+  }
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 8px 4px $color-shadow;
+    transition: all linear 0.1s;
   }
 }
 .buttonPrimary {
@@ -51,11 +64,11 @@ $color-orange: #ff9d09;
 .buttonMedium {
   width: 30px;
   height: 15px;
-  background-color: #00d2a0;
+  background-color: $color-mint;
 }
 
 .buttonSmall {
   width: 25px;
   height: 10px;
-  background-color: green;
+  background-color: $color-green;
 }

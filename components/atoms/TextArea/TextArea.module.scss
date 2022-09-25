@@ -1,0 +1,62 @@
+@use '../../responsive/mixins' as *;
+
+$color-red: #e35353;
+$color-green: #1aa174;
+
+.TextArea {
+  position: relative;
+  border-radius: 8px;
+  outline: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 100%;
+
+  border: 2px solid #1aa174;
+
+  @include sm {
+    width: 100%;
+  }
+  @include md {
+    width: 280px;
+  }
+
+  @include lg {
+    width: 280px;
+  }
+
+  @include xl {
+    width: 280px;
+  }
+
+  @include xxl {
+    width: 280px;
+  }
+
+  &::placeholder {
+    color: hsla(0, 0%, 0%, 0.4);
+  }
+}
+
+.TitleBox {
+  display: flex;
+  align-items: center;
+  .Title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 4px 2px;
+  }
+  .DotRequired {
+    color: #e35353;
+  }
+}
+
+.TextAreaError {
+  border-color: #e35353;
+}
+.TextError {
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0 5px;
+  min-height: 20px;
+  color: #e35353;
+}

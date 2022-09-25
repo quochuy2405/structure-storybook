@@ -1,0 +1,39 @@
+@use '../../responsive/mixins' as *;
+
+$color-green: #1aa174;
+$color-white: white;
+$color-blue: #0d76c1;
+$color-red: #e35353;
+$color-gray: #608276;
+$color-orange: #ff9d09;
+$color-mint: #0cceab;
+
+.Container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.Badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 80px;
+  min-height: 20px;
+  height: fit-content;
+  width: fit-content;
+  background-color: $color-green;
+  color: $color-white;
+  border-radius: 100rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 2px 15px;
+  gap: 5px;
+}
+
+.Secondary {
+  .Badge {
+    background-color: transparent;
+    color: black;
+  }
+}

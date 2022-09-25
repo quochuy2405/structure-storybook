@@ -1,14 +1,18 @@
-import { Meta } from '@/components/layouts'
+import { IToastProps } from '@/components/molecules/Toast/Toast'
+import useToast from '@/hooks/useToast'
 import { NextPage } from '@/types/next'
-import React from 'react'
 
 const Home: NextPage = () => {
-  return (
-    <>
-      <Meta title="Huy" description="" />
-      <div>Home</div>
-    </>
-  )
+  const { create } = useToast()
+  const handleAdd = () => {
+    const config: Partial<IToastProps> = {
+      type: 'success',
+      message: 'Chào bạn',
+      isClose: false
+    }
+    create(config)
+  }
+  return <button onClick={handleAdd}>add</button>
 }
 
 export default Home

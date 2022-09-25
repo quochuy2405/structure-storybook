@@ -1,15 +1,17 @@
 import clsx from 'clsx'
 import React, { useState } from 'react'
-import Styles from './TextField.module.scss'
-import shortid from 'shortid'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import { GoPrimitiveDot } from 'react-icons/go'
+import shortid from 'shortid'
+import Styles from './TextField.module.scss'
 
 export interface ITexFieldProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   title?: string
   name: string
   type?: 'text' | 'password'
-  errors?: Array<string>
+  errors?: object
+  isRequired?: boolean
   className?: string
 }
 
@@ -17,20 +19,26 @@ const TextField: React.FC<ITexFieldProps> = ({
   title,
   name,
   type = 'text',
-  errors = [],
+  errors = {},
   className,
+  isRequired = false,
   ...props
 }) => {
   const [isShowPass, setIsShowPass] = useState(false)
 
   const classNames = clsx(Styles.Input, {
-    [Styles.InputError]: errors.length,
-    className: className
+    [Styles.InputError]: Object.keys(errors).length,
+    [className as string]: className
   })
 
   return (
     <div className={Styles.InputBox}>
-      {title && <p className={Styles.Title}>{title}</p>}
+      {title && (
+        <div className={Styles.TitleBox}>
+          {isRequired && <GoPrimitiveDot className={Styles.DotRequired} />}
+          <p className={Styles.Title}>{title}</p>
+        </div>
+      )}
       {type === 'password' ? (
         <div className={classNames}>
           <input
@@ -57,11 +65,12 @@ const TextField: React.FC<ITexFieldProps> = ({
         <input {...props} className={classNames} type={type} name={name} />
       )}
 
-      {errors?.map((item) => (
-        <p key={shortid.generate()} className={Styles.TextError}>
-          {item}
-        </p>
-      ))}
+      {!!Object.keys(errors).length &&
+        Object.keys(errors)?.map((key) => (
+          <p key={shortid.generate()} className={Styles.TextError}>
+            {errors[key as keyof typeof errors]}
+          </p>
+        ))}
     </div>
   )
 }

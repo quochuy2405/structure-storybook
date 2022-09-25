@@ -1,4 +1,4 @@
-import Layouts from '@/components/layouts'
+import Layouts from 'layouts'
 import Home from '@/components/templates/Home'
 import React, { ReactElement } from 'react'
 import { NextPageWithLayout } from '../_app'

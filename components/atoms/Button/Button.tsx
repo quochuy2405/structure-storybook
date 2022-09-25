@@ -23,7 +23,7 @@ const Button: React.FC<IButtonProps> = ({
     [Styles.buttonDanger]: mode === 'danger',
     [Styles.buttonWarning]: mode === 'warning',
     [Styles.outline]: outline,
-    className: className
+    [className as string]: className
   })
   return (
     <button {...props} className={classNames}>

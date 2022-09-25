@@ -20,7 +20,9 @@ Primary.args = {
 export const Error = Template.bind({})
 Error.args = {
   title: 'Error',
-  errors: ['require value']
+  errors: {
+    empty: 'required'
+  }
 }
 
 export const Secondary = Template.bind({})

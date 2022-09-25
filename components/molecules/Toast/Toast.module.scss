@@ -1,0 +1,67 @@
+@use '../../responsive/mixins' as *;
+
+$color-green: #1aa174;
+$color-blue: #4c6ad3;
+$color-red: #e35353;
+$color-black: #36423e;
+$color-orange: #fa9d24;
+
+.Toast {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 20px;
+  padding-right: 30px;
+  transition: all linear 0.5s;
+
+  .Button {
+    background-color: white;
+    color: $color-black;
+    box-shadow: none;
+    font-weight: 600;
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+  .ContentToast {
+    width: 100%;
+    flex: 6;
+    display: flex;
+    align-items: center;
+  }
+  .ButtonToast {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+    color: white;
+  }
+}
+.Icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+.Content {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+}
+.IconDelete {
+  transition: all linear 0.2s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+    transition: all linear 0.2s;
+  }
+}
+
+.BoxToast {
+  width: 100%;
+  overflow: hidden;
+  transition: all ease-in-out 0.2s;
+  background-color: $color-blue;
+}

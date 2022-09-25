@@ -14,3 +14,10 @@ export const Default = Template.bind({})
 Default.args = {
   title: 'Select'
 }
+export const Error = Template.bind({})
+Error.args = {
+  title: 'Select',
+  errors: {
+    empty: 'required'
+  }
+}
