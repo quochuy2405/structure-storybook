@@ -1,4 +1,4 @@
-import TextField from '@/components/atoms/TextField'
+import { TextField } from '@/components/atoms'
 import React from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 

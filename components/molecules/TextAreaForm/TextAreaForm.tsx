@@ -1,4 +1,4 @@
-import TextArea from '@/components/atoms/TextArea'
+import { TextArea } from '@/components/atoms'
 import React from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 

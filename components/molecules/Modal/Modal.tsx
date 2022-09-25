@@ -13,17 +13,15 @@ const Modal: React.FC<IModalProps> = ({ className, isOpen, children }) => {
     className: className
   })
   return (
-    <>
-      {isOpen && (
-        <div className={Styles.ModalBox}>
-          <div className={classNames}>{children}</div>
-          <div>
-            <Button title="Cancel" type="reset" mode="danger" />
-            <Button title="Sumit" type="submit" mode="primary" />
-          </div>
+    <div className={Styles.ModalBox}>
+      <div className={classNames}>
+        {children}
+        <div className={Styles.Buttons}>
+          <Button title="Cancel" type="reset" mode="danger" />
+          <Button title="Submit" type="submit" mode="primary" />
         </div>
-      )}
-    </>
+      </div>
+    </div>
   )
 }
 

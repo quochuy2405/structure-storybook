@@ -8,6 +8,7 @@ $color-mint: #00d2a0;
 .Modal {
   width: 50%;
   height: 40%;
+  overflow: hidden;
   background-color: white;
   border-radius: 10px;
   position: absolute;
@@ -33,4 +34,14 @@ $color-mint: #00d2a0;
   bottom: 0;
   right: 0;
   backdrop-filter: blur(4px);
+}
+.Buttons {
+  padding: 10px;
+  gap: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0px;
+  right: 0;
 }

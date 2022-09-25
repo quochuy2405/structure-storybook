@@ -5,6 +5,13 @@ import { GoPrimitiveDot } from 'react-icons/go'
 import shortid from 'shortid'
 import Styles from './TextField.module.scss'
 
+const regexOnlyChar = /[a-zA-Z]+/g
+const regexOnlyNumber = /^\d+$/
+type typeReg = { [x: string]: RegExp }
+const optionRegex: typeReg = {
+  number: regexOnlyNumber,
+  char: regexOnlyChar
+}
 export interface ITexFieldProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   title?: string
@@ -13,6 +20,7 @@ export interface ITexFieldProps
   errors?: object
   isRequired?: boolean
   className?: string
+  regex?: 'number' | 'char'
 }
 
 const TextField: React.FC<ITexFieldProps> = ({
@@ -22,14 +30,26 @@ const TextField: React.FC<ITexFieldProps> = ({
   errors = {},
   className,
   isRequired = false,
+  regex,
   ...props
 }) => {
   const [isShowPass, setIsShowPass] = useState(false)
-
+  const [value, setValue] = useState('')
   const classNames = clsx(Styles.Input, {
     [Styles.InputError]: Object.keys(errors).length,
     [className as string]: className
   })
+
+  const requiredValueByRegex = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (regex && !e.target.value.match(optionRegex[regex])) {
+      setValue((val) => val)
+    } else {
+      setValue(e.target.value)
+    }
+    if (regex && !e.target.value.matchAll(optionRegex[regex])) {
+      setValue('')
+    }
+  }
 
   return (
     <div className={Styles.InputBox}>
@@ -62,7 +82,14 @@ const TextField: React.FC<ITexFieldProps> = ({
           )}
         </div>
       ) : (
-        <input {...props} className={classNames} type={type} name={name} />
+        <input
+          onChange={requiredValueByRegex}
+          value={value}
+          {...props}
+          className={classNames}
+          type={type}
+          name={name}
+        />
       )}
 
       {!!Object.keys(errors).length &&

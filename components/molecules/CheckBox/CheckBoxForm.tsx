@@ -1,4 +1,4 @@
-import CheckBox from '@/components/atoms/CheckBox'
+import { CheckBox } from '@/components/atoms'
 import React from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 

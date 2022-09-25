@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Toast from '@/components/molecules/Toast'
+import { Toast } from '@/components/molecules'
 import { IToastProps } from '@/components/molecules/Toast/Toast'
 import ToastContext from '@/contexts/ToastContext'
+
 import { ReactNode, useState, useEffect } from 'react'
 interface IToastProviderProps {
   children?: ReactNode

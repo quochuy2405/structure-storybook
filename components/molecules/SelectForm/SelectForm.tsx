@@ -1,4 +1,4 @@
-import Select from '@/components/atoms/Select'
+import { Select } from '@/components/atoms'
 import { IOptionSelect } from '@/components/atoms/Select/Select'
 import React from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
