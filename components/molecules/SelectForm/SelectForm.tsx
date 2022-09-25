@@ -1,20 +1,20 @@
-import TextField from '@/components/atoms/TextField'
+import Select from '@/components/atoms/Select'
+import { IOptionSelect } from '@/components/atoms/Select/Select'
 import React from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 
-export interface ITextFieldFormProps
+export interface ISelectFormProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   title?: string
   name: string
-  type?: 'text' | 'password'
   className?: string
+  options: IOptionSelect[]
   methods: UseFormReturn<FieldValues, object>
 }
 
-const TextFieldForm: React.FC<ITextFieldFormProps> = ({
+const SelectForm: React.FC<ISelectFormProps> = ({
   title,
   name,
-  type = 'text',
   methods,
   className,
   ...props
@@ -25,16 +25,10 @@ const TextFieldForm: React.FC<ITextFieldFormProps> = ({
       name={name}
       control={methods.control}
       render={({ field }) => (
-        <TextField
-          title={title}
-          type={type}
-          className={className}
-          {...props}
-          {...field}
-        />
+        <Select title={title} className={className} {...props} {...field} />
       )}
     />
   )
 }
 
-export default TextFieldForm
+export default SelectForm

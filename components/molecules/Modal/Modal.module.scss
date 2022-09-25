@@ -16,7 +16,7 @@ $color-mint: #00d2a0;
   transform: translate(-50%, -50%) scale(0);
   box-shadow: 0 0 4px 2px $color-shadow;
   transition: all linear 0.05s;
-  overflow: hidden;
+  overflow: scroll;
   &.isOpen {
     transform: translate(-50%, -50%) scale(1);
     transition: all linear 0.05s;

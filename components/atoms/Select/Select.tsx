@@ -4,28 +4,27 @@ import Styles from './Select.module.scss'
 import { GoPrimitiveDot } from 'react-icons/go'
 import ReactSelect from 'react-select'
 import shortid from 'shortid'
+export type IOptionSelect = {
+  label: string
+  value: string
+}
 
 export interface ISelectProps {
   title?: string
   className?: string
   errors?: object
   isRequired?: boolean
+  options: IOptionSelect[]
 }
-
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
 
 const Select: React.FC<ISelectProps> = ({
   title,
   errors = {},
-  isRequired = false,
-  className
+  options = [],
+  isRequired = false
 }) => {
-  const customStyles: any = {
-    control: (styles: any) => ({
+  const customStyles: object = {
+    control: (styles: object) => ({
       ...styles,
       backgroundColor: 'white',
       borderRadius: 8,
@@ -35,17 +34,17 @@ const Select: React.FC<ISelectProps> = ({
       boxShadow: 0,
       outline: 0
     }),
-    menu: (styles: any) => ({
+    menu: (styles: object) => ({
       ...styles,
       backgroundColor: 'white',
       borderRadius: 4
     }),
-    dropdownIndicator: (base: any) => ({
+    dropdownIndicator: (base: object) => ({
       ...base,
       color: Object.keys(errors).length ? '#e35353' : '#1aa174',
       border: 0
     }),
-    indicatorSeparator: (base: any) => ({
+    indicatorSeparator: () => ({
       diplay: 'none'
     }),
     option: (styles: any, { isDisabled, isFocused, isSelected }: any) => {

@@ -7,7 +7,7 @@ interface MainLayoutProps {
 function MainLayout({ children }: MainLayoutProps) {
   return (
     <>
-      <Meta title="Aution FNT" description="Aution FNT" />
+      <Meta title="KLTN" description="KLTN" />
       {children}
     </>
   )

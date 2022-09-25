@@ -1,20 +1,18 @@
-import TextField from '@/components/atoms/TextField'
+import CheckBox from '@/components/atoms/CheckBox'
 import React from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 
-export interface ITextFieldFormProps
+export interface ICheckBoxFormProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  title?: string
+  label?: string
   name: string
-  type?: 'text' | 'password'
   className?: string
   methods: UseFormReturn<FieldValues, object>
 }
 
-const TextFieldForm: React.FC<ITextFieldFormProps> = ({
-  title,
+const CheckBoxForm: React.FC<ICheckBoxFormProps> = ({
+  label,
   name,
-  type = 'text',
   methods,
   className,
   ...props
@@ -25,16 +23,10 @@ const TextFieldForm: React.FC<ITextFieldFormProps> = ({
       name={name}
       control={methods.control}
       render={({ field }) => (
-        <TextField
-          title={title}
-          type={type}
-          className={className}
-          {...props}
-          {...field}
-        />
+        <CheckBox label={label} {...props} {...field} className={className} />
       )}
     />
   )
 }
 
-export default TextFieldForm
+export default CheckBoxForm

@@ -6,16 +6,19 @@ interface ICheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
   name?: string
   isError?: boolean
+  className?: string
 }
 
 const CheckBox: React.FC<ICheckBoxProps> = ({
   label,
   name,
   isError,
+  className,
   ...props
 }) => {
   const classNames = clsx(Styles.CheckBoxContainer, {
-    [Styles.Error]: isError
+    [Styles.Error]: isError,
+    className: className
   })
   return (
     <div className={classNames}>
