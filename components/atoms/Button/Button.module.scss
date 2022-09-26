@@ -3,11 +3,11 @@
 $color-green: #1aa174;
 $color-black: #36423e;
 $color-red: #e35353;
-$color-orange: #ff9d09;
+$color-orange: #ffae34;
 $color-shadow: #ebebeb87;
 $color-mint: #00d2a0;
 
-.button {
+.Button {
   height: 35px;
   width: fit-content;
   display: flex;
@@ -16,58 +16,62 @@ $color-mint: #00d2a0;
   border-radius: 6px;
   padding: 10px 20px;
   color: white;
-  border: none;
+  border: 2px solid $color-shadow;
   outline: none;
   transition: all linear 0.1s;
   background-color: $color-black;
   font-size: 0.9rem;
+  box-shadow: 0 0 4px 2px $color-shadow;
 
   cursor: pointer;
-  &.outline {
+  &.Outline {
     border: 1px solid $color-black;
     color: $color-black;
     background: none;
   }
   &:hover {
-    transform: translateY(-1px);
+    transform: scale(1.05);
     box-shadow: 0 0 8px 4px $color-shadow;
     transition: all linear 0.1s;
+    text-rendering: optimizeSpeed;
   }
 }
-.buttonPrimary {
+.ButtonPrimary {
+  background-color: #fbab7e;
+
   background-color: $color-green;
-  &.outline {
+  &.Outline {
     border: 1px solid $color-green;
     color: $color-green;
     background: none;
   }
 }
-.buttonDanger {
+.ButtonDanger {
   background-color: $color-red;
   color: white;
-  &.outline {
+  &.Outline {
     border: 1px solid $color-red;
     color: $color-red;
     background: none;
   }
 }
-.buttonWarning {
+.ButtonWarning {
   background-color: $color-orange;
   color: white;
-  &.outline {
+  &.Outline {
     border: 1px solid $color-orange;
     color: $color-orange;
     background: none;
   }
 }
 
-.buttonMedium {
+.ButtonMedium {
   width: 30px;
   height: 15px;
   background-color: $color-mint;
 }
 
-.buttonSmall {
+.ButtonSmall {
   width: 25px;
   height: 10px;
   background-color: $color-green;

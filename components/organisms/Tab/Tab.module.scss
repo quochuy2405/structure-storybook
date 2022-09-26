@@ -1,0 +1,36 @@
+$color-green: #1aa174;
+$color-black: #36423e;
+$color-red: #e35353;
+$color-orange: #ff9d09;
+$color-gray: #b2b2b25c;
+$color-shadow: #ebebeb87;
+
+.Tags {
+  display: flex;
+  align-items: center;
+
+  .Tag {
+    min-width: 100px;
+    height: 30px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+
+    &.active {
+      border-bottom: 2px solid $color-red;
+      box-shadow: 0 0 3px 3px $color-shadow;
+    }
+    &:hover {
+      box-shadow: 0 0 3px 4px $color-shadow;
+    }
+  }
+}
+.BodyChildren {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}

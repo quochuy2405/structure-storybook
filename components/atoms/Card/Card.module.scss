@@ -1,0 +1,19 @@
+@use '../../responsive/mixins' as *;
+
+$color-green: #1aa174;
+$color-black: #36423e;
+$color-red: #e35353;
+$color-orange: #ffae34;
+$color-shadow: #ebebeb87;
+$color-mint: #00d2a0;
+
+.Card {
+  width: 100%;
+  height: 100px;
+  box-shadow: 0 0 3px 2px $color-shadow;
+  margin: 4px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,1 +1,1 @@
-export const demo = 2
+export { default as Tab } from './Tab'

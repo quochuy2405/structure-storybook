@@ -1,0 +1,24 @@
+$color-green: #1aa174;
+$color-black: #36423e;
+$color-red: #e35353;
+$color-orange: #ffc774;
+$color-shadow: #ebebeb87;
+$color-mint: #8bffe4;
+
+.onDrag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.onSelect {
+  background-color: $color-shadow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.isDraggingOver {
+  background-color: $color-red !important;
+}

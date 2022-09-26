@@ -18,11 +18,11 @@ const Button: React.FC<IButtonProps> = ({
   title = 'default',
   ...props
 }) => {
-  const classNames = clsx(Styles.button, {
-    [Styles.buttonPrimary]: mode === 'primary',
-    [Styles.buttonDanger]: mode === 'danger',
-    [Styles.buttonWarning]: mode === 'warning',
-    [Styles.outline]: outline,
+  const classNames = clsx(Styles.Button, {
+    [Styles.ButtonPrimary]: mode === 'primary',
+    [Styles.ButtonDanger]: mode === 'danger',
+    [Styles.ButtonWarning]: mode === 'warning',
+    [Styles.Outline]: outline,
     [className as string]: className
   })
   return (

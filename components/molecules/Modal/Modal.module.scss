@@ -14,12 +14,14 @@ $color-mint: #00d2a0;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%);
+  opacity: 0;
   box-shadow: 0 0 4px 2px $color-shadow;
   transition: all linear 0.05s;
   overflow: scroll;
   &.isOpen {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%);
+    opacity: 1;
     transition: all linear 0.05s;
   }
 }

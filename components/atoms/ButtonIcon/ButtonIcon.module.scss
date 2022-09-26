@@ -16,6 +16,8 @@ $color-shadow: #ebebeb87;
   border-radius: 100rem;
   transition: all linear 0.1s;
   box-shadow: 0 0 4px 2px $color-gray;
+  border: none;
+  outline: none;
   cursor: pointer;
   & svg {
     color: white;
