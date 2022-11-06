@@ -39,7 +39,9 @@ const DatePicker: React.FC<ITexFieldProps> = ({
   isRequired = false,
   className
 }) => {
-  const classNames = clsx(Styles.DatePicker, { className: className })
+  const classNames = clsx(Styles.DatePicker, {
+    [className as string]: className
+  })
 
   return (
     <div>

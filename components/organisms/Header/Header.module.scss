@@ -1,0 +1,57 @@
+$color-green: #1aa174;
+$color-black: #36423e;
+$color-red: #e35353;
+$color-orange: #ff9d09;
+$color-gray: #4d4d4dcb;
+$color-shadow: #ebebeb87;
+$color-opaciti-white: rgba(228, 228, 228, 0.456);
+.HeaderContainer {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.Header {
+  width: 100%;
+  height: 80px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 4px 2px $color-shadow;
+  background-color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 40px;
+  gap: 20px;
+
+  font-size: 0.93rem;
+  .Logo {
+    width: 50px;
+    height: 50px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .NavLinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-gray;
+    a:hover {
+      color: $color-black;
+    }
+
+    gap: 40px;
+  }
+  .User {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    padding: 0 20px;
+    border-left: 1px solid $color-gray;
+  }
+}

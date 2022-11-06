@@ -1,0 +1,55 @@
+$color-green: #01e89b;
+$color-white: white;
+$color-blue: #1d3d53ae;
+$color-red: #ff7878;
+$color-dark: #1e1e1e6e;
+$color-orange: #ffb96e;
+$color-mint: #0cceab;
+
+.MarketInfo {
+  width: 100vw;
+  height: 30px;
+  background-color: $color-blue;
+  padding: 0 30px;
+
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 400;
+  gap: 30px;
+
+  overflow-y: scroll;
+
+  .CoinInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-rendering: optimizeLegibility;
+    font-size: 0.8rem;
+    gap: 4px;
+
+    min-width: 160px;
+
+    .CoinImage {
+      width: 25px;
+      height: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color-orange;
+    }
+    .TraddingPercent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+
+      &.Reduce {
+        color: $color-red;
+      }
+      &.Increase {
+        color: $color-green;
+      }
+    }
+  }
+}

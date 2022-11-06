@@ -1,1 +1,2 @@
-export const demo = 2
+export { default as LandingPage } from './LandingPage'
+export { default as LoginPage } from './LoginPage'

@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { type } from 'os'
 import StatusTag from './StatusTag'
 
 export default {

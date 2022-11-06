@@ -12,7 +12,7 @@ export const Default: ComponentStory<typeof TextFieldForm> = (args) => {
   return <TextFieldForm {...args} methods={methods} name={'name'} />
 }
 
-export const Error: ComponentStory<typeof TextFieldForm> = (args) => {
+export const Error: ComponentStory<typeof TextFieldForm> = () => {
   const methods = useForm()
   const configs: ITextFieldFormProps = {
     methods,

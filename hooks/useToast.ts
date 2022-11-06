@@ -9,7 +9,8 @@ const useToast = () => {
     ({
       id: shortid.generate(),
       type,
-      message: ''
+      message: '',
+      isClose: false
     } as IToastProps)
   const create = (config: Partial<IToastProps>) => {
     addToast({ ...defaultConfig(), ...config })

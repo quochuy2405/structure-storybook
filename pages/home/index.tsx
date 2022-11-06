@@ -1,13 +1,13 @@
+import { LandingPage } from '@/components/templates'
 import Layouts from 'layouts'
-import Home from '@/components/templates/Home'
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import { NextPageWithLayout } from '../_app'
 
-const HomePage: NextPageWithLayout = () => {
-  return <Home />
+const Home: NextPageWithLayout = () => {
+  return <LandingPage />
 }
 
-HomePage.getLayout = function getLayout(page: ReactElement) {
+Home.getLayout = function getLayout(page: ReactElement) {
   return <Layouts>{page}</Layouts>
 }
-export default HomePage
+export default Home

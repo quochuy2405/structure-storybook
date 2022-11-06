@@ -1,0 +1,26 @@
+$color-green: #1aa174;
+$color-white: white;
+$color-blue: #0d76c1;
+$color-red: #e35353;
+$color-gray: #608276;
+$color-orange: #ff9d09;
+$color-mint: #0cceab;
+
+.TitleBox {
+  display: flex;
+  align-items: center;
+  .Title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 4px 2px;
+  }
+  .DotRequired {
+    color: #e35353;
+  }
+}
+.File {
+  width: 200px;
+  height: 100px;
+  border: 2px solid $color-gray;
+  border-radius: 20px;
+}

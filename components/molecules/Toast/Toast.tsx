@@ -54,7 +54,7 @@ const Toast: React.FC<IToastProps> = ({
   const { closeToast } = useContext(ToastContext)
   const ref = useRef<HTMLDivElement>(null)
   const [contentHeight, setContentHeight] = useState(0)
-  console.log(contentHeight, id)
+
   const classNames = clsx(Styles.Toast, {
     [className as string]: className
   })
@@ -78,7 +78,7 @@ const Toast: React.FC<IToastProps> = ({
           <div className={Styles.Icon}>
             <IconNotice color={modeIconColor[type]} />
           </div>
-          <p className={Styles.Content}>{message + (id || '')} </p>
+          <p className={Styles.Content}>{message} </p>
         </div>
         <div className={Styles.ButtonToast}>
           {button}

@@ -26,9 +26,12 @@
       "@/styles/*": ["styles/*"],
       "@/types/*": ["types/*"],
       "@/assets/*": ["assets/*"],
-      "@/contexts/*": ["contexts/*"]
+      "@/contexts/*": ["contexts/*"],
+      "@/utils/*": ["utils/*"],
+      "@/web3/*": ["web3/*"]
     }
   },
+  "files": ["./type.d.ts"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

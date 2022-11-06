@@ -1,27 +1,33 @@
 @use '../../responsive/mixins' as *;
 
-$color-green: #1aa174;
+$color-green: #0f9a6c;
 $color-black: #36423e;
-$color-red: #e35353;
-$color-orange: #ffae34;
-$color-shadow: #ebebeb87;
-$color-mint: #00d2a0;
+$color-red: #da3939;
+$color-orange: #ffd518;
+$color-shadow: #ebebeb5c;
+$color-gray: #b2b2b25c;
+$color-mint: #01be92;
 
 .Button {
-  height: 35px;
+  height: 34px;
   width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 6px;
-  padding: 10px 20px;
+  border-radius: 4px;
+  gap: 10px;
+
+  padding: 5px 20px;
   color: white;
-  border: 2px solid $color-shadow;
+  border: none;
   outline: none;
+
   transition: all linear 0.1s;
   background-color: $color-black;
-  font-size: 0.9rem;
-  box-shadow: 0 0 4px 2px $color-shadow;
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
+  font-size: 0.85rem;
+  opacity: 0.9;
 
   cursor: pointer;
   &.Outline {
@@ -30,10 +36,11 @@ $color-mint: #00d2a0;
     background: none;
   }
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 8px 4px $color-shadow;
+    transform: scale(1.03);
+    opacity: 1;
     transition: all linear 0.1s;
-    text-rendering: optimizeSpeed;
+    text-rendering: optimizeLegibility;
+    box-shadow: 0 0 4px 2px $color-gray;
   }
 }
 .ButtonPrimary {

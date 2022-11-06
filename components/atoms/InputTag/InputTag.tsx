@@ -1,10 +1,5 @@
 import clsx from 'clsx'
-import React, {
-  useState,
-  ReactNode,
-  ReactElement,
-  JSXElementConstructor
-} from 'react'
+import React, { useState } from 'react'
 import { GoPrimitiveDot } from 'react-icons/go'
 import shortid from 'shortid'
 import StatusTag from '../StatusTag'

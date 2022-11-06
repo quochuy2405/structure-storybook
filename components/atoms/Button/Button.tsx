@@ -1,21 +1,23 @@
 import clsx from 'clsx'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import Styles from './Button.module.scss'
 
 export interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   mode?: 'default' | 'primary' | 'danger' | 'warning'
-  title?: string
   outline?: boolean
   type?: 'submit' | 'reset'
   className?: string
+  icon?: ReactNode
+  children?: ReactNode
 }
 
 const Button: React.FC<IButtonProps> = ({
   mode = 'default',
   outline,
   className,
-  title = 'default',
+  icon,
+  children,
   ...props
 }) => {
   const classNames = clsx(Styles.Button, {
@@ -27,7 +29,8 @@ const Button: React.FC<IButtonProps> = ({
   })
   return (
     <button {...props} className={classNames}>
-      {title || 'Default'}
+      {icon && icon}
+      <p>{children || 'Default'}</p>
     </button>
   )
 }

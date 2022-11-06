@@ -15,18 +15,22 @@ export interface ISelectProps {
   errors?: object
   isRequired?: boolean
   options: IOptionSelect[]
+  background?: string
+  color?: string
 }
 
 const Select: React.FC<ISelectProps> = ({
   title,
   errors = {},
   options = [],
-  isRequired = false
+  isRequired = false,
+  background = 'white',
+  ...props
 }) => {
   const customStyles: object = {
     control: (styles: object) => ({
       ...styles,
-      backgroundColor: 'white',
+      backgroundColor: background,
       borderRadius: 8,
       border: Object.keys(errors).length
         ? '2px solid #e35353'
@@ -41,11 +45,11 @@ const Select: React.FC<ISelectProps> = ({
     }),
     dropdownIndicator: (base: object) => ({
       ...base,
-      color: Object.keys(errors).length ? '#e35353' : '#1aa174',
+      color: Object.keys(errors).length ? '#e35353' : props.color || '#1aa174',
       border: 0
     }),
     indicatorSeparator: () => ({
-      diplay: 'none'
+      display: 'none'
     }),
     option: (styles: any, { isDisabled, isFocused, isSelected }: any) => {
       const color = ['#1aa174']
@@ -101,8 +105,8 @@ const Select: React.FC<ISelectProps> = ({
 
           colors: {
             ...theme.colors,
-            primary: '#1aa174',
-            primary25: 'rgba(0, 82, 204, 0.1)'
+            primary: props.color || '#1aa174',
+            primary25: props.color || 'rgba(0, 82, 204, 0.1)'
           }
         })}
       />

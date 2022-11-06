@@ -12,7 +12,7 @@ const optionRegex: typeReg = {
   number: regexOnlyNumber,
   char: regexOnlyChar
 }
-export interface ITexFieldProps
+export interface ITextFieldProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   title?: string
   name: string
@@ -23,7 +23,7 @@ export interface ITexFieldProps
   regex?: 'number' | 'char'
 }
 
-const TextField: React.FC<ITexFieldProps> = ({
+const TextField: React.FC<ITextFieldProps> = ({
   title,
   name,
   type = 'text',

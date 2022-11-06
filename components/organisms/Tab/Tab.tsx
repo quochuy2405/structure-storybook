@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react'
 import Styles from './Tab.module.scss'
 
 export type TabTypes = {
-  [key: string]: {
+  [tab: string]: {
     label: string
     children: ReactNode
   }
@@ -18,19 +18,19 @@ const Tab: React.FC<ITabProps> = ({ tabs = {} }) => {
   return (
     <div>
       <div className={Styles.Tags}>
-        {Object.keys(tabs).map((key) => (
-          <Link href={`?key=${key}`} key={key}>
+        {Object.keys(tabs).map((tab) => (
+          <Link href={`?tab=${tab}`} key={tab}>
             <p
-              className={`${Styles.Tag} ${query?.key == key && Styles.active} `}
+              className={`${Styles.Tag} ${query?.tab == tab && Styles.active} `}
             >
-              {tabs[key].label}
+              {tabs[tab].label}
             </p>
           </Link>
         ))}
       </div>
 
       <div className={Styles.BodyChildren}>
-        {tabs[query?.key as keyof typeof tabs]?.children}
+        {tabs[query?.tab as keyof typeof tabs]?.children}
       </div>
     </div>
   )
