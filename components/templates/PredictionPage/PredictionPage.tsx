@@ -1,6 +1,6 @@
 import { Button, Card, CheckBox, Title } from '@/components/atoms'
 import { SelectForm } from '@/components/molecules'
-import CheckboxGroupForm from '@/components/molecules/CheckboxGroup/CheckBoxGroup'
+import { CheckboxGroupForm } from '@/components/molecules'
 import { Header } from '@/components/organisms'
 import Footer from '@/components/organisms/Footer'
 import { IDataChartType } from '@/types/chart'

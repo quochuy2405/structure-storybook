@@ -1,4 +1,4 @@
-import { dataChart } from '@/mocks/index'
+import { dataChartMocks } from '@/mocks/index'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import ChartView from './ChartView'
 
@@ -11,13 +11,13 @@ export const Default: ComponentStory<typeof ChartView> = (args) => {
   return <ChartView {...args} />
 }
 Default.args = {
-  data: dataChart
+  data: dataChartMocks
 }
 
 export const MovingAverage: ComponentStory<typeof ChartView> = (args) => {
   return <ChartView {...args} />
 }
 MovingAverage.args = {
-  data: dataChart,
+  data: dataChartMocks,
   moving: true
 }

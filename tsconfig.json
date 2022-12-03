@@ -33,6 +33,11 @@
       "@/layouts/*": ["layouts/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/molecules/CheckboxGroup/CheckboxGroupFormtsx"
+  ],
   "exclude": ["node_modules"]
 }
