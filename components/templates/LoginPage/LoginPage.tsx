@@ -10,6 +10,8 @@ const LoginPage: NextPage = () => {
         <Title size={1.4}>Register</Title>
         <Button icon={<Icon type="facebook" size={20} />}>Facebook</Button>
       </Card>
+
+      <div>new</div>
     </div>
   )
 }

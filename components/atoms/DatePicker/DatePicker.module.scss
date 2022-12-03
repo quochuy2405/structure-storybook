@@ -1,12 +1,14 @@
-@use '../../responsive/mixins' as *;
+@use '../../../styles/responsive/mixins' as *;
+$color-black: #36423e;
 
 .DatePicker {
   width: 100%;
   height: 40px;
-  border: 2px solid #1aa174;
   border-radius: 6px;
   outline: none;
   padding: 0 10px;
+  background-color: white;
+  color: $color-black;
 
   display: flex;
   justify-content: center;
@@ -15,24 +17,24 @@
     width: 100%;
   }
 
-  @include sm {
-    width: 100%;
-  }
-  @include md {
-    width: 280px;
-  }
+  // @include sm {
+  //   width: 100%;
+  // }
+  // @include md {
+  //   width: 280px;
+  // }
 
-  @include lg {
-    width: 280px;
-  }
+  // @include lg {
+  //   width: 280px;
+  // }
 
-  @include xl {
-    width: 280px;
-  }
+  // @include xl {
+  //   width: 280px;
+  // }
 
-  @include xxl {
-    width: 280px;
-  }
+  // @include xxl {
+  //   width: 280px;
+  // }
 }
 
 .resetInput {

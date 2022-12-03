@@ -1,6 +1,6 @@
 $color-green: #01e89b;
 $color-white: white;
-$color-blue: #1d3d53ae;
+$color-blue: #1d3d53;
 $color-red: #ff7878;
 $color-dark: #1e1e1e6e;
 $color-orange: #ffb96e;
@@ -9,7 +9,7 @@ $color-mint: #0cceab;
 .MarketInfo {
   width: 100vw;
   height: 30px;
-  background-color: $color-blue;
+  backdrop-filter: blur(30px);
   padding: 0 30px;
 
   display: flex;

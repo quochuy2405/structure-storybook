@@ -2,8 +2,7 @@ import clsx from 'clsx'
 import React from 'react'
 import Styles from './Switch.module.scss'
 
-export interface IButtonToggleProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface IButtonToggleProps extends React.InputHTMLAttributes<HTMLInputElement> {
   defaultToggle?: boolean
   labelCheck?: string
   labelUnCheck?: string

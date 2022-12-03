@@ -1,15 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { IconNotice } from '@/assets/icon'
+import IconNotice from '@/assets/icon/IconNotice'
 import ToastContext from '@/contexts/ToastContext'
 import clsx from 'clsx'
-import React, {
-  memo,
-  ReactNode,
-  useContext,
-  useEffect,
-  useRef,
-  useState
-} from 'react'
+import React, { memo, ReactNode, useContext, useEffect, useRef, useState } from 'react'
 import { IoClose } from 'react-icons/io5'
 import Styles from './Toast.module.scss'
 export interface IToastProps {

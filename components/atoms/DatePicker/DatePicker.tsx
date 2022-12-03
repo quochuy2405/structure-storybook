@@ -1,125 +1,85 @@
-import clsx from 'clsx'
-import React from 'react'
+import React, { forwardRef, useEffect, useState } from 'react'
 import { GoPrimitiveDot } from 'react-icons/go'
-import { IoCalendarOutline } from 'react-icons/io5'
-import ReactDatePicker, { DateObject } from 'react-multi-date-picker'
-import DatePickerHeader from 'react-multi-date-picker/plugins/date_picker_header'
+import { IoCalendarClearOutline } from 'react-icons/io5'
+import MultiDatePicker, { DateObject, DatePickerProps } from 'react-multi-date-picker'
 import shortid from 'shortid'
 import Styles from './DatePicker.module.scss'
-export interface ITexFieldProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  title?: string
-  name: string
+
+export interface IDatePickerProps extends DatePickerProps {
+  onChange: (date: Date | Array<Date>) => void
   errors?: object
-  isRequired?: boolean
-  className?: string
+  value: string | Array<string>
+  range?: boolean
+  title?: string
+  isRequired?: string
+  titleClassName?: string
 }
 
-export interface ICustomeInputProps {
-  openCalendar: () => void
-  value: string
-  className: string
-}
-const CustomRangeInput: React.FC<ICustomeInputProps> = ({
-  openCalendar,
-  value,
-  ...props
-}) => {
-  const from = value[0] || ''
-  const to = value[1] || ''
+const DatePicker: React.FC<IDatePickerProps> = forwardRef<HTMLElement, IDatePickerProps>(
+  ({
+    titleClassName = 'Date',
+    range,
+    value,
+    errors,
+    title,
+    isRequired,
+    onChange,
+    ...props
+  }) => {
+    const [selected, setSelected] = useState<DateObject | Array<DateObject> | null>(null)
+    useEffect(() => {
+      if (!value) setSelected(null)
+      else {
+        if (range) {
+          setSelected((value as Array<string>).map((item) => new DateObject(item)))
+        } else {
+          setSelected(new DateObject(value as string))
+        }
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value])
 
-  value = from && to ? 'from ' + from + ', to ' + to : from
-
-  return <input type="text" onFocus={openCalendar} value={value} {...props} />
-}
-
-const DatePicker: React.FC<ITexFieldProps> = ({
-  title,
-  errors = {},
-  isRequired = false,
-  className
-}) => {
-  const classNames = clsx(Styles.DatePicker, {
-    [className as string]: className
-  })
-
-  return (
-    <div>
-      {title && (
-        <div className={Styles.TitleBox}>
-          {isRequired && <GoPrimitiveDot className={Styles.DotRequired} />}
-          <p className={Styles.Title}>{title}</p>
-        </div>
-      )}
-      <label className={classNames}>
-        <ReactDatePicker
-          plugins={[
-            <DatePickerHeader
-              key={shortid.generate()}
-              style={{ backgroundColor: '#e35353' }}
-            />
-          ]}
-          mapDays={({
-            date,
-            today,
-            selectedDate,
-            currentMonth,
-            isSameDate
-          }: DateObject &
-            (DateObject | DateObject[]) &
-            object &
-            ((arg1: DateObject, arg2: DateObject) => boolean) &
-            any) => {
-            const props = {} as any
-
-            props.style = {
-              width: '27px',
-              height: '27px',
-              gap: '3px',
-              borderRadius: '100rem',
-              color: 'black',
-              backgroundColor:
-                date.month.index === currentMonth.index ? '#ebebeb87' : ''
+    return (
+      <>
+        {title && (
+          <div className={Styles.TitleBox}>
+            {isRequired && <GoPrimitiveDot className={Styles.DotRequired} />}
+            <p className={titleClassName}>{title}</p>
+          </div>
+        )}
+        <MultiDatePicker
+          {...props}
+          range={range}
+          value={selected}
+          onChange={(date: DateObject | Array<DateObject>) => {
+            if (date) {
+              if (range) {
+                onChange(
+                  (date as Array<DateObject>).map((item) => new Date(item.format()))
+                )
+              } else {
+                onChange(new Date((date as DateObject).format()))
+              }
+              setSelected(date)
             }
-
-            if (isSameDate(date, today))
-              props.style = {
-                backgroundColor: 'white',
-                color: '#e35353',
-                fontWeight: '600',
-                width: '27px',
-                height: '27px'
-              }
-            if (isSameDate(date, selectedDate))
-              props.style = {
-                ...props.style,
-                color: 'white',
-                backgroundColor: '#e35353',
-                boxShadow: 'none',
-                width: '27px',
-                height: '27px'
-              }
-
-            return props
           }}
-          render={(value: string, openCalendar: () => void) => (
-            <CustomRangeInput
-              value={value}
-              openCalendar={openCalendar}
-              className={Styles.resetInput}
-            />
-          )}
+          render={(value: string, openCalendar: () => void) => {
+            return (
+              <div onClick={openCalendar} className={Styles.DatePicker}>
+                <div>{value}</div>
+                <IoCalendarClearOutline color="#000" size={20} />
+              </div>
+            )
+          }}
         />
-        <IoCalendarOutline size={24} className={Styles.icon} />
-      </label>
-      {!!Object.keys(errors).length &&
-        Object.keys(errors)?.map((key) => (
-          <p key={shortid.generate()} className={Styles.TextError}>
-            {errors[key as keyof typeof errors]}
-          </p>
-        ))}
-    </div>
-  )
-}
-
+        {errors &&
+          !!Object.keys(errors).length &&
+          Object.keys(errors)?.map((key) => (
+            <p key={shortid.generate()}>{errors[key as keyof typeof errors]}</p>
+          ))}
+      </>
+    )
+  }
+)
+DatePicker.displayName = 'Date_Picker'
 export default DatePicker

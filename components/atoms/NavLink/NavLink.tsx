@@ -7,12 +7,7 @@ export interface INavLinkProps {
   className?: string
 }
 
-const NavLink: React.FC<INavLinkProps> = ({
-  href,
-  exact,
-  children,
-  className
-}) => {
+const NavLink: React.FC<INavLinkProps> = ({ href, exact, children, className }) => {
   const { pathname } = useRouter()
   const isActive = exact ? pathname === href : pathname.startsWith(href)
 

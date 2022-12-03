@@ -4,9 +4,9 @@ const CoinSystems: React.FC = () => {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width="1281"
-      height="1251"
       viewBox="0 0 1281 1251"
       fill="none"
+      height="100%"
     >
       <rect
         x="0.89209"
@@ -22,10 +22,7 @@ const CoinSystems: React.FC = () => {
           width="1"
           height="1"
         >
-          <use
-            xlinkHref="#image0_0_449"
-            transform="scale(0.000972763 0.00106383)"
-          />
+          <use xlinkHref="#image0_0_449" transform="scale(0.000972763 0.00106383)" />
         </pattern>
         <image
           id="image0_0_449"

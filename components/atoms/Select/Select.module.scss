@@ -1,10 +1,10 @@
-@use '../../responsive/mixins' as *;
+@use '../../../styles/responsive/mixins' as *;
 
 $color-red: #e35353;
-$color-green: #1aa174;
-
+$color-green: #363737;
+$color-gray: #292828f8;
 .Icon {
-  fill: #1aa174;
+  fill: #3fcf8e;
   position: absolute;
   right: 10px;
 }
@@ -12,31 +12,53 @@ $color-green: #1aa174;
   position: relative;
   border-radius: 8px;
   outline: none;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9rem;
-
-  @include sm {
-    width: 100%;
-  }
-  @include md {
-    width: 280px;
-  }
-
-  @include lg {
-    width: 280px;
-  }
-
-  @include xl {
-    width: 280px;
-  }
-
-  @include xxl {
-    width: 280px;
-  }
+  width: 100%;
 
   &::placeholder {
     color: hsla(0, 0%, 0%, 0.4);
   }
+}
+.MenuContainer {
+  padding: 4px;
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
+  background-color: $color-gray;
+  border: 2px solid white;
+  height: fit-content;
+  overflow-y: auto;
+}
+.Menu {
+  width: 100%;
+  max-height: 180px;
+  height: fit-content;
+  z-index: 999;
+}
+
+.Option {
+  background-color: $color-green;
+  padding: 5px 10px;
+  border-radius: 2px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: all linear 0.2s;
+  border: 2px solid $color-green;
+  &:hover {
+    transition: all linear 0.1s;
+    border: 2px solid white;
+    color: white;
+  }
+}
+.Selected {
+  background-color: $color-red;
+  border: 2px solid $color-red;
+  color: white;
+  opacity: 1;
 }
 
 .SelectError {

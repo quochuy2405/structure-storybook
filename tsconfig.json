@@ -28,10 +28,11 @@
       "@/assets/*": ["assets/*"],
       "@/contexts/*": ["contexts/*"],
       "@/utils/*": ["utils/*"],
-      "@/web3/*": ["web3/*"]
+      "@/constants/*": ["constants/*"],
+      "@/providers/*": ["providers/*"],
+      "@/layouts/*": ["layouts/*"]
     }
   },
-  "files": ["./type.d.ts"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

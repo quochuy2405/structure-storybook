@@ -4,10 +4,10 @@ const Decor: React.FC = () => {
   return (
     <svg
       width="currentParent"
-      height="currentParent"
       viewBox="0 0 77 86"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      height="100%"
     >
       <path
         fillRule="evenodd"

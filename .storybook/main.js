@@ -18,6 +18,7 @@ module.exports = {
   core: {
     builder: '@storybook/builder-webpack5'
   },
+  staticDirs: ['../public'],
 
   features: {
     interactionsDebugger: true
@@ -33,7 +34,11 @@ module.exports = {
       '@/mocks': path.resolve(__dirname, '../mocks'),
       '@/assets': path.resolve(__dirname, '../assets'),
       '@/lib': path.resolve(__dirname, '../lib'),
-      '@/types': path.resolve(__dirname, '../types')
+      '@/types': path.resolve(__dirname, '../types'),
+      '@/utils': path.resolve(__dirname, '../utils'),
+      '@/constants': path.resolve(__dirname, '../constants'),
+      '@/providers': path.resolve(__dirname, '../providers'),
+      '@/layouts': path.resolve(__dirname, '../layouts')
     }
 
     const fallback = config.resolve.fallback || {}

@@ -79,13 +79,15 @@ const handleCandleChart = (chart: IChartApi, data: Array<TDataSeries>) => {
   candleSeries.setData(data)
   return candleSeries
 }
+
 const handleMarker = (
-  series: ISeriesApi<
-    'Candlestick' | 'Line' | 'Area' | 'Bar' | 'Baseline' | 'Histogram'
-  >,
+  marker: boolean,
+  series: ISeriesApi<'Candlestick' | 'Line' | 'Area' | 'Bar' | 'Baseline' | 'Histogram'>,
   data: Array<TDataSeries>
 ) => {
+  if (!marker) return
   const datesForMarkers = [data[data.length - 39], data[data.length - 19]]
+
   let indexOfMinPrice = 0
   for (let i = 1; i < datesForMarkers.length; i++) {
     if (datesForMarkers[i].high < datesForMarkers[indexOfMinPrice].high) {
@@ -123,10 +125,30 @@ const handleMarker = (
   }
   series.setMarkers(markers)
 }
+const handleHistogram = (
+  histogram: boolean,
+  chart: IChartApi,
+  data: Array<TDataSeries>
+) => {
+  if (!histogram) return
+  const volumeSeries = chart.addHistogramSeries({
+    color: '#26a69a',
+    priceFormat: {
+      type: 'volume'
+    },
+    priceScaleId: '',
+    scaleMargins: {
+      top: 0.9,
+      bottom: 0
+    }
+  })
+  volumeSeries.setData(data)
+}
 export {
   handleCandleChart,
   handleCreateChart,
   handleMarker,
   handleMovingAverage,
-  calculateSMA
+  calculateSMA,
+  handleHistogram
 }

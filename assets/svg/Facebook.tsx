@@ -3,13 +3,13 @@ import React from 'react'
 const Facebook: React.FC = () => {
   return (
     <svg
-      width="full"
-      height="full"
+      width="100%"
       viewBox="0 0 75 76"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      height="100%"
     >
-      <circle cx="37.5" cy="37.5137" r="37.5" fill="#4CAF50" />
+      <circle cx="37.5" cy="37.5137" r="37.5" fill="#3fcf8e" />
       <path
         fillRule="evenodd"
         clipRule="evenodd"

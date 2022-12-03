@@ -2,8 +2,7 @@ import { TextField } from '@/components/atoms'
 import React from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 
-export interface ITextFieldFormProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface ITextFieldFormProps extends React.InputHTMLAttributes<HTMLInputElement> {
   title?: string
   name: string
   type?: 'text' | 'password'

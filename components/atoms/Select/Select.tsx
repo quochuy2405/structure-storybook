@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Styles from './Select.module.scss'
 
+import clsx from 'clsx'
 import { GoPrimitiveDot } from 'react-icons/go'
-import ReactSelect from 'react-select'
+import ReactSelect, {
+  components,
+  GroupBase,
+  MenuListProps,
+  OptionProps
+} from 'react-select'
 import shortid from 'shortid'
 export type IOptionSelect = {
   label: string
@@ -17,106 +23,90 @@ export interface ISelectProps {
   options: IOptionSelect[]
   background?: string
   color?: string
+  titleClassName?: string
 }
 
-const Select: React.FC<ISelectProps> = ({
-  title,
-  errors = {},
-  options = [],
-  isRequired = false,
-  background = 'white',
-  ...props
-}) => {
-  const customStyles: object = {
-    control: (styles: object) => ({
-      ...styles,
-      backgroundColor: background,
-      borderRadius: 8,
-      border: Object.keys(errors).length
-        ? '2px solid #e35353'
-        : '2px solid #1aa174',
-      boxShadow: 0,
-      outline: 0
-    }),
-    menu: (styles: object) => ({
-      ...styles,
-      backgroundColor: 'white',
-      borderRadius: 4
-    }),
-    dropdownIndicator: (base: object) => ({
-      ...base,
-      color: Object.keys(errors).length ? '#e35353' : props.color || '#1aa174',
-      border: 0
-    }),
-    indicatorSeparator: () => ({
-      display: 'none'
-    }),
-    option: (styles: any, { isDisabled, isFocused, isSelected }: any) => {
-      const color = ['#1aa174']
-      return {
-        ...styles,
-        borderRadius: 4,
-        margin: 4,
-        backgroundColor: isDisabled
-          ? undefined
-          : isSelected
-          ? color
-          : isFocused
-          ? color
-          : undefined,
-        color: isDisabled
-          ? '#ccc'
-          : isSelected
-          ? 'white'
-          : isFocused
-          ? color
-            ? 'white'
-            : 'black'
-          : color,
-        cursor: isDisabled ? 'not-allowed' : 'default',
-
-        ':active': {
-          ...styles[':active'],
-          backgroundColor: !isDisabled
-            ? isSelected
-              ? color
-              : color
-            : undefined
-        }
-      }
+const Select: React.FC<ISelectProps> = forwardRef<HTMLSelectElement, ISelectProps>(
+  (
+    {
+      title,
+      errors = {},
+      options = [],
+      isRequired = false,
+      titleClassName,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const titleClassNames = clsx(Styles.Title, {
+      [titleClassName as string]: titleClassName
+    })
+    const classNames = clsx(Styles.Select, {
+      [className as string]: className
+    })
+    const MenuList = (
+      props: MenuListProps<IOptionSelect, false, GroupBase<IOptionSelect>>
+    ) => {
+      const { children, ...menuProps } = props
+      return (
+        <components.MenuList {...menuProps} className={Styles.MenuContainer}>
+          <div className={Styles.Menu}>{children}</div>
+        </components.MenuList>
+      )
     }
-  }
-  return (
-    <div>
-      {title && (
-        <div className={Styles.TitleBox}>
-          {isRequired && <GoPrimitiveDot className={Styles.DotRequired} />}
-          <p className={Styles.Title}>{title}</p>
-        </div>
-      )}
-      <ReactSelect
-        defaultValue={options[0]}
-        options={options}
-        className={Styles.Select}
-        styles={customStyles}
-        theme={(theme) => ({
-          ...theme,
-          borderRadius: 0,
+    const Option = (
+      props: OptionProps<IOptionSelect, false, GroupBase<IOptionSelect>>
+    ) => {
+      const { children, isSelected } = props
 
-          colors: {
-            ...theme.colors,
-            primary: props.color || '#1aa174',
-            primary25: props.color || 'rgba(0, 82, 204, 0.1)'
-          }
-        })}
-      />
-      {!!Object.keys(errors).length &&
-        Object.keys(errors)?.map((key) => (
-          <p key={shortid.generate()} className={Styles.TextError}>
-            {errors[key as keyof typeof errors]}
-          </p>
-        ))}
-    </div>
-  )
-}
+      return (
+        <components.Option {...props}>
+          <div className={clsx(Styles.Option, { [Styles.Selected]: isSelected })}>
+            {children}{' '}
+          </div>
+        </components.Option>
+      )
+    }
+
+    return (
+      <div style={{ width: 'inherit' }}>
+        {title && (
+          <div className={Styles.TitleBox}>
+            {isRequired && <GoPrimitiveDot className={Styles.DotRequired} />}
+            <p className={titleClassNames}>{title}</p>
+          </div>
+        )}
+        <ReactSelect
+          ref={ref as any}
+          id=""
+          instanceId="react-select-3-live-region"
+          defaultValue={options[0]}
+          options={options}
+          className={classNames}
+          styles={{
+            option: (base) => ({
+              ...base,
+              background: 'none',
+              padding: 0
+            })
+          }}
+          components={{
+            MenuList,
+            IndicatorSeparator: () => null,
+            Option
+          }}
+          {...props}
+        />
+        {!!Object.keys(errors).length &&
+          Object.keys(errors)?.map((key) => (
+            <p key={shortid.generate()} className={Styles.TextError}>
+              {errors[key as keyof typeof errors]}
+            </p>
+          ))}
+      </div>
+    )
+  }
+)
+Select.displayName = 'select'
 export default Select

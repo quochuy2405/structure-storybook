@@ -1,4 +1,4 @@
-import { Logo } from '@/assets/svg'
+import { Avatar } from '@/components/atoms'
 import Icon from '@/components/atoms/Icon'
 import Styles from './Footer.module.scss'
 
@@ -7,12 +7,12 @@ const Footer = () => {
     <div className={Styles.Footer}>
       <div className={Styles.QuickLink}>
         <div className={Styles.Logo}>
-          <Logo />
-          <h2>Company</h2>
+          <Avatar />
+          <h2>Predict</h2>
         </div>
         <p className={Styles.QuickLinkDescription}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis vitae,
-          facere rem ducimus ab.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis vitae, facere rem
+          ducimus ab.
         </p>
         <h2 className={Styles.QuickLinkTitle}>Quick Links</h2>
         <ul className={Styles.QuickLinkList}>
@@ -28,37 +28,37 @@ const Footer = () => {
       <div className={Styles.News}>
         <div className={Styles.NewsItem}>
           <div className={Styles.Thumbnail}>
-            <Logo />
+            <Avatar />
           </div>
           <div className={Styles.Content}>
             <div className={Styles.Title}>NEWS</div>
             <div className={Styles.Description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-              sunt illum sint culpa, labore cum nisi.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sunt illum
+              sint culpa, labore cum nisi.
             </div>
           </div>
         </div>
         <div className={Styles.NewsItem}>
           <div className={Styles.Thumbnail}>
-            <Logo />
+            <Avatar />
           </div>
           <div className={Styles.Content}>
             <div className={Styles.Title}>NEWS</div>
             <div className={Styles.Description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-              sunt illum sint culpa, labore cum nisi.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sunt illum
+              sint culpa, labore cum nisi.
             </div>
           </div>
         </div>
         <div className={Styles.NewsItem}>
           <div className={Styles.Thumbnail}>
-            <Logo />
+            <Avatar />
           </div>
           <div className={Styles.Content}>
             <div className={Styles.Title}>NEWS</div>
             <div className={Styles.Description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-              sunt illum sint culpa, labore cum nisi.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sunt illum
+              sint culpa, labore cum nisi.
             </div>
           </div>
         </div>

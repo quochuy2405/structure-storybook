@@ -70,14 +70,10 @@ const ToastList = forwardRef<ToastListHandle, IToastList>(({ limit }, ref) => {
 
 ToastList.displayName = 'toast'
 
-const ToastProvider: React.FC<IToastProviderProps> = ({
-  children,
-  limit = 4
-}) => {
+const ToastProvider: React.FC<IToastProviderProps> = ({ children, limit = 4 }) => {
   const toastRef = useRef<ToastListHandle>(null)
   const { addToast, closeToast } = {
-    addToast: (newToast: Partial<IToastProps>) =>
-      toastRef.current?.addToast(newToast),
+    addToast: (newToast: Partial<IToastProps>) => toastRef.current?.addToast(newToast),
     closeToast: (id?: string) => toastRef.current?.closeToast(id)
   }
   return (

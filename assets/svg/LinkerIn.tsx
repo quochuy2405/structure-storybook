@@ -2,8 +2,8 @@ import React from 'react'
 
 const LinkerIn: React.FC = () => {
   return (
-    <svg viewBox="0 0 75 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="37.5" cy="37.5137" r="37.5" fill="#4CAF50" />
+    <svg viewBox="0 0 75 76" fill="none" xmlns="http://www.w3.org/2000/svg" height="100%">
+      <circle cx="37.5" cy="37.5137" r="37.5" fill="#3fcf8e" />
       <path
         fillRule="evenodd"
         clipRule="evenodd"

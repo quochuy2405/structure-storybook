@@ -1,7 +1,7 @@
-@use '../../responsive/mixins' as *;
+@use '../../../styles/responsive/mixins' as *;
 
 $color-red: #e35353;
-$color-green: #1aa174;
+$color-green: #3fcf8e;
 
 .InputBox {
   display: flex;
@@ -9,7 +9,7 @@ $color-green: #1aa174;
   flex-direction: column;
 }
 .Icon {
-  fill: #1aa174;
+  fill: #3fcf8e;
   position: absolute;
   right: 10px;
 }
@@ -17,11 +17,11 @@ $color-green: #1aa174;
   position: relative;
   width: 100%;
   height: 44px;
-  border: 2px solid #1aa174;
+  border: 2px solid #3fcf8e;
   border-radius: 8px;
   outline: none;
   padding: 0 10px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9rem;
   display: flex;
   justify-content: center;

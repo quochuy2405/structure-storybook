@@ -6,7 +6,7 @@ const Background: React.FC = () => {
       viewBox="0 0 2560 1433"
       fill="100"
       width="currentParent"
-      height="currentParent"
+      height="100%"
     >
       <mask
         id="mask0_112_325"
@@ -65,10 +65,7 @@ const Background: React.FC = () => {
           width="1"
           height="1"
         >
-          <use
-            xlinkHref="#image0_112_325"
-            transform="scale(0.000391543 0.000818331)"
-          />
+          <use xlinkHref="#image0_112_325" transform="scale(0.000391543 0.000818331)" />
         </pattern>
         <image
           id="image0_112_325"

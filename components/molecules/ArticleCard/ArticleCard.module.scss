@@ -1,0 +1,43 @@
+$color-red: #e35353;
+$color-orange: #ff9d09;
+$color-gray: #6469675c;
+
+.Layout {
+  color: white;
+  background-color: $color-gray;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+.Title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.Description {
+  font-size: 0.8rem;
+  width: 80%;
+}
+.Author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.Name {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.ViewArticle {
+  font-weight: 500;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.Other {
+}

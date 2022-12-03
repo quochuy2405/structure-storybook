@@ -15,10 +15,7 @@ export interface IconProps {
 
 const Icon: React.FC<IconProps> = ({ className, type, size }) => {
   return (
-    <div
-      style={{ width: `${size}px`, height: `${size}px` }}
-      className={className}
-    >
+    <div style={{ width: `${size}px`, height: `${size}px` }} className={className}>
       {ICONS[type]}
     </div>
   )

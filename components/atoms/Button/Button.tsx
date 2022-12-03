@@ -2,11 +2,10 @@ import clsx from 'clsx'
 import React, { ReactNode } from 'react'
 import Styles from './Button.module.scss'
 
-export interface IButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   mode?: 'default' | 'primary' | 'danger' | 'warning'
   outline?: boolean
-  type?: 'submit' | 'reset'
+  type?: 'submit' | 'reset' | 'button'
   className?: string
   icon?: ReactNode
   children?: ReactNode
@@ -30,7 +29,7 @@ const Button: React.FC<IButtonProps> = ({
   return (
     <button {...props} className={classNames}>
       {icon && icon}
-      <p>{children || 'Default'}</p>
+      <div>{children || 'Default'}</div>
     </button>
   )
 }

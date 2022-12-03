@@ -1,4 +1,4 @@
-$color-green: #1aa174;
+$color-green: #3fcf8e;
 $color-black: #36423e;
 $color-red: #e35353;
 $color-orange: #ffb444;
@@ -12,8 +12,8 @@ $color-opacity-white: rgba(228, 228, 228, 0.456);
   margin-top: 200px;
   backdrop-filter: blur(10px);
   box-shadow: 0 0 4px 2px $color-shadow;
-  background-color: rgb(87, 86, 86);
   color: white;
+  background-color: #1d1d1dd1;
 
   display: flex;
   justify-content: center;
@@ -28,10 +28,10 @@ $color-opacity-white: rgba(228, 228, 228, 0.456);
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     h2 {
-      font-weight: 600;
-      font-size: 1.2rem;
-      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 2rem;
     }
     img {
       width: 100%;
@@ -49,8 +49,7 @@ $color-opacity-white: rgba(228, 228, 228, 0.456);
     .QuickLinkTitle {
       font-size: 1rem;
       text-transform: uppercase;
-      color: $color-orange;
-      font-weight: 500;
+      font-weight: 600;
     }
     .QuickLinkDescription {
       font-size: 0.84em;

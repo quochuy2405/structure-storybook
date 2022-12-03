@@ -1,11 +1,14 @@
 import { IChartApi } from 'lightweight-charts'
 import React, { useEffect, useRef } from 'react'
+import Styles from './ChartView.module.scss'
 import {
   handleCandleChart,
   handleCreateChart,
+  handleHistogram,
   handleMarker,
   handleMovingAverage
 } from './ChartsHandle'
+
 export type TDataSeries = {
   time: { year: number; month: number; day: number }
   open: number
@@ -19,10 +22,11 @@ interface IChartViewProps {
   moving?: boolean
   isMarker?: boolean
   size: 'full'
+  histogram?: boolean
 }
 
 const ChartView: React.FC<IChartViewProps> = (props) => {
-  const { data = [], moving = false } = props
+  const { data = [], moving = false, histogram = false, isMarker = false } = props
   const chartContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -34,18 +38,16 @@ const ChartView: React.FC<IChartViewProps> = (props) => {
     ) as IChartApi
 
     const candles = handleCandleChart(chart, data)
-    handleMarker(candles, data)
+    handleMarker(isMarker, candles, data)
     handleMovingAverage(moving, chart, data)
-    // window.addEventListener('resize', handleResize)
+    handleHistogram(histogram, chart, data)
+
     return () => {
-      // window.removeEventListener('resize', handleResize)
       chart.remove()
     }
-  }, [data, moving])
+  }, [data, histogram, isMarker, moving])
 
-  return (
-    <div ref={chartContainerRef} style={{ width: '100%', height: '100vh' }} />
-  )
+  return <div ref={chartContainerRef} className={Styles.ChartView} />
 }
 
 export default ChartView

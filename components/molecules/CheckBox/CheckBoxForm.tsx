@@ -2,8 +2,7 @@ import { CheckBox } from '@/components/atoms'
 import React from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 
-export interface ICheckBoxFormProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface ICheckBoxFormProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
   name: string
   className?: string

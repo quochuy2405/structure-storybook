@@ -1,7 +1,7 @@
-@use '../../responsive/mixins' as *;
+@use '../../../styles/responsive/mixins' as *;
 
 $color-red: #e35353;
-$color-green: #1aa174;
+$color-green: #3fcf8e;
 
 .Input {
   appearance: none;
@@ -28,7 +28,7 @@ $color-green: #1aa174;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #1aa174;
+  color: #3fcf8e;
   font-weight: 600;
   width: 70%;
   height: 70%;

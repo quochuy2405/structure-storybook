@@ -1,5 +1,5 @@
 import { LoginPage } from '@/components/templates'
-import Layouts from 'layouts'
+import { Layouts } from '@/layouts/index'
 import { ReactElement } from 'react'
 import { NextPageWithLayout } from '../_app'
 

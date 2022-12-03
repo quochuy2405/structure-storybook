@@ -20,9 +20,7 @@ const Tab: React.FC<ITabProps> = ({ tabs = {} }) => {
       <div className={Styles.Tags}>
         {Object.keys(tabs).map((tab) => (
           <Link href={`?tab=${tab}`} key={tab}>
-            <p
-              className={`${Styles.Tag} ${query?.tab == tab && Styles.active} `}
-            >
+            <p className={`${Styles.Tag} ${query?.tab == tab && Styles.active} `}>
               {tabs[tab].label}
             </p>
           </Link>

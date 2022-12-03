@@ -4,10 +4,7 @@ interface IUseValidate<T extends FieldValues> {
   resolver?: Resolver<T, any> | undefined
 }
 
-const useValidate = <T extends object>({
-  resolver,
-  defaultValues
-}: IUseValidate<T>) => {
+const useValidate = <T extends object>({ resolver, defaultValues }: IUseValidate<T>) => {
   const methods = useForm<T>({ defaultValues, resolver })
   return methods
 }

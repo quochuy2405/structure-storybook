@@ -1,15 +1,16 @@
 import { Select } from '@/components/atoms'
 import { IOptionSelect } from '@/components/atoms/Select/Select'
 import React from 'react'
-import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
+import { Controller, UseFormReturn } from 'react-hook-form'
 
-export interface ISelectFormProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface ISelectFormProps extends React.InputHTMLAttributes<HTMLSelectElement> {
   title?: string
   name: string
   className?: string
   options: IOptionSelect[]
-  methods: UseFormReturn<FieldValues, object>
+  methods: UseFormReturn<object | any, object>
+  color?: string
+  titleClassName?: string
 }
 
 const SelectForm: React.FC<ISelectFormProps> = ({
@@ -21,7 +22,7 @@ const SelectForm: React.FC<ISelectFormProps> = ({
 }) => {
   return (
     <Controller
-      defaultValue=""
+      defaultValue={undefined}
       name={name}
       control={methods.control}
       render={({ field }) => (

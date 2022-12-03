@@ -1,5 +1,5 @@
-@use '../../responsive/mixins' as *;
-$color-green: #1aa174;
+@use '../../../styles/responsive/mixins' as *;
+$color-green: #3fcf8e;
 $color-white: white;
 $color-blue: #0d76c1;
 $color-red: #e35353;
@@ -11,7 +11,7 @@ $color-mint: #0cceab;
   border-radius: 8px;
   padding: 5px;
   outline: none;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9rem;
   width: 100%;
   height: fit-content;
@@ -20,7 +20,7 @@ $color-mint: #0cceab;
   flex-wrap: wrap;
   gap: 10px;
 
-  border: 2px solid #1aa174;
+  border: 2px solid #3fcf8e;
   @include sm {
     width: 100%;
   }
@@ -57,7 +57,7 @@ $color-mint: #0cceab;
   border-color: #e35353;
 }
 .TextError {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.8rem;
   padding: 0 5px;
   min-height: 20px;

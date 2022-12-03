@@ -3,8 +3,7 @@ import React from 'react'
 import { GoPrimitiveDot } from 'react-icons/go'
 import shortid from 'shortid'
 import Styles from './TextArea.module.scss'
-export interface ITextArea
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface ITextArea extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   title?: string
   name: string
   errors?: object

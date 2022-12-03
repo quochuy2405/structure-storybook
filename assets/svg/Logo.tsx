@@ -7,6 +7,8 @@ const Logo: React.FC = () => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 148 152"
       fill="none"
+      width="100%"
+      height="100%"
     >
       <rect width="148" height="152" fill="url(#pattern0_0_461)" />
       <defs>
@@ -16,10 +18,7 @@ const Logo: React.FC = () => {
           width="1"
           height="1"
         >
-          <use
-            xlinkHref="#image0_0_461"
-            transform="scale(0.00195312 0.00189753)"
-          />
+          <use xlinkHref="#image0_0_461" transform="scale(0.00195312 0.00189753)" />
         </pattern>
         <image
           id="image0_0_461"

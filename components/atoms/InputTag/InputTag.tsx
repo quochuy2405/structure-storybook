@@ -22,13 +22,7 @@ const InputTag: React.FC<IInputTagProps> = ({
 }) => {
   const [text, setText] = useState('')
   const [tags, setTags] = useState<IStatusTag[]>([])
-  const types: typeTag[] = [
-    'default',
-    'primary',
-    'warning',
-    'error',
-    'secondary'
-  ]
+  const types: typeTag[] = ['default', 'primary', 'warning', 'error', 'secondary']
   const classNames = clsx(Styles.InputTag, {
     [Styles.InputTagError]: !!Object.keys(errors).length,
     [className as string]: className

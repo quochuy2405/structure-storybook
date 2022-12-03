@@ -1,22 +1,21 @@
-$color-green: #1aa174;
+$color-green: #3fcf8e;
 $color-black: #36423e;
 $color-red: #e35353;
 $color-orange: #ff9d09;
 $color-gray: #4d4d4dcb;
-$color-shadow: #ebebeb87;
-$color-opaciti-white: rgba(228, 228, 228, 0.456);
+$color-shadow: #ebebeb4b;
+$color-opacity-white: rgba(228, 228, 228, 0.456);
 .HeaderContainer {
   position: sticky;
   top: 0;
   z-index: 999;
+  background-color: #1d1d1dd1;
 }
 .Header {
   width: 100%;
   height: 80px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 0 4px 2px $color-shadow;
-  background-color: white;
-
+  box-shadow: 0 0 4px 1px $color-shadow;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,11 +25,18 @@ $color-opaciti-white: rgba(228, 228, 228, 0.456);
 
   font-size: 0.93rem;
   .Logo {
-    width: 50px;
+    width: 180px;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 2rem;
+    gap: 20px;
     img {
-      width: 100%;
-      height: 100%;
+      width: 100px;
+      height: 50px;
       object-fit: cover;
     }
   }
@@ -38,9 +44,15 @@ $color-opaciti-white: rgba(228, 228, 228, 0.456);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $color-gray;
+    color: #ffffff;
+    font-weight: 500;
+    a {
+      transition: all ease-in-out 0.2s;
+    }
     a:hover {
-      color: $color-black;
+      color: white;
+      transition: all ease-in 0.1s;
+      font-size: 1rem;
     }
 
     gap: 40px;
@@ -54,4 +66,10 @@ $color-opaciti-white: rgba(228, 228, 228, 0.456);
     padding: 0 20px;
     border-left: 1px solid $color-gray;
   }
+}
+
+.ButtonSignIn {
+  color: white !important;
+  border: 2px solid white !important;
+  background: none;
 }

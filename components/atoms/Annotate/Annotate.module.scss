@@ -1,0 +1,13 @@
+@use '../../../styles/responsive/mixins' as *;
+
+$color-green: #3fcf8e;
+$color-black: #36423e;
+$color-red: #e35353;
+$color-orange: #ff9d09;
+$color-gray: #6469675c;
+
+.Annotate {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
