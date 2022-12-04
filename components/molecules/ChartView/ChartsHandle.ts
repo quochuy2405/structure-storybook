@@ -62,20 +62,52 @@ const handleCreateChart = (
 const handleMovingAverage = (
   moving: boolean,
   chart: IChartApi,
-  data: Array<TDataSeries>
+  data: Array<TDataSeries>,
+  isPredict: boolean
 ) => {
   if (!moving) return
-
   const smaData = calculateSMA(data, 10)
+  const color = isPredict ? 'black' : 'rgba(4, 111, 232, 1)'
   const movingAVG = chart.addLineSeries({
-    color: 'rgba(4, 111, 232, 1)',
+    color: color,
     lineWidth: 2
   })
   movingAVG.setData(smaData)
 }
 
-const handleCandleChart = (chart: IChartApi, data: Array<TDataSeries>) => {
-  const candleSeries = chart.addCandlestickSeries()
+const handleLineChart = (
+  chart: IChartApi,
+  data: Array<TDataSeries>,
+  isPredict: boolean
+) => {
+  const color = isPredict ? '#e35353' : '#3fcf8e'
+  const movingAVG = chart.addLineSeries({
+    color: color,
+    lineWidth: 2
+  })
+  movingAVG.setData(
+    data.map((item) => ({
+      time: item.time,
+      value: item.close
+    }))
+  )
+}
+
+const handleCandleChart = (
+  chart: IChartApi,
+  data: Array<TDataSeries>,
+  isPredict: boolean
+) => {
+  const upColor = isPredict ? '#0022ffd8' : '#3fcf8e'
+  const downColor = isPredict ? '#ff9d09' : '#e35353'
+  const borderUpColor = isPredict ? '#0022ffd8' : '#3fcf8e'
+  const borderDownColor = isPredict ? '#ff9d09' : '#e35353'
+  const candleSeries = chart.addCandlestickSeries({
+    upColor,
+    downColor,
+    borderUpColor,
+    borderDownColor
+  })
   candleSeries.setData(data)
   return candleSeries
 }
@@ -125,12 +157,7 @@ const handleMarker = (
   }
   series.setMarkers(markers)
 }
-const handleHistogram = (
-  histogram: boolean,
-  chart: IChartApi,
-  data: Array<TDataSeries>
-) => {
-  if (!histogram) return
+const handleHistogram = (chart: IChartApi, data: Array<TDataSeries>) => {
   const volumeSeries = chart.addHistogramSeries({
     color: '#26a69a',
     priceFormat: {
@@ -150,5 +177,6 @@ export {
   handleMarker,
   handleMovingAverage,
   calculateSMA,
-  handleHistogram
+  handleHistogram,
+  handleLineChart
 }

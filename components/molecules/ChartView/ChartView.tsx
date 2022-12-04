@@ -5,10 +5,13 @@ import {
   handleCandleChart,
   handleCreateChart,
   handleHistogram,
+  handleLineChart,
   handleMarker,
   handleMovingAverage
 } from './ChartsHandle'
+import { TResponsePredictData } from '@/types/predictions'
 
+export type TChart = 'histogram' | 'line' | 'candle'
 export type TDataSeries = {
   time: { year: number; month: number; day: number }
   open: number
@@ -18,34 +21,66 @@ export type TDataSeries = {
 }
 
 interface IChartViewProps {
-  data?: Array<TDataSeries>
+  data: TResponsePredictData
   moving?: boolean
   isMarker?: boolean
   size: 'full'
-  histogram?: boolean
+  type?: TChart
 }
 
 const ChartView: React.FC<IChartViewProps> = (props) => {
-  const { data = [], moving = false, histogram = false, isMarker = false } = props
+  const {
+    data: { actual = [], predict = [] },
+    moving = false,
+    isMarker = false,
+    type = 'candle'
+  } = props
   const chartContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!chartContainerRef.current) return
+
     const chart = handleCreateChart(
       chartContainerRef,
       chartContainerRef.current.clientWidth,
       chartContainerRef.current.clientHeight
     ) as IChartApi
 
-    const candles = handleCandleChart(chart, data)
-    handleMarker(isMarker, candles, data)
-    handleMovingAverage(moving, chart, data)
-    handleHistogram(histogram, chart, data)
+    switch (type) {
+      case 'candle': {
+        const candles = handleCandleChart(chart, actual, false)
+        handleMarker(isMarker, candles, actual)
+        if (!!predict.length) {
+          const candles = handleCandleChart(chart, predict, true)
+          handleMarker(isMarker, candles, predict)
+        }
+        break
+      }
+      case 'histogram': {
+        handleHistogram(chart, actual)
+        if (!!predict.length) {
+          handleHistogram(chart, predict)
+        }
+        break
+      }
+      case 'line': {
+        handleLineChart(chart, actual, false)
+        if (!!predict.length) {
+          handleLineChart(chart, [actual[actual.length - 1], ...predict], true)
+        }
+        break
+      }
+    }
+
+    handleMovingAverage(moving, chart, actual, false)
+    if (predict) {
+      handleMovingAverage(moving, chart, predict, true)
+    }
 
     return () => {
       chart.remove()
     }
-  }, [data, histogram, isMarker, moving])
+  }, [actual, predict, type, isMarker, moving])
 
   return <div ref={chartContainerRef} className={Styles.ChartView} />
 }

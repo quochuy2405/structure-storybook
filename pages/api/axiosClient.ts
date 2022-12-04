@@ -1,8 +1,9 @@
 import axios from 'axios'
 const axiosClient = axios.create({
-  baseURL: 'https://6382adbd1ada9475c8f1636c.mockapi.io',
+  baseURL: 'http://localhost:8888/api',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
   }
 })
 export default axiosClient

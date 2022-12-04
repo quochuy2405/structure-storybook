@@ -1,41 +1,75 @@
+import { TChart } from '@/components/molecules/ChartView/ChartView'
 import { PredictionPage } from '@/components/templates'
 import useValidate from '@/hooks/useValidate'
-import { IDataChartType } from '@/types/chart'
-import { ReactElement, useEffect, useState } from 'react'
+import { Layouts } from '@/layouts/index'
+import { TPredictQuery, TResponsePredict } from '@/types/predictions'
+import { ReactElement, useEffect, useRef, useState } from 'react'
+import { post } from '../api/common'
 import { predictByParams } from '../api/prediction'
 import { GET_PREDICT, QUERY_PREDICT } from '../api/routers'
-import { Layouts } from '@/layouts/index'
 import { NextPageWithLayout } from '../_app'
-import { dataChartMocks } from '@/mocks/index'
-import { TPredictQuery } from '@/types/predictions'
-import { post } from '../api/common'
+
+const initChart: TResponsePredict = {
+  model: '',
+  data: {
+    actual: [],
+    predict: []
+  }
+}
+
 const Prediction: NextPageWithLayout = () => {
   const methods = useValidate<TPredictQuery>({})
-  const [, setDataChart] = useState<Array<IDataChartType>>([])
+  const [dataChart, setDataChart] = useState<TResponsePredict>(initChart)
+  const [chartType, setChartType] = useState<TChart>('candle')
   const [isPredicting, setIsPredicting] = useState(false)
+  const viewChart = useRef<TChart>(chartType)
+
   useEffect(() => {
     const callBack = async () => {
       const response = await predictByParams(7, GET_PREDICT)
-      if (response) setDataChart(response)
-      const predictTime = setTimeout(() => setIsPredicting(false), 1200)
-      return () => clearTimeout(predictTime)
+      if (response) console.log(response)
     }
     callBack()
   }, [])
 
   const handleSubmitForm = async (data: TPredictQuery) => {
     setIsPredicting(true)
-    const response = await post<TPredictQuery>(QUERY_PREDICT, data)
-    if (response) setDataChart(response)
-    const predictTime = setTimeout(() => setIsPredicting(false), 1200)
-    return () => clearTimeout(predictTime)
+    const response = (await post<TPredictQuery>(
+      QUERY_PREDICT,
+      data
+    )) as Array<TResponsePredict>
+
+    if (response?.length) {
+      console.log('model', response[0]?.model)
+      const predictTime = setTimeout(
+        () => {
+          setIsPredicting(false)
+          setDataChart({
+            model: response[0]?.model,
+            data: response[0]?.data
+          })
+        },
+
+        1200
+      )
+      return () => clearTimeout(predictTime)
+    } else {
+      setIsPredicting(false)
+    }
+  }
+  const handleSaveView = () => {
+    console.log(chartType)
   }
 
   const props = {
     methods,
     isPredicting,
-    dataChart: dataChartMocks,
-    handleSubmitForm
+    dataChart,
+    chartType,
+    viewChart: viewChart.current,
+    setChartType,
+    handleSubmitForm,
+    handleSaveView
   }
 
   return <PredictionPage {...props} />

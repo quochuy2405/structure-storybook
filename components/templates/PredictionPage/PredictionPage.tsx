@@ -1,13 +1,13 @@
 import { Button, Card, CheckBox, Title } from '@/components/atoms'
 import { CheckboxGroupForm, ModelReview, SelectForm } from '@/components/molecules'
-import { Header } from '@/components/organisms'
-import Footer from '@/components/organisms/Footer'
-import { IDataChartType } from '@/types/chart'
-import { TPredictQuery } from '@/types/predictions'
+import { TChart } from '@/components/molecules/ChartView/ChartView'
+import { Footer, Header } from '@/components/organisms'
+import { TPredictQuery, TResponsePredict } from '@/types/predictions'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { showUp } from 'motions'
 import dynamic from 'next/dynamic'
+import { Dispatch, SetStateAction } from 'react'
 import { Controller, UseFormReturn } from 'react-hook-form'
 import { AiOutlineLoading } from 'react-icons/ai'
 import Styles from './PredictionPage.module.scss'
@@ -17,16 +17,23 @@ const ChartView = dynamic(import('@/components/molecules/ChartView/ChartView'), 
 })
 interface IPredictionPageProps {
   methods: UseFormReturn<TPredictQuery, any>
-  dataChart: Array<IDataChartType>
-  handleSubmitForm: (data: TPredictQuery) => void
+  dataChart: TResponsePredict
   isPredicting?: boolean
+  chartType?: TChart
+  viewChart?: TChart
+  handleSaveView: () => void
+  handleSubmitForm: (data: TPredictQuery) => void
+  setChartType: Dispatch<SetStateAction<TChart>>
 }
 
 const PredictionPage: React.FC<IPredictionPageProps> = ({
   isPredicting = false,
+  chartType = 'candle',
   methods,
   dataChart,
-  handleSubmitForm
+  setChartType,
+  handleSubmitForm,
+  handleSaveView
 }) => {
   return (
     <div className={Styles.TradingView}>
@@ -37,7 +44,7 @@ const PredictionPage: React.FC<IPredictionPageProps> = ({
       </Title>
       <div className={Styles.View}>
         <Card className={Styles.ChartContainer}>
-          <ChartView size="full" data={dataChart} />
+          <ChartView size="full" data={dataChart.data} type={chartType} />
         </Card>
         <motion.form
           onSubmit={methods.handleSubmit(handleSubmitForm)}
@@ -48,8 +55,18 @@ const PredictionPage: React.FC<IPredictionPageProps> = ({
             <div className={clsx(Styles.FilterCol, Styles.Model)}>
               <Title>CHART</Title>
               <div className={Styles.CheckBoxGroup}>
-                <CheckBox label="Histogram" />
-                <CheckBox label="Line" />
+                <CheckBox
+                  label="Candle"
+                  value="candle"
+                  checked={chartType === 'candle'}
+                  onChange={(e) => setChartType(e.target.value as TChart)}
+                />
+                <CheckBox
+                  label="Line"
+                  value="line"
+                  checked={chartType === 'line'}
+                  onChange={(e) => setChartType(e.target.value as TChart)}
+                />
               </div>
               <Title>MODEL</Title>
               <div className={Styles.CheckBoxGroup}>
@@ -92,7 +109,12 @@ const PredictionPage: React.FC<IPredictionPageProps> = ({
               </div>
             </div>
             <div className={Styles.Submit}>
-              <Button type="button" mode="primary" className={Styles.ButtonSubmit}>
+              <Button
+                type="button"
+                mode="primary"
+                className={Styles.ButtonSubmit}
+                onClick={handleSaveView}
+              >
                 Save View
               </Button>
               <Button

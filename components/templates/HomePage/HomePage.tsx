@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Button, ButtonIcon, Card, Title } from '@/components/atoms'
 import ArticleCard from '@/components/molecules/ArticleCard'
-import { Header } from '@/components/organisms'
-import Footer from '@/components/organisms/Footer'
+import { Footer, Header } from '@/components/organisms'
 import { NextPage } from '@/types/next'
 import { motion, Variants } from 'framer-motion'
 import { scrollSpring } from 'motions'

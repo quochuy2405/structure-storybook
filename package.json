@@ -68,5 +68,6 @@
   },
   "eslintIgnore": [
     "./contacts/**"
-  ]
+  ],
+  "proxy": "http://localhost:8888"
 }

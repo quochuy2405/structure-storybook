@@ -1,3 +1,4 @@
+import { string } from 'yup'
 import axiosClient from './axiosClient'
 
 // get  by lazy loading
