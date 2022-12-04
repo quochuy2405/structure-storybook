@@ -22,6 +22,7 @@ $color-gray: #6469675c;
   @include md {
     flex-direction: column;
     gap: 20px;
+    margin: 10px;
   }
 }
 .Select {
@@ -83,8 +84,13 @@ $color-gray: #6469675c;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 10px 10px;
+  padding: 10px;
   gap: 20px;
+  @include md {
+    width: 100%;
+    padding: 10px 0;
+    gap: 10px;
+  }
   .ButtonSubmit {
     flex: 1;
   }
@@ -147,6 +153,7 @@ $color-gray: #6469675c;
     flex-direction: column;
     gap: 30px;
     justify-content: center;
+    padding: 0 10px;
   }
 }
 .TitleReview {
