@@ -85,11 +85,12 @@
     height: 70%;
     margin: auto;
     display: flex;
-    @include md {
-      width: 100%;
-    }
     justify-content: center;
     align-items: center;
+    @include md {
+      width: 100%;
+      min-height: 330px;
+    }
   }
 }
 

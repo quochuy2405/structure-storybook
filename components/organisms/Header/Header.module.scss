@@ -77,9 +77,9 @@ $color-header: #2727277c;
     display: flex;
     justify-content: center;
     align-items: center;
+
     @include md {
-      flex: 3;
-      flex-wrap: wrap;
+      display: none;
     }
     gap: 20px;
     padding: 0 20px;
