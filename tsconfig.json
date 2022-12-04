@@ -30,7 +30,8 @@
       "@/utils/*": ["utils/*"],
       "@/constants/*": ["constants/*"],
       "@/providers/*": ["providers/*"],
-      "@/layouts/*": ["layouts/*"]
+      "@/layouts/*": ["layouts/*"],
+      "@/motions/*": ["motions/*"]
     }
   },
   "include": [

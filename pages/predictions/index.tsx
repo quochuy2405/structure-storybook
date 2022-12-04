@@ -12,21 +12,28 @@ import { post } from '../api/common'
 const Prediction: NextPageWithLayout = () => {
   const methods = useValidate<TPredictQuery>({})
   const [, setDataChart] = useState<Array<IDataChartType>>([])
+  const [isPredicting, setIsPredicting] = useState(false)
   useEffect(() => {
     const callBack = async () => {
       const response = await predictByParams(7, GET_PREDICT)
       if (response) setDataChart(response)
+      const predictTime = setTimeout(() => setIsPredicting(false), 1200)
+      return () => clearTimeout(predictTime)
     }
     callBack()
   }, [])
 
   const handleSubmitForm = async (data: TPredictQuery) => {
+    setIsPredicting(true)
     const response = await post<TPredictQuery>(QUERY_PREDICT, data)
-    console.log(response)
+    if (response) setDataChart(response)
+    const predictTime = setTimeout(() => setIsPredicting(false), 1200)
+    return () => clearTimeout(predictTime)
   }
 
   const props = {
     methods,
+    isPredicting,
     dataChart: dataChartMocks,
     handleSubmitForm
   }

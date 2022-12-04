@@ -63,7 +63,7 @@ const Select: React.FC<ISelectProps> = forwardRef<HTMLSelectElement, ISelectProp
       return (
         <components.Option {...props}>
           <div className={clsx(Styles.Option, { [Styles.Selected]: isSelected })}>
-            {children}{' '}
+            {children}
           </div>
         </components.Option>
       )

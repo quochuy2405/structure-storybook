@@ -1,15 +1,17 @@
 import { Button, Card, CheckBox, Title } from '@/components/atoms'
-import { SelectForm } from '@/components/molecules'
-import { CheckboxGroupForm } from '@/components/molecules'
+import { CheckboxGroupForm, ModelReview, SelectForm } from '@/components/molecules'
 import { Header } from '@/components/organisms'
 import Footer from '@/components/organisms/Footer'
 import { IDataChartType } from '@/types/chart'
 import { TPredictQuery } from '@/types/predictions'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
+import { showUp } from 'motions'
 import dynamic from 'next/dynamic'
 import { Controller, UseFormReturn } from 'react-hook-form'
+import { AiOutlineLoading } from 'react-icons/ai'
 import Styles from './PredictionPage.module.scss'
-import { amountPredictOpts } from './selectOptions'
+import { amountPredictOpts, featureOpts } from './selectOptions'
 const ChartView = dynamic(import('@/components/molecules/ChartView/ChartView'), {
   ssr: false
 })
@@ -17,9 +19,11 @@ interface IPredictionPageProps {
   methods: UseFormReturn<TPredictQuery, any>
   dataChart: Array<IDataChartType>
   handleSubmitForm: (data: TPredictQuery) => void
+  isPredicting?: boolean
 }
 
 const PredictionPage: React.FC<IPredictionPageProps> = ({
+  isPredicting = false,
   methods,
   dataChart,
   handleSubmitForm
@@ -27,13 +31,18 @@ const PredictionPage: React.FC<IPredictionPageProps> = ({
   return (
     <div className={Styles.TradingView}>
       <Header />
+
+      <Title size={2} className={Styles.TitleReview}>
+        Predict
+      </Title>
       <div className={Styles.View}>
         <Card className={Styles.ChartContainer}>
           <ChartView size="full" data={dataChart} />
         </Card>
-        <form
+        <motion.form
           onSubmit={methods.handleSubmit(handleSubmitForm)}
           className={Styles.FilterForm}
+          {...showUp}
         >
           <Card>
             <div className={clsx(Styles.FilterCol, Styles.Model)}>
@@ -74,7 +83,7 @@ const PredictionPage: React.FC<IPredictionPageProps> = ({
                 />
                 <SelectForm
                   className={Styles.Select}
-                  options={[{ label: 'Production', value: '1' }]}
+                  options={featureOpts}
                   methods={methods}
                   name="featured"
                   title="featured"
@@ -86,12 +95,38 @@ const PredictionPage: React.FC<IPredictionPageProps> = ({
               <Button type="button" mode="primary" className={Styles.ButtonSubmit}>
                 Save View
               </Button>
-              <Button type="submit" mode="danger" className={Styles.ButtonSubmit}>
+              <Button
+                type="submit"
+                mode="danger"
+                className={Styles.ButtonSubmit}
+                disabled={!!isPredicting}
+                icon={
+                  isPredicting && (
+                    <div className={Styles.rotateLoading}>
+                      <AiOutlineLoading size={18} />
+                    </div>
+                  )
+                }
+              >
                 Predict
               </Button>
             </div>
           </Card>
-        </form>
+        </motion.form>
+      </div>
+
+      <Title size={2} className={Styles.TitleReview}>
+        Review Model
+      </Title>
+
+      <div className={Styles.ModelView}>
+        <ModelReview name="SLTM" MAE={0} MSE={0} RMSE={0} RSquared={0} />
+        <ModelReview name="ARIMA" MAE={0} MSE={0} RMSE={0} RSquared={0} />
+        <ModelReview name="SVR" MAE={0} MSE={0} RMSE={0} RSquared={0} />
+        <ModelReview name="ARIMA X LSTM" MAE={0} MSE={0} RMSE={0} RSquared={0} />
+        <ModelReview name="GRU" MAE={0} MSE={0} RMSE={0} RSquared={0} />
+        <ModelReview name="BOOSTING" MAE={0} MSE={0} RMSE={0} RSquared={0} />
+        <ModelReview name="STACKING" MAE={0} MSE={0} RMSE={0} RSquared={0} />
       </div>
       <Footer />
     </div>

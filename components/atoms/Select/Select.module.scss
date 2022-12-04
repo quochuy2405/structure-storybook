@@ -23,11 +23,6 @@ $color-gray: #292828f8;
 .MenuContainer {
   padding: 4px;
   border-radius: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 3px;
   background-color: $color-gray;
   border: 2px solid white;
   height: fit-content;
@@ -38,6 +33,9 @@ $color-gray: #292828f8;
   max-height: 180px;
   height: fit-content;
   z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .Option {

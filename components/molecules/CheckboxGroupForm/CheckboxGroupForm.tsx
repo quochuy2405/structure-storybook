@@ -15,7 +15,6 @@ export interface ICheckBoxGroupFormProps {
 const CheckboxGroupForm = React.forwardRef<HTMLInputElement, ICheckBoxGroupFormProps>(
   ({ children, value = [], onChange }, ref) => {
     const [selected, setSelected] = useState<string[]>([])
-    console.log(value)
 
     useEffect(() => {
       if (JSON.stringify(value) !== JSON.stringify(selected)) setSelected(value)
@@ -31,7 +30,6 @@ const CheckboxGroupForm = React.forwardRef<HTMLInputElement, ICheckBoxGroupFormP
     const handleToggleBox = ({
       target: { value, checked }
     }: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(value)
       if (checked) {
         setSelected((cur) => [...cur, value])
       } else {

@@ -1,6 +1,10 @@
 $color-orange: #ffae34;
 $color-shadow: #c8c8c887;
 $color-mint: #00d2a0;
+$color-red: #e35353;
+$color-orange: #ff9d09;
+$color-gray: #6469675c;
+
 .TradingView {
   background-color: #1d1d1dd1;
   width: 100%;
@@ -12,6 +16,7 @@ $color-mint: #00d2a0;
   height: fit-content;
   justify-content: flex-end;
   margin: 20px 50px;
+  color: white;
 }
 .Select {
   color: rgb(178, 178, 179);
@@ -93,4 +98,42 @@ $color-mint: #00d2a0;
   top: 0;
   position: absolute;
   margin: 0;
+}
+
+.rotateLoading {
+  animation: rotating 1s infinite;
+}
+
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.ModelView {
+  width: 100%;
+  margin: auto;
+  padding: 0 50px;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, 30%);
+  gap: 3.3333%;
+}
+.TitleReview {
+  text-align: center;
+  margin: 20px auto;
+  color: white;
+  width: fit-content;
+  text-shadow: 4px 2px rgb(0, 0, 0);
+  margin-top: 50px;
 }

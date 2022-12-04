@@ -30,12 +30,15 @@ $color-mint: #01be92;
   opacity: 0.9;
 
   cursor: pointer;
+  &:disabled {
+    opacity: 0.6;
+  }
   &.Outline {
     border: 2px solid $color-black;
     color: $color-black;
     background: none;
   }
-  &:hover {
+  &:not(:disabled):hover {
     transform: scale(1.03);
     opacity: 1;
     transition: all linear 0.1s;

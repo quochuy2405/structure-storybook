@@ -5,6 +5,7 @@ import { Header } from '@/components/organisms'
 import Footer from '@/components/organisms/Footer'
 import { NextPage } from '@/types/next'
 import { motion, Variants } from 'framer-motion'
+import { scrollSpring } from 'motions'
 import { Fragment } from 'react'
 import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr'
 import shortid from 'shortid'
@@ -87,26 +88,8 @@ const HomePage: NextPage = () => {
         Article
       </Title>
       <div className={Styles.ListArticle}>
-        {[...Array(5)].map((_, index) => (
-          <motion.div
-            key={shortid.generate()}
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
-            variants={{
-              offscreen: {
-                y: 200
-              },
-              onscreen: {
-                y: 10,
-                transition: {
-                  type: 'spring',
-                  bounce: 0.5,
-                  duration: 0.8 * index
-                }
-              }
-            }}
-          >
+        {[...Array(6)].map((_, index) => (
+          <motion.div key={shortid.generate()} {...scrollSpring(index)}>
             <ArticleCard />
           </motion.div>
         ))}
@@ -116,25 +99,7 @@ const HomePage: NextPage = () => {
       </Title>
       <div className={Styles.ListArticle}>
         {[...Array(4)].map((_, index) => (
-          <motion.div
-            key={shortid.generate()}
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
-            variants={{
-              offscreen: {
-                y: 200
-              },
-              onscreen: {
-                y: 10,
-                transition: {
-                  type: 'spring',
-                  bounce: 0.5,
-                  duration: 0.8 * index
-                }
-              }
-            }}
-          >
+          <motion.div key={shortid.generate()} {...scrollSpring(index)}>
             <ArticleCard />
           </motion.div>
         ))}

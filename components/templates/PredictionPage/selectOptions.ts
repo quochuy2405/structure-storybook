@@ -7,3 +7,8 @@ export const amountPredictOpts = [
   { label: '6 months', value: '160' },
   { label: '12 months', value: '360' }
 ]
+
+export const featureOpts = [
+  { label: 'Linear', value: 'linear' },
+  { label: 'Neural Network', value: 'neural' }
+]
