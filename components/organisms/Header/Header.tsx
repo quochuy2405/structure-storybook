@@ -3,13 +3,10 @@ import { Navigation } from '@/components/molecules'
 import MarketInfo from '@/components/molecules/MarketInfo'
 import clsx from 'clsx'
 import React from 'react'
+import { AiOutlineHome } from 'react-icons/ai'
+import { FaBlogger, FaChartLine, FaQq, FaQuestionCircle } from 'react-icons/fa'
 import { GiDevilMask } from 'react-icons/gi'
-import {
-  IoCloudyNight,
-  IoLanguageOutline,
-  IoPersonAdd,
-  IoPricetag
-} from 'react-icons/io5'
+import { IoLanguageOutline } from 'react-icons/io5'
 import Styles from './Header.module.scss'
 
 export type TypeRouter = {
@@ -70,11 +67,11 @@ const Header: React.FC<IHeaderProps> = ({}) => {
       </div>
       <Navigation
         navigations={[
-          { icon: <IoCloudyNight />, url: '/' },
-          { icon: <IoPricetag />, url: '/#' },
-          { icon: <IoPersonAdd />, url: '/predictions' },
-          { icon: <IoCloudyNight />, url: '/#' },
-          { icon: <IoCloudyNight />, url: '/#' }
+          { icon: <AiOutlineHome />, url: '/' },
+          { icon: <FaQq />, url: '/#' },
+          { icon: <FaChartLine />, url: '/predictions' },
+          { icon: <FaBlogger />, url: '/#' },
+          { icon: <FaQuestionCircle />, url: '/#' }
         ]}
       />
     </>

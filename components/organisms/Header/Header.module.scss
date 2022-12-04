@@ -88,6 +88,7 @@ $color-header: #2727277c;
   .MdButton {
     @include md {
       width: 28%;
+      min-width: 100px;
     }
   }
 }
