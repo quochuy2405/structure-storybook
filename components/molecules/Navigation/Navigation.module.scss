@@ -1,0 +1,39 @@
+@use '../../../styles/abstracts/mixins' as *;
+$color-green: #3fcf8e;
+$color-black: #36423e;
+$color-red: #e35353;
+$color-orange: #ff9d09;
+$color-shadow: #b7b7b787;
+$color-mint: #00d2a0;
+$color-header: #2727277c;
+.NavigationContainer {
+  background-color: $color-header;
+  height: 60px;
+  position: fixed;
+  width: 100%;
+  bottom: 10px;
+  z-index: 9999;
+  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  @include md {
+    display: block;
+  }
+}
+.Navigation {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+  .Link {
+    button {
+      background-color: transparent;
+    }
+    &:global(.active) button {
+      background-color: $color-green;
+    }
+  }
+}

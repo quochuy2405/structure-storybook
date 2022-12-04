@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 export interface INavLinkProps {
   href: string
   exact?: boolean
@@ -7,7 +7,7 @@ export interface INavLinkProps {
   className?: string
 }
 
-const NavLink: React.FC<INavLinkProps> = ({ href, exact, children, className }) => {
+const NavLink: React.FC<INavLinkProps> = ({ href, exact, children, className = '' }) => {
   const { pathname } = useRouter()
   const isActive = exact ? pathname === href : pathname.startsWith(href)
 

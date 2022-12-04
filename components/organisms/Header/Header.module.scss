@@ -1,15 +1,18 @@
+@use '../../../styles/abstracts/mixins' as *;
+
 $color-green: #3fcf8e;
 $color-black: #36423e;
 $color-red: #e35353;
 $color-orange: #ff9d09;
 $color-gray: #4d4d4dcb;
 $color-shadow: #ebebeb4b;
-$color-opacity-white: rgba(228, 228, 228, 0.456);
+$color-opacity-white: #e4e4e474;
+$color-header: #2727277c;
 .HeaderContainer {
   position: sticky;
   top: 0;
   z-index: 999;
-  background-color: #2727277c;
+  background-color: $color-header;
 }
 .Header {
   width: 100%;
@@ -24,6 +27,9 @@ $color-opacity-white: rgba(228, 228, 228, 0.456);
   gap: 20px;
 
   font-size: 0.93rem;
+  @include md {
+    height: fit-content;
+  }
   .Logo {
     width: 180px;
     height: 50px;
@@ -39,6 +45,13 @@ $color-opacity-white: rgba(228, 228, 228, 0.456);
       height: 50px;
       object-fit: cover;
     }
+    @include md {
+      flex: 1;
+      gap: 10px;
+      p {
+        font-size: 1.2rem;
+      }
+    }
   }
   .NavLinks {
     display: flex;
@@ -46,6 +59,9 @@ $color-opacity-white: rgba(228, 228, 228, 0.456);
     align-items: center;
     color: #ffffff;
     font-weight: 500;
+    @include md {
+      display: none;
+    }
     a {
       transition: all ease-in-out 0.2s;
     }
@@ -61,13 +77,25 @@ $color-opacity-white: rgba(228, 228, 228, 0.456);
     display: flex;
     justify-content: center;
     align-items: center;
-
+    @include md {
+      flex: 3;
+      flex-wrap: wrap;
+    }
     gap: 20px;
     padding: 0 20px;
     border-left: 1px solid $color-gray;
   }
+  .MdButton {
+    @include md {
+      width: 28%;
+    }
+  }
 }
-
+.ButtonLang {
+  @include md {
+    display: none;
+  }
+}
 .ButtonSignIn {
   color: white !important;
   border: 2px solid white !important;
