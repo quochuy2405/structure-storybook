@@ -2,7 +2,7 @@ import { ReactSortable } from 'react-sortablejs'
 
 import { ButtonIcon, TextField } from '@/components/atoms'
 import clsx from 'clsx'
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { BsLink45Deg } from 'react-icons/bs'
 import { MdDelete, MdDone, MdDragIndicator } from 'react-icons/md'
 import Styles from './Draggable.module.scss'
@@ -40,7 +40,6 @@ const Draggable: React.FC<IDraggableProps> = ({
   const [isRename, setIsRename] = useState<boolean>(false)
   const [newName, setNewName] = useState<string>('')
   const [url, setURL] = useState<string>()
-  const refSection = useRef<SortableItemProps[]>([])
 
   const handleRename = (curName: string) => {
     setNewName(curName)
