@@ -7,12 +7,12 @@ export interface ICardProps {
 }
 
 const Card = React.forwardRef<HTMLDivElement, ICardProps>(
-  ({ children, className, ...props }, ref) => {
+  ({ children, className }, ref) => {
     const classNames = clsx(Styles.Card, {
       [className as string]: className
     })
     return (
-      <div ref={ref} className={classNames} {...props}>
+      <div ref={ref} className={classNames}>
         {children}
       </div>
     )

@@ -1,0 +1,103 @@
+@use '../../../../styles/abstracts/mixins' as *;
+
+$color-gray: #2b2b2bcb;
+$color-green: #3fcf8e;
+$color-black: #36423e;
+$color-red: #e35353;
+$color-orange: #ff9d09;
+.CreatePage {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  gap: 20px;
+}
+.Sections {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 300px;
+  &Body {
+    margin-top: 10px;
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+  }
+}
+.Editor {
+  flex: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &Body {
+    width: 100%;
+    height: 90%;
+    margin-top: 10px;
+    background-color: $color-gray;
+    backdrop-filter: none;
+    border: 1px solid rgba(187, 187, 187, 0.84);
+    border-radius: 8px;
+    color: white;
+  }
+}
+.Preview {
+  flex: 2;
+  max-width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-width: 40%;
+  &Body {
+    width: 100%;
+    height: 90%;
+    margin-top: 10px;
+    border: 1px solid rgba(187, 187, 187, 0.84);
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+    overflow-y: auto;
+  }
+}
+.Title {
+  color: $color-green;
+  font-weight: 500;
+}
+.Head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ButtonNewSection {
+  width: 100%;
+  height: 120px;
+  padding: 0;
+}
+.Modal {
+  padding: 20px;
+
+  width: 50%;
+  padding-bottom: 80px;
+  overflow: hidden;
+}
+
+.ModalContent {
+  padding-top: 20px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 45%);
+  gap: 8px;
+  overflow-y: auto;
+}
+.TitleModel {
+  width: 100%;
+  height: 30px;
+  line-height: 20px;
+  position: sticky;
+  box-shadow: 0 0 10px 2px white;
+  top: 0;
+  left: 0;
+  right: 0;
+}

@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from 'react'
+import React, { forwardRef, MutableRefObject, useEffect, useState } from 'react'
 import { GoPrimitiveDot } from 'react-icons/go'
 import { IoCalendarClearOutline } from 'react-icons/io5'
 import MultiDatePicker, { DateObject, DatePickerProps } from 'react-multi-date-picker'
@@ -15,17 +15,24 @@ export interface IDatePickerProps extends DatePickerProps {
   titleClassName?: string
 }
 
-const DatePicker: React.FC<IDatePickerProps> = forwardRef<HTMLElement, IDatePickerProps>(
-  ({
-    titleClassName = 'Date',
-    range,
-    value,
-    errors,
-    title,
-    isRequired,
-    onChange,
-    ...props
-  }) => {
+const DatePicker: React.FC<IDatePickerProps> = forwardRef<
+  MutableRefObject<any> | undefined,
+  IDatePickerProps
+>(
+  (
+    {
+      titleClassName = 'Date',
+      range,
+      value,
+      errors,
+      title,
+      isRequired,
+      onChange,
+      ...props
+    },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    ref
+  ) => {
     const [selected, setSelected] = useState<DateObject | Array<DateObject> | null>(null)
     useEffect(() => {
       if (!value) setSelected(null)

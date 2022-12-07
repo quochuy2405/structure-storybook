@@ -2,7 +2,8 @@ import clsx from 'clsx'
 import React from 'react'
 import { BsCheckLg } from 'react-icons/bs'
 import Styles from './CheckBox.module.scss'
-interface ICheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface ICheckBoxProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'ref'> {
   label?: string
   name?: string
   isError?: boolean

@@ -84,10 +84,10 @@ const TextField: React.FC<ITextFieldProps> = ({
         <input
           onChange={requiredValueByRegex}
           value={value}
-          {...props}
           className={classNames}
           type={type}
           name={name}
+          {...props}
         />
       )}
 

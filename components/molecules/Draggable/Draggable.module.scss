@@ -1,0 +1,86 @@
+$color-red: #e35353;
+$color-green: #3fcf8e;
+$color-orange: #ff9d09;
+.ItemDrag {
+  width: 90%;
+  height: 40px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 4px 5px;
+  box-shadow: 0 0 4px 0 #8f8f8f69;
+  font-size: 0.9rem;
+
+  cursor: pointer;
+  font-weight: 600;
+  margin: 10px 0;
+  gap: 10px;
+}
+.DragList {
+  max-width: 400px;
+  width: 100%;
+  height: 100%;
+  :global(.dragging) {
+    opacity: 0;
+  }
+}
+.Active {
+  border: 2px solid $color-green;
+}
+.ItemDragContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 5px;
+  padding-right: 10px;
+  .ButtonDelete {
+    min-width: 30px;
+    height: 30px;
+    width: 30px;
+    &:hover {
+      background-color: $color-red;
+    }
+  }
+  .ButtonEditLinkContainer {
+    position: relative;
+    max-width: 30px;
+    &::after {
+      content: '';
+      position: absolute;
+      border: 10px solid transparent;
+      border-color: transparent transparent white transparent;
+
+      bottom: -10px;
+      right: 5px;
+    }
+    .ButtonEditLink {
+      min-width: 30px;
+      height: 30px;
+      width: 30px;
+      &:hover {
+        background-color: $color-orange;
+      }
+    }
+    .InputLink {
+      display: block;
+      position: absolute;
+      padding: 2px 10px;
+      height: 36px;
+      font-size: 0.7rem;
+      z-index: 99;
+      bottom: 0;
+      right: 0;
+      transform: translate(0, 120%);
+    }
+  }
+}
+.ButtonRename {
+  width: 20px;
+  height: 20px;
+}
+.InputRename {
+  padding: 0 10px;
+  width: 70%;
+}

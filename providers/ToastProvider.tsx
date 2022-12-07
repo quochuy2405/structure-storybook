@@ -14,6 +14,7 @@ interface IToastProviderProps {
 
 interface IToastList {
   limit?: number
+  ref: any
 }
 type ToastListHandle = {
   addToast: (newToast: Partial<IToastProps>) => void
