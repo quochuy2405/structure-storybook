@@ -19,10 +19,12 @@ export const style = {
   italic: (data: string) => `<span class="e-italic">${data}</i>`,
   color: (data: string, color: string) => `<span style="color:${color}">${data}</span>`,
   breakline: (data: string) => `<div class="break-line">${data}</div>`,
-  image: (url: string, width = 50, height = 50) =>
-    `<div style="width:${width}%;height:${height}">
-        <img class="img-cover" src="${url}" alt="image"/>
-    </div>`,
+  image: (url: string, width = 100, height = 300) => {
+    if (!url.trim()) return ''
+    return `<div style="width:${width}%;height:${height}px">
+        <img style=" width: 100%;height: 100%;object-fit: cover;" src='${url}'  alt="image"/>
+    </div>`
+  },
   size: (data: string, size = 1) =>
     `<div style="font-size:${size}rem">
         ${data}
@@ -86,5 +88,7 @@ export const combineEditorToHTML = (template: TPreview) => {
       return element.desc(template.content)
     case 'heading':
       return element.heading(template.content)
+    case 'image':
+      return style.image(template.content)
   }
 }
