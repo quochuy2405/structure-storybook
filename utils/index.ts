@@ -19,9 +19,9 @@ export const style = {
   italic: (data: string) => `<span class="e-italic">${data}</i>`,
   color: (data: string, color: string) => `<span style="color:${color}">${data}</span>`,
   breakline: (data: string) => `<div class="break-line">${data}</div>`,
-  image: (url: string, width = 100, height = 300) => {
+  image: (url: string, width = 90, height = 400) => {
     if (!url.trim()) return ''
-    return `<div style="margin:20px 0;border-radius:4px;width:${width}%;height:${height}px">
+    return `<div style="margin:20px auto;border-radius:4px;width:${width}%;height:${height}px">
         <img style="border-radius:4px; width: 100%;height: 100%;object-fit: cover;" src='${url}'  alt="image"/>
     </div>`
   },
@@ -83,7 +83,7 @@ export const combineEditorToHTML = (template: TPreview) => {
     case 'list':
       return element.list(template.content)
     case 'text':
-      return element.content(template.content)
+      return element.content(template.content).replace(NEW_LINE_EXP, '<br>')
     case 'desc':
       return element.desc(template.content)
     case 'heading':

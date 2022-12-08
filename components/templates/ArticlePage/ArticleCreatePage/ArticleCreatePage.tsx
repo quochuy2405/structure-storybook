@@ -181,17 +181,17 @@ const ArticleCreatePage: React.FC<IArticleCreatePageProps> = ({
             onChange={onChangeEdit}
           />
         </div>
-        <div className={Styles.Preview}>
-          <div className={Styles.Head}>
-            <p className={Styles.Title}>Preview</p>
-            <Button mode="primary">Submit</Button>
-          </div>
-
-          <div
-            className={Styles.PreviewBody}
-            dangerouslySetInnerHTML={{ __html: preview }}
-          ></div>
+      </div>
+      <div className={Styles.Preview}>
+        <div className={Styles.Head}>
+          <p className={Styles.Title}>Preview</p>
+          <Button mode="primary">Submit</Button>
         </div>
+
+        <div
+          className={Styles.PreviewBody}
+          dangerouslySetInnerHTML={{ __html: preview }}
+        ></div>
       </div>
     </>
   )
