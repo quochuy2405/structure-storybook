@@ -21,8 +21,8 @@ export const style = {
   breakline: (data: string) => `<div class="break-line">${data}</div>`,
   image: (url: string, width = 100, height = 300) => {
     if (!url.trim()) return ''
-    return `<div style="width:${width}%;height:${height}px">
-        <img style=" width: 100%;height: 100%;object-fit: cover;" src='${url}'  alt="image"/>
+    return `<div style="margin:20px 0;border-radius:4px;width:${width}%;height:${height}px">
+        <img style="border-radius:4px; width: 100%;height: 100%;object-fit: cover;" src='${url}'  alt="image"/>
     </div>`
   },
   size: (data: string, size = 1) =>
@@ -68,7 +68,7 @@ export const element = {
     if (!code.toString().trim()) return ''
     const formated = Prism.highlight(code, Prism.languages.javascript, 'javascript')
     const html = formated + lineNumbersWrapper
-    return `<pre class="language-js">
+    return `<pre class="language-js" style="border-radius:4px" >
     <code class="language-js">&#13;&#10;${html.toString()}</code>
     </pre>`
   }
