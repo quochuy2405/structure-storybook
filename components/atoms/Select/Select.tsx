@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, memo } from 'react'
 import Styles from './Select.module.scss'
 
 import clsx from 'clsx'
@@ -109,4 +109,4 @@ const Select: React.FC<ISelectProps> = forwardRef<HTMLSelectElement, ISelectProp
   }
 )
 Select.displayName = 'select'
-export default Select
+export default memo(Select)

@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { GoPrimitiveDot } from 'react-icons/go'
 import shortid from 'shortid'
@@ -101,4 +101,4 @@ const TextField: React.FC<ITextFieldProps> = ({
   )
 }
 
-export default TextField
+export default memo(TextField)

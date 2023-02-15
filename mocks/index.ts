@@ -1,6 +1,6 @@
 export const dataChartMocks = [
   {
-    model: 'lstm',
+    model: '',
     data: {
       actual: [
         {
@@ -15761,3 +15761,103 @@ export const dataChartMocks = [
     }
   }
 ]
+
+export const templateArticle = `<div style="font-size:3rem">
+        <span style="font-weight:700">Who is the GOAT? 🔮 Vercel Edge Config stores my answer</span>
+    </div><div style="font-size:0.9rem">
+        <span style="font-weight:400">A few weeks ago Vercel released Edge Config, a new feature available to everyone so I tried it because I'm curious.
+</span>
+    </div><div style="font-size:0.9rem">
+        <span style="font-weight:400">I developed an app with Qwik the new framework that has been catching my attention for months.</span>
+    </div><span style="color:#3A8891"><div style="font-size:2rem">
+        <span style="font-weight:700">Getting started</span>
+    </div></span><div style="font-size:1rem"><br>        <span style="font-weight:400">To spin up a Qwik application you can use the Qwik CLI.<br>You can type npm create qwik@latest in your terminal and the CLI will guide you through an interactive menu to set the project name and select one of the starters.<br>Then, from the Qwik project folder, you can easily add a Vercel integration with this command: npm run qwik add<br><br>You can choose from many integrations, but for this article, we will use the Vercel one.</span><br>    </div><pre class="language-js" style="border-radius:4px" >
+    <code class="language-js">&#13;&#10;🦋  Add Integration 
+
+<span class="token operator">?</span> What integration would you like to add<span class="token operator">?</span> <span class="token function">›</span> <span class="token punctuation">(</span>use ↓↑ arrows<span class="token punctuation">,</span> hit enter<span class="token punctuation">)</span>
+    <span class="token literal-property property">Adaptor</span><span class="token operator">:</span> Cloudflare Pages
+    <span class="token literal-property property">Adaptor</span><span class="token operator">:</span> Netlify Edge
+❯   Adaptor<span class="token operator">:</span> Vercel Edge
+    <span class="token literal-property property">Adaptor</span><span class="token operator">:</span> Nodejs Express Server
+    <span class="token literal-property property">Adaptor</span><span class="token operator">:</span> Static <span class="token function">site</span> <span class="token punctuation">(</span><span class="token punctuation">.</span>html files<span class="token punctuation">)</span>
+    <span class="token literal-property property">Framework</span><span class="token operator">:</span> React
+    <span class="token literal-property property">Integration</span><span class="token operator">:</span> <span class="token function">Playwright</span> <span class="token punctuation">(</span><span class="token constant">E2E</span> Test<span class="token punctuation">)</span>
+    <span class="token literal-property property">Integration</span><span class="token operator">:</span> Styled<span class="token operator">-</span>Vanilla<span class="token operator">-</span><span class="token function">Extract</span> <span class="token punctuation">(</span>styling<span class="token punctuation">)</span>
+    <span class="token literal-property property">Integration</span><span class="token operator">:</span> <span class="token function">Tailwind</span> <span class="token punctuation">(</span>styling<span class="token punctuation">)</span>
+    <span class="token literal-property property">Integration</span><span class="token operator">:</span> <span class="token function">Partytown</span> <span class="token punctuation">(</span>3rd<span class="token operator">-</span>party scripts<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code>
+    </pre><div style="font-size:1rem"><br>        <span style="font-weight:400">The next step illustrates the integration:</span><br>    </div><pre class="language-js" style="border-radius:4px" >
+    <code class="language-js">&#13;&#10;👻  Ready<span class="token operator">?</span>  Add vercel<span class="token operator">-</span>edge to your app<span class="token operator">?</span>
+
+🐬 Modify
+   <span class="token operator">-</span> <span class="token keyword">package</span><span class="token punctuation">.</span>json
+
+👻  Ready<span class="token operator">?</span>  Add vercel<span class="token operator">-</span>edge to your app<span class="token operator">?</span>
+
+🐬 Modify
+   <span class="token operator">-</span> <span class="token constant">README</span><span class="token punctuation">.</span>md
+   <span class="token operator">-</span> <span class="token punctuation">.</span>gitignore
+   <span class="token operator">-</span> <span class="token keyword">package</span><span class="token punctuation">.</span>json
+
+🌟 Create
+   <span class="token operator">-</span> vercel<span class="token punctuation">.</span>json
+   <span class="token operator">-</span> src<span class="token operator">/</span>entry<span class="token punctuation">.</span>vercel<span class="token operator">-</span>edge<span class="token punctuation">.</span>tsx
+   <span class="token operator">-</span> adaptors<span class="token operator">/</span>vercel<span class="token operator">-</span>edge<span class="token operator">/</span>vite<span class="token punctuation">.</span>config<span class="token punctuation">.</span>ts
+
+💾 Install npm dependency<span class="token operator">:</span>
+   <span class="token operator">-</span> vercel <span class="token operator">^</span><span class="token number">28.4</span><span class="token number">.17</span>
+
+✔ Ready to apply the vercel<span class="token operator">-</span>edge updates to your app<span class="token operator">?</span> › Yes looks good<span class="token punctuation">,</span> finish update<span class="token operator">!</span>
+
+✔ Updating app and installing dependencies<span class="token operator">...</span>
+🦄  Success<span class="token operator">!</span>  Added vercel<span class="token operator">-</span>edge to your app
+
+📚 Relevant docs<span class="token operator">:</span>
+   <span class="token literal-property property">https</span><span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>qwik<span class="token punctuation">.</span>builder<span class="token punctuation">.</span>io<span class="token operator">/</span>qwikcity<span class="token operator">/</span>adaptors<span class="token operator">/</span>vercel<span class="token operator">-</span>edge<span class="token operator">/</span>
+   <span class="token literal-property property">https</span><span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>vercel<span class="token punctuation">.</span>com<span class="token operator">/</span>docs<span class="token operator">/</span>concepts<span class="token operator">/</span>functions<span class="token operator">/</span>edge<span class="token operator">-</span>functions
+   <span class="token literal-property property">https</span><span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>vercel<span class="token punctuation">.</span>com<span class="token operator">/</span>docs
+
+💬 Questions<span class="token operator">?</span> Start the conversation at<span class="token operator">:</span>
+   <span class="token literal-property property">https</span><span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>qwik<span class="token punctuation">.</span>builder<span class="token punctuation">.</span>io<span class="token operator">/</span>chat
+   <span class="token literal-property property">https</span><span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>twitter<span class="token punctuation">.</span>com<span class="token operator">/</span>QwikDev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code>
+    </pre><span style="color:#3A8891"><div style="font-size:2rem">
+        <span style="font-weight:700">Qwik code</span>
+    </div></span><span style="font-weight:800"><div style="font-size:1rem"><br>        <span style="font-weight:400">Server-side code</span><br>    </div></span><div style="font-size:1rem"><br>        <span style="font-weight:400">I exposed a GET endpoint /api/give-me-the-goat to create a communication server to server. I installed the npm library @vercel/edge-config then I created the Edge Config client with the VITE_EDGE_CONFIG env variable as a param and finally I retrieved the value for the key GOAT.</span><br>    </div><div style="margin:20px auto;border-radius:4px;width:90%;height: fit-content">
+        <img style="display:block;border-radius:4px; width: 100%;height: fit-content;object-fit: contain;" src='https://res.cloudinary.com/practicaldev/image/fetch/s--1_tqhRWZ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d2mh4tppk7xykiwwq2xk.png'  alt="image"/>
+    </div><pre class="language-js" style="border-radius:4px" >
+    <code class="language-js">&#13;&#10;<span class="token keyword">import</span> type <span class="token punctuation">{</span> RequestHandler <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@builder.io/qwik-city'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createClient <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@vercel/edge-config'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> edgeConfigClient <span class="token operator">=</span> <span class="token function">createClient</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">VITE_EDGE_CONFIG</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token literal-property property">onGet</span><span class="token operator">:</span> RequestHandler<span class="token operator">&lt;</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> string <span class="token punctuation">}</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token keyword">await</span> edgeConfigClient<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'GOAT'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span> name <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code>
+    </pre><div style="font-size:2rem">
+        <span style="font-weight:700">Client-side code</span>
+    </div><div style="margin:20px auto;border-radius:4px;width:90%;height: fit-content">
+        <img style="display:block;border-radius:4px; width: 100%;height: fit-content;object-fit: contain;" src='https://res.cloudinary.com/practicaldev/image/fetch/s--yDDfXfBA--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9fjmhnvpym61tufykqdj.png'  alt="image"/>
+    </div><pre class="language-js" style="border-radius:4px" >
+    <code class="language-js">&#13;&#10;<span class="token keyword">import</span> <span class="token punctuation">{</span> $<span class="token punctuation">,</span> component$<span class="token punctuation">,</span> useSignal <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@builder.io/qwik'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">component$</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">useSignal</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> onClick <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/api/give-me-the-goat'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    state<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">await</span> name<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">'...'</span><span class="token operator">></span>
+      <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span>
+      <span class="token punctuation">{</span>state<span class="token punctuation">.</span>value<span class="token punctuation">}</span> <span class="token operator">&lt;</span><span class="token operator">-</span> Messi or Ronaldo 😆
+      <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">'...'</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>button onClick$<span class="token operator">=</span><span class="token punctuation">{</span>onClick<span class="token punctuation">}</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">'...0'</span><span class="token operator">></span>
+          Who is the <span class="token constant">GOAT</span><span class="token operator">?</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code>
+    </pre><div style="font-size:1rem"><br>        <span style="font-weight:400">Every time we press the button our API will be invoked. It will read data from Vercel and our UI will change.<br><br>We can modify the configuration in the Vercel dashboard or we can invoke a PATCH to a special URL (you can find an example here) to change the key value configuration programmatically.</span><br>    </div><span style="color:#3A8891"><div style="font-size:1rem"><br>        <span style="font-weight:400">🎉 This is a trivial use case but I think is a good example to show how our frontend application can change with an external configuration.<br>For example, let's think we want to show a certain section of our application (e.g. Order History), through this approach we can show/hide it easily. 😄<br><br>You can </span><br>    </div></span><a href="https://twitter.com/giorgio_boa" style="color:#3fcf8e; text-decoration: underline;">follow me on Twitter</a><div style="font-size:1rem"><br>        <span style="font-weight:400">where I'm posting or retweeting interesting articles.<br><br>I hope you enjoyed this article, don't forget to give ❤️.<br>Bye 👋</span><br>    </div>`

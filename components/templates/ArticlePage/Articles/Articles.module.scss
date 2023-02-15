@@ -1,0 +1,88 @@
+@use '../../../../styles/abstracts/mixins' as *;
+
+$color-black: #36423e;
+.Articles {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  @include md {
+    flex-direction: column;
+  }
+}
+.Titles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  position: relative;
+  h1 {
+    font-weight: 700;
+    flex: 1;
+    text-align: center;
+    line-height: 20px;
+    vertical-align: middle;
+  }
+  .ChangeLayout {
+    justify-self: flex-end;
+    width: 100px;
+    position: absolute;
+    bottom: -10px;
+    right: 5%;
+
+    &:not(:disabled):hover {
+      transform: unset;
+      opacity: 1;
+    }
+  }
+}
+
+.ButtonShowMore {
+  margin: 0 auto;
+}
+
+.Popular {
+  flex: 5;
+  .ArticleGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px;
+    @include md {
+      gap: 10px;
+      padding: 40px 20px;
+    }
+    .Article {
+      width: 30%;
+    }
+  }
+  .ArticleList {
+    flex-direction: column;
+    .Article {
+      width: 70%;
+    }
+  }
+}
+
+.ThisWeek {
+  flex: 2;
+  .ArticleList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px;
+  }
+}
+
+.Title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: $color-black;
+}

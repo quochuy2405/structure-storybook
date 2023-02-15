@@ -1,6 +1,6 @@
 import { Select } from '@/components/atoms'
 import { IOptionSelect } from '@/components/atoms/Select/Select'
-import React from 'react'
+import React, { memo } from 'react'
 import { Controller, UseFormReturn } from 'react-hook-form'
 
 export interface ISelectFormProps extends React.InputHTMLAttributes<HTMLSelectElement> {
@@ -22,7 +22,7 @@ const SelectForm: React.FC<ISelectFormProps> = ({
 }) => {
   return (
     <Controller
-      defaultValue={undefined}
+      defaultValue={props.options[0]}
       name={name}
       control={methods.control}
       render={({ field }) => (
@@ -32,4 +32,4 @@ const SelectForm: React.FC<ISelectFormProps> = ({
   )
 }
 
-export default SelectForm
+export default memo(SelectForm)

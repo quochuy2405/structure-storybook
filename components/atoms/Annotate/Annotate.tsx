@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { IoIosSquare } from 'react-icons/io'
 import Styles from './Annotate.module.scss'
 
@@ -16,4 +16,4 @@ const Annotate: React.FC<IAnnotateProps> = ({ color, content }) => {
   )
 }
 
-export default Annotate
+export default memo(Annotate)

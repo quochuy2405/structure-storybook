@@ -1,5 +1,5 @@
 import { TextField } from '@/components/atoms'
-import React from 'react'
+import React, { memo } from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 
 export interface ITextFieldFormProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -36,4 +36,4 @@ const TextFieldForm: React.FC<ITextFieldFormProps> = ({
   )
 }
 
-export default TextFieldForm
+export default memo(TextFieldForm)

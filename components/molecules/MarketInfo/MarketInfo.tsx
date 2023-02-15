@@ -1,115 +1,68 @@
+import { coinMarket, fullNameCoins } from '@/constants/coins'
+import axiosClient from '@/pages/api/axiosClient'
 import clsx from 'clsx'
-import { ReactNode } from 'react'
-import { GrBitcoin } from 'react-icons/gr'
-import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti'
+import { memo, ReactNode, useEffect, useState } from 'react'
 import Styles from './MarketInfo.module.scss'
-
+export interface IDataCoin {
+  name: string
+  value?: number
+  percent: number
+}
 export interface IIconInfoProps {
   icon: ReactNode
   name: string
-  price: string
+  value?: number
   percent: number
-  status: 'increase' | 'reduce'
 }
 
-const IconInfo: React.FC<IIconInfoProps> = ({
-  icon,
-  name,
-  price,
-  percent,
-  status = 'increase'
-}) => {
-  const statusStyles = clsx(Styles.TraddingPercent, {
-    [Styles.Increase]: status === 'increase',
-    [Styles.Reduce]: status === 'reduce'
+const IconInfo: React.FC<IIconInfoProps> = ({ icon, name, percent = 0, value }) => {
+  const statusClassNames = clsx(Styles.StatusCoin, {
+    [Styles.Reduce]: percent < 0,
+    [Styles.Increase]: percent >= 0
   })
-
   return (
     <div className={Styles.CoinInfo}>
-      <div className={Styles.CoinImage}>{icon}</div>
-      <p>{name}</p>
-      <p className={Styles.Price}>${price}</p>(
-      <div className={statusStyles}>
-        {status === 'increase' ? (
-          <TiArrowSortedUp size={14} />
-        ) : (
-          <TiArrowSortedDown size={14} />
-        )}
-        <p>{percent}%</p>
+      <p className={Styles.CoinValues}>{value?.toLocaleString()} USD</p>
+      <div className={Styles.Coin}>
+        <div className={Styles.CoinImage}>{icon}</div>
+        <p>{name}</p>
+        <span className={statusClassNames}>{percent.toFixed(2)}%</span>
       </div>
-      )
     </div>
   )
 }
 
 const MarketInfo = () => {
+  const [coins, setCoin] = useState<Array<IIconInfoProps>>([])
+  useEffect(() => {
+    const getCoins = async () => {
+      const response = await axiosClient(`slider`)
+      if (response.status === 200) {
+        const data = response.data || []
+        setCoin(
+          data.map((item: IDataCoin) => ({
+            icon: coinMarket[item.name],
+            name: fullNameCoins[item.name],
+            percent: item.percent,
+            value: item.value
+          }))
+        )
+      }
+    }
+    getCoins()
+  }, [])
+
   return (
     <div className={Styles.MarketInfo}>
-      <IconInfo
-        icon={<GrBitcoin size={20} />}
-        name="BTC"
-        price="10.100"
-        percent={8}
-        status="increase"
-      />
-      <IconInfo
-        icon={<GrBitcoin size={20} />}
-        name="BTC"
-        price="10.200"
-        percent={8}
-        status="increase"
-      />
-      <IconInfo
-        icon={<GrBitcoin size={20} />}
-        name="BTC"
-        price="10.200"
-        percent={8}
-        status="reduce"
-      />
-      <IconInfo
-        icon={<GrBitcoin size={20} />}
-        name="BTC"
-        price="10.200"
-        percent={8}
-        status="increase"
-      />
-      <IconInfo
-        icon={<GrBitcoin size={20} />}
-        name="BTC"
-        price="10.200"
-        percent={8}
-        status="reduce"
-      />{' '}
-      <IconInfo
-        icon={<GrBitcoin size={20} />}
-        name="BTC"
-        price="10.200"
-        percent={8}
-        status="increase"
-      />
-      <IconInfo
-        icon={<GrBitcoin size={20} />}
-        name="BTC"
-        price="10.200"
-        percent={8}
-        status="increase"
-      />
-      <IconInfo
-        icon={<GrBitcoin size={20} />}
-        name="BTC"
-        price="10.200"
-        percent={8}
-        status="increase"
-      />
-      <IconInfo
-        icon={<GrBitcoin size={20} />}
-        name="BTC"
-        price="10.200"
-        percent={8}
-        status="increase"
-      />
+      {[...Array(6)]
+        .reduce((list: Array<IIconInfoProps>) => {
+          return [...list, ...coins]
+        }, [])
+        .map((item, index) => (
+          <IconInfo {...item} key={item.name + index} />
+        ))}
     </div>
   )
 }
 
-export default MarketInfo
+export default memo(MarketInfo)

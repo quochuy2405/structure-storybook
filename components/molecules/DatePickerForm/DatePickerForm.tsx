@@ -1,5 +1,5 @@
 import { DatePicker } from '@/components/atoms'
-import React from 'react'
+import React, { memo } from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 
 export interface IDatePickerFormProps {
@@ -29,4 +29,4 @@ const DatePickerForm: React.FC<IDatePickerFormProps> = ({
   )
 }
 
-export default DatePickerForm
+export default memo(DatePickerForm)

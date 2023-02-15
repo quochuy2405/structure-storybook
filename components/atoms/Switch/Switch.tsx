@@ -1,9 +1,8 @@
 import clsx from 'clsx'
-import React from 'react'
+import React, { memo } from 'react'
 import Styles from './Switch.module.scss'
 
 export interface IButtonToggleProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  defaultToggle?: boolean
   labelCheck?: string
   labelUnCheck?: string
   className?: string
@@ -11,9 +10,8 @@ export interface IButtonToggleProps extends React.InputHTMLAttributes<HTMLInputE
 
 const ButtonToggle: React.FC<IButtonToggleProps> = ({
   className,
-  defaultToggle = false,
-  labelCheck = 'False',
-  labelUnCheck = 'True',
+  labelCheck = 'True',
+  labelUnCheck = 'False',
   ...props
 }) => {
   const classNames = clsx(Styles.ButtonToggle, {
@@ -22,17 +20,11 @@ const ButtonToggle: React.FC<IButtonToggleProps> = ({
 
   return (
     <label className={classNames}>
-      <input
-        type="checkbox"
-        defaultChecked={defaultToggle}
-        {...props}
-        hidden
-        className={Styles.Input}
-      />
-      <p className={Styles.Checked}>{labelCheck}</p>
+      <input type="checkbox" {...props} hidden className={Styles.Input} readOnly />
       <p className={Styles.UnChecked}>{labelUnCheck}</p>
+      <p className={Styles.Checked}>{labelCheck}</p>
     </label>
   )
 }
 
-export default ButtonToggle
+export default memo(ButtonToggle)

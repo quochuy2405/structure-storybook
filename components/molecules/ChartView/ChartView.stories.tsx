@@ -10,13 +10,13 @@ export const Default: ComponentStory<typeof ChartView> = (args) => {
   return <ChartView {...args} />
 }
 Default.args = {
-  data: { actual: [], predict: [] }
+  data: []
 }
 
 export const MovingAverage: ComponentStory<typeof ChartView> = (args) => {
   return <ChartView {...args} />
 }
 MovingAverage.args = {
-  data: { actual: [], predict: [] },
+  data: [],
   moving: true
 }

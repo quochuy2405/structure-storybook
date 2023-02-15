@@ -1,20 +1,26 @@
 import clsx from 'clsx'
-import React from 'react'
+import React, { memo, ReactNode } from 'react'
 import { CgCloseO } from 'react-icons/cg'
 import Styles from './StatusTag.module.scss'
 export type typeTag = 'default' | 'primary' | 'warning' | 'error' | 'secondary'
 
-export interface IStatusTag {
+export interface IStatusTag extends React.HTMLAttributes<HTMLDivElement> {
   id?: string
   type?: typeTag
-  label?: string
+  children?: ReactNode
   setTags?: React.Dispatch<React.SetStateAction<Array<IStatusTag>>>
+  close?: boolean
+  color?: string
+  label?: string
 }
 const StatusTag: React.FC<IStatusTag> = ({
   id = '',
   type = 'default',
-  label,
-  setTags = () => void 0
+  close = true,
+  color,
+  children,
+  setTags = () => void 0,
+  ...props
 }) => {
   const classNames = clsx(Styles.StatusTag, {
     [Styles.Primary]: type === 'primary',
@@ -26,13 +32,13 @@ const StatusTag: React.FC<IStatusTag> = ({
   const handleRemove = (id: string) => {
     setTags((cur) => cur.filter((e) => e.id !== id))
   }
-
+  console.log(color)
   return (
-    <div className={classNames} id={id}>
-      <p>{label}</p>
-      <CgCloseO size={20} onClick={() => handleRemove(id)} />
+    <div className={classNames} id={id} style={{ backgroundColor: color }} {...props}>
+      {children}
+      {close && <CgCloseO size={20} onClick={() => handleRemove(id)} />}
     </div>
   )
 }
 
-export default StatusTag
+export default memo(StatusTag)

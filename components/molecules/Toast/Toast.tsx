@@ -25,7 +25,7 @@ export type TColor = {
 const modeColors: TColor = {
   success: ' #1aa174',
   info: '#4c6ad3',
-  error: '#e35353',
+  error: '#da3939',
   warning: '#ff9d09'
 }
 

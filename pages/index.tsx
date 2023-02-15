@@ -1,8 +1,13 @@
 import type { NextPage } from '@/types/next'
-import HomePage from './home'
+import Layouts from '../layouts'
+import Home from './home'
 
 const App: NextPage = () => {
-  return <HomePage />
+  return (
+    <Layouts>
+      <Home />
+    </Layouts>
+  )
 }
 
 export default App

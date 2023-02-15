@@ -1,6 +1,6 @@
 import axios from 'axios'
 const axiosClient = axios.create({
-  baseURL: 'http://localhost:8888/api',
+  baseURL: 'https://spring.ftisu.vn/api',
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'

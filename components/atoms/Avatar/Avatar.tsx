@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { ReactNode } from 'react'
+import React, { memo, ReactNode } from 'react'
 import Styles from './Avatar.module.scss'
 
 export interface IAvatarProps {
@@ -19,4 +19,4 @@ const Avatar: React.FC<IAvatarProps> = ({ className, children }) => {
   )
 }
 
-export default Avatar
+export default memo(Avatar)

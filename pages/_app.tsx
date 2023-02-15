@@ -1,10 +1,9 @@
-import { getMainLayout } from 'layouts/Layouts/Layouts'
-import type { AppProps, NextPage } from '@/types/next'
-import '@/styles/global.scss'
-import { ReactElement, ReactNode } from 'react'
 import AppProvider from '@/providers/AppProvider'
+import '@/styles/global.scss'
+import type { AppProps, NextPage } from '@/types/next'
+import { ReactElement, ReactNode } from 'react'
 
-export type NextPageWithLayout = NextPage & {
+export type NextPageWithLayout<T = object> = NextPage<T> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 
@@ -13,13 +12,10 @@ type AppPropsWithLayouts = AppProps & {
 }
 
 function App({ Component, pageProps }: AppPropsWithLayouts) {
-  const getLayout = Component.getLayout || ((page) => page) || getMainLayout
+  const getLayout = Component.getLayout || ((page: any) => page)
   const layouts = getLayout(<Component {...pageProps} />)
-  return (
-    <AppProvider>
-      <div className="dark">{layouts}</div>
-    </AppProvider>
-  )
+
+  return <AppProvider>{layouts}</AppProvider>
 }
 
 export default App

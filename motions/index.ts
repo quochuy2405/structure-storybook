@@ -4,15 +4,15 @@ export const scrollSpring = (index: number) => ({
   viewport: { once: true, amount: 0.2 },
   variants: {
     offscreen: {
-      y: 100
+      y: 50
     },
     onscreen: {
-      y: 1,
+      y: 0,
 
       transition: {
         type: 'spring',
-        bounce: 0.5,
-        duration: 0.2 + index
+        bounce: 0.7,
+        duration: 1 + index
       }
     }
   }

@@ -1,7 +1,7 @@
 @use '../../../styles/abstracts/mixins' as *;
 $color-green: #3fcf8e;
 $color-black: #36423e;
-$color-red: #e35353;
+$color-red: #da3939;
 $color-orange: #ff9d09;
 $color-shadow: #b7b7b787;
 $color-mint: #00d2a0;
@@ -12,10 +12,16 @@ $color-header: #2727277c;
   position: fixed;
   width: 100%;
   bottom: 10px;
-  z-index: 9999;
+  z-index: 999;
   display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   display: none;
   @include md {
@@ -24,13 +30,20 @@ $color-header: #2727277c;
 }
 .Navigation {
   color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
   font-size: 1.5rem;
-  .Link {
+  a {
     button {
       background-color: transparent;
+      border: 1px solid $color-green;
     }
     &:global(.active) button {
       background-color: $color-green;

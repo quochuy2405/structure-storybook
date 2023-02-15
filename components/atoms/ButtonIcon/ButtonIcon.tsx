@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { ReactNode } from 'react'
+import React, { memo, ReactNode } from 'react'
 import Styles from './ButtonIcon.module.scss'
 
 export interface IButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -27,4 +27,4 @@ const ButtonIcon: React.FC<IButtonIconProps> = ({
   )
 }
 
-export default ButtonIcon
+export default memo(ButtonIcon)

@@ -1,78 +1,90 @@
-import { Avatar } from '@/components/atoms'
+import { Logo } from '@/assets/svg'
+import { Title } from '@/components/atoms'
 import Icon from '@/components/atoms/Icon'
+import Image from 'next/image'
+import { memo } from 'react'
 import Styles from './Footer.module.scss'
 
 const Footer = () => {
   return (
     <div className={Styles.Footer}>
-      <div className={Styles.QuickLink}>
-        <div className={Styles.Logo}>
-          <Avatar />
-          <h2>Predict</h2>
-        </div>
-        <p className={Styles.QuickLinkDescription}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis vitae, facere rem
-          ducimus ab.
-        </p>
-        <h2 className={Styles.QuickLinkTitle}>Quick Links</h2>
-        <ul className={Styles.QuickLinkList}>
-          <li>Lorem ipsum dolor</li>
-          <li>Lorem ipsum dolor sit</li>
-          <li>amet consectetur adipisicing</li>
-          <li> veniam beatae neque.</li>
-          <li> Quisquam rerum</li>
-          <li> rerum neque culpa</li>
-        </ul>
+      <div className={Styles.Logo}>
+        <Logo />
+        <Title size={2}>Predict</Title>
       </div>
+      <div className={Styles.Contents}>
+        <div className={Styles.Part}>
+          <Title size={1.3}>About</Title>
+          <ul>
+            <li>About</li>
+            <li>Predictions</li>
+            <li>Ftisu</li>
+            <li>University of Information Technology</li>
+            <li>Information Systems</li>
+          </ul>
+        </div>
+        <div className={Styles.Part}>
+          <Title size={1.3}>Products</Title>
+          <ul>
+            <li>ISCV</li>
+            <li>Predictions</li>
+            <li>Trading bot</li>
+            <li>Natural language analysis</li>
+          </ul>
+        </div>
+        <div className={Styles.Part}>
+          <Title size={1.3}>Get In Touch</Title>
+          <ul>
+            <li>Contact us</li>
+            <li>Advertise</li>
+            <li>FAQ</li>
+            <li>Site Map</li>
+          </ul>
+        </div>
+        <div className={Styles.Part}>
+          <Title size={1.3}>The Fire Print</Title>
+          <ul>
+            <li>Privacy</li>
+            <li>Terms of use</li>
+          </ul>
+        </div>
+      </div>
+      <hr />
 
-      <div className={Styles.News}>
-        <div className={Styles.NewsItem}>
-          <div className={Styles.Thumbnail}>
-            <Avatar />
-          </div>
-          <div className={Styles.Content}>
-            <div className={Styles.Title}>NEWS</div>
-            <div className={Styles.Description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sunt illum
-              sint culpa, labore cum nisi.
-            </div>
+      <div className={Styles.Contents}>
+        <div className={Styles.Part}>
+          <Title size={1.3}>Team Research</Title>
+          <ul>
+            <p>
+              The field of applied mathematics and machine learning research for
+              application in the field of time series (Time Series), Blockchain
+              application-oriented research to change the current Web02 process....
+            </p>
+          </ul>
+        </div>
+        <div className={Styles.CopyRight}>
+          <h1>©2022 HPNV </h1>
+        </div>
+        <div className={Styles.Medial}>
+          <Title size={1}>Social Medial</Title>
+          <div className={Styles.Social}>
+            <Icon type="facebook" size={25} />
+            <Icon type="youtube" size={25} />
+            <Icon type="github" size={25} />
           </div>
         </div>
-        <div className={Styles.NewsItem}>
-          <div className={Styles.Thumbnail}>
-            <Avatar />
-          </div>
-          <div className={Styles.Content}>
-            <div className={Styles.Title}>NEWS</div>
-            <div className={Styles.Description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sunt illum
-              sint culpa, labore cum nisi.
-            </div>
+        <div className={Styles.Part}>
+          <div className={Styles.BelongTo}>
+            <Image
+              src="https://ftisu.vn/static/media/logoname176.5e8347a6739c57831114.png"
+              alt="ftisu"
+              layout="fill"
+            />
           </div>
         </div>
-        <div className={Styles.NewsItem}>
-          <div className={Styles.Thumbnail}>
-            <Avatar />
-          </div>
-          <div className={Styles.Content}>
-            <div className={Styles.Title}>NEWS</div>
-            <div className={Styles.Description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sunt illum
-              sint culpa, labore cum nisi.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={Styles.Contacts}>
-        <div className={Styles.ICons}>
-          <Icon type="facebook" size={35} />
-          <Icon type="linker" size={35} />
-          <Icon type="facebook" size={35} />
-        </div>
-        <p>©HPNV 2022</p>
       </div>
     </div>
   )
 }
 
-export default Footer
+export default memo(Footer)

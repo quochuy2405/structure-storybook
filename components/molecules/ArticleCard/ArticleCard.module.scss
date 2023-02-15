@@ -1,13 +1,20 @@
-$color-red: #e35353;
+$color-red: #da3939;
 $color-orange: #ff9d09;
 $color-gray: #6469675c;
-
+$color-black: #36423e;
 .Layout {
-  color: white;
-  background-color: $color-gray;
+  color: $color-gray;
+  box-shadow: 0 0 0 1px $color-black;
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   gap: 5px;
   margin-bottom: 20px;
@@ -19,25 +26,63 @@ $color-gray: #6469675c;
 }
 .Description {
   font-size: 0.8rem;
-  width: 80%;
+  width: 100%;
+  height: 56px;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $color-black;
+  font-size: 0.8rem;
 }
 .Author {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 10px;
 }
 .Name {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 500;
 }
 .ViewArticle {
   font-weight: 500;
   font-size: 0.7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
-.Other {
+.Thumbnail {
+  width: 100%;
+  height: 45%;
+  span {
+    display: block;
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  margin-bottom: 10px;
+}
+.BoxArticle {
+  width: 100%;
+  height: 380px;
 }

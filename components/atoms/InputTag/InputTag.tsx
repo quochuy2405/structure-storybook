@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { GoPrimitiveDot } from 'react-icons/go'
 import shortid from 'shortid'
 import StatusTag from '../StatusTag'
@@ -53,13 +53,9 @@ const InputTag: React.FC<IInputTagProps> = ({
       <div className={classNames}>
         {!!tags?.length &&
           tags.map((item) => (
-            <StatusTag
-              label={item.label}
-              type={item.type}
-              key={item.id}
-              id={item.id}
-              setTags={setTags}
-            />
+            <StatusTag type={item.type} key={item.id} id={item.id} setTags={setTags}>
+              {item?.label || ''}
+            </StatusTag>
           ))}
         <input
           type="text"
@@ -81,4 +77,4 @@ const InputTag: React.FC<IInputTagProps> = ({
   )
 }
 
-export default InputTag
+export default memo(InputTag)

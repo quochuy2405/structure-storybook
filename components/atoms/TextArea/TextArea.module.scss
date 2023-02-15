@@ -1,6 +1,6 @@
 @use '../../../styles/responsive/mixins' as *;
 
-$color-red: #e35353;
+$color-red: #da3939;
 $color-green: #3fcf8e;
 
 .TextArea {
@@ -33,13 +33,33 @@ $color-green: #3fcf8e;
     width: 280px;
   }
 
+  &::-webkit-input-placeholder {
+    color: hsla(0, 0%, 0%, 0.4);
+  }
+
+  &::-moz-placeholder {
+    color: hsla(0, 0%, 0%, 0.4);
+  }
+
+  &:-ms-input-placeholder {
+    color: hsla(0, 0%, 0%, 0.4);
+  }
+
+  &::-ms-input-placeholder {
+    color: hsla(0, 0%, 0%, 0.4);
+  }
+
   &::placeholder {
     color: hsla(0, 0%, 0%, 0.4);
   }
 }
 
 .TitleBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   .Title {
     font-size: 0.9rem;
@@ -47,17 +67,17 @@ $color-green: #3fcf8e;
     padding: 4px 2px;
   }
   .DotRequired {
-    color: #e35353;
+    color: #da3939;
   }
 }
 
 .TextAreaError {
-  border-color: #e35353;
+  border-color: #da3939;
 }
 .TextError {
   font-weight: 600;
   font-size: 0.8rem;
   padding: 0 5px;
   min-height: 20px;
-  color: #e35353;
+  color: #da3939;
 }

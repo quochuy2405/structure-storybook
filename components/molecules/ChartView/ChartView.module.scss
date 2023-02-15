@@ -2,3 +2,23 @@
   width: 100%;
   height: 100%;
 }
+.BoxChart {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.Models {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  transform: translateY(10%);
+  padding: 5px 10px;
+  z-index: 9999;
+  gap: 3px;
+  > div {
+    background-color: attr(data-color) !important;
+  }
+}

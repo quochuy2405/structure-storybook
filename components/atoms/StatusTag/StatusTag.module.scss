@@ -3,18 +3,28 @@
 $color-green: #3fcf8e;
 $color-white: white;
 $color-blue: #0d76c1;
-$color-red: #e35353;
+$color-red: #da3939;
 $color-gray: #608276;
 $color-orange: #ff9d09;
 $color-mint: #0cceab;
 
 .StatusTag {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   min-width: 100px;
   min-height: 20px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   background-color: $color-green;
   color: $color-white;
@@ -22,6 +32,7 @@ $color-mint: #0cceab;
   font-size: 0.8rem;
   padding: 4px 10px;
   gap: 5px;
+  cursor: pointer;
 }
 .Primary {
   background-color: $color-blue;

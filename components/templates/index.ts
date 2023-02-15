@@ -1,4 +1,6 @@
+export { ArticleCreatePage, ArticleDetailPage, ArticleEditPage } from './ArticlePage'
+export { BlogCreatePage, BlogDetailPage, BlogEditPage } from './BlogPage'
 export { default as HomePage } from './HomePage'
 export { default as LoginPage } from './LoginPage'
 export { default as PredictionPage } from './PredictionPage'
-export { ArticleCreatePage, ArticleEditPage } from './ArticlePage'
+export { default as PricePage } from './PricePage'

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { ReactNode } from 'react'
+import React, { memo, ReactNode } from 'react'
 import Styles from './Tab.module.scss'
 
 export type TabTypes = {
@@ -34,4 +34,4 @@ const Tab: React.FC<ITabProps> = ({ tabs = {} }) => {
   )
 }
 
-export default Tab
+export default memo(Tab)

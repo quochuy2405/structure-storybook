@@ -1,5 +1,5 @@
 import { TextArea } from '@/components/atoms'
-import React from 'react'
+import React, { memo } from 'react'
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
 
 export interface ITextAreaFormProps
@@ -29,4 +29,4 @@ const TextAreaForm: React.FC<ITextAreaFormProps> = ({
   )
 }
 
-export default TextAreaForm
+export default memo(TextAreaForm)

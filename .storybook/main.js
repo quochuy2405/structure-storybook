@@ -39,7 +39,9 @@ module.exports = {
       '@/constants': path.resolve(__dirname, '../constants'),
       '@/providers': path.resolve(__dirname, '../providers'),
       '@/layouts': path.resolve(__dirname, '../layouts'),
-      '@/motions': path.resolve(__dirname, '../motions')
+      '@/motions': path.resolve(__dirname, '../motions'),
+      '@/features': path.resolve(__dirname, '../features'),
+      '@/firebase': path.resolve(__dirname, '../firebase')
     }
 
     const fallback = config.resolve.fallback || {}

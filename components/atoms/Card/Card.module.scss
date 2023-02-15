@@ -2,15 +2,16 @@
 
 $color-green: #1aa140;
 $color-black: #36423e;
-$color-red: #e35353;
+$color-red: #da3939;
 $color-orange: #ffae34;
-$color-shadow: #ebebeb87;
+$color-shadow: #bbbbbb87;
 $color-mint: #00d212;
 
 .Card {
   width: 100%;
-  box-shadow: 0 0 3px 2px $color-shadow;
+  height: 100%;
+  -webkit-box-shadow: 0 0 4px 0 $color-shadow;
+  box-shadow: 0 0 4px 0 $color-shadow;
   border-radius: 4px;
   padding: 20px;
-  backdrop-filter: blur(30px);
 }

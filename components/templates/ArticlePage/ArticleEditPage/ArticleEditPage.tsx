@@ -1,30 +1,25 @@
 import { Button } from '@/components/atoms'
-import { Header } from '@/components/organisms'
-import { NextPage } from '@/types/next'
 import Styles from './ArticleEditPage.module.scss'
 
-const ArticleEditPage: NextPage = () => {
+const ArticleEditPage = () => {
   return (
-    <>
-      <Header />
-      <div className={Styles.Banner}>
-        <div className={Styles.Content}>
-          <h2>Digital currency leads at market in the right amount.</h2>
-          <p className={Styles.SubTitle}>
-            Vestibulum faucibus eget erat eget pretium. Donec commodo convallis ligula,
-            eget suscipit orci
-          </p>
-          <div className={Styles.ButtonContent}>
-            <Button className={Styles.Button} mode="primary">
-              get started
-            </Button>
-            <Button className={Styles.ButtonOutline} outline mode="primary">
-              view market
-            </Button>
-          </div>
+    <div className={Styles.Banner}>
+      <div className={Styles.Content}>
+        <h2>Digital currency leads at market in the right amount.</h2>
+        <p className={Styles.SubTitle}>
+          Vestibulum faucibus eget erat eget pretium. Donec commodo convallis ligula, eget
+          suscipit orci
+        </p>
+        <div className={Styles.ButtonContent}>
+          <Button className={Styles.Button} mode="primary">
+            get started
+          </Button>
+          <Button className={Styles.ButtonOutline} outline mode="primary">
+            view market
+          </Button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

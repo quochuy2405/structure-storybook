@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React from 'react'
+import React, { memo } from 'react'
 import { BsCheckLg } from 'react-icons/bs'
 import Styles from './CheckBox.module.scss'
 interface ICheckBoxProps
@@ -13,21 +13,21 @@ interface ICheckBoxProps
 const CheckBox: React.FC<ICheckBoxProps> = React.forwardRef<
   HTMLInputElement,
   ICheckBoxProps
->(({ label, isError, className, ...props }, ref) => {
+>(({ label: title, isError, className, ...props }, ref) => {
   const classNames = clsx(Styles.CheckBoxContainer, {
     [Styles.Error]: isError,
     className: className
   })
 
   return (
-    <div className={classNames}>
+    <label className={classNames}>
       <div className={Styles.CheckBox}>
         <input ref={ref} type="checkbox" className={Styles.Input} {...props} />
         <BsCheckLg className={Styles.isChecked} />
       </div>
-      {label && <p className={Styles.CheckBoxLabel}>{label}</p>}
-    </div>
+      {title && <p className={Styles.CheckBoxLabel}>{title}</p>}
+    </label>
   )
 })
 CheckBox.displayName = 'check_box'
-export default CheckBox
+export default memo(CheckBox)

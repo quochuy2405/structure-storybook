@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { Children, cloneElement, ReactElement, useState, useEffect } from 'react'
+import React, {
+  Children,
+  cloneElement,
+  ReactElement,
+  useState,
+  useEffect,
+  memo
+} from 'react'
 import { UseFormReturn } from 'react-hook-form'
 import { json } from 'stream/consumers'
 
@@ -55,4 +62,4 @@ const CheckboxGroupForm = React.forwardRef<HTMLInputElement, ICheckBoxGroupFormP
 )
 CheckboxGroupForm.displayName = 'CheckboxGroupForm'
 
-export default CheckboxGroupForm
+export default memo(CheckboxGroupForm)

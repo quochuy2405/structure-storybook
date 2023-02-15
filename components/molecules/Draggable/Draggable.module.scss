@@ -1,4 +1,4 @@
-$color-red: #e35353;
+$color-red: #da3939;
 $color-green: #3fcf8e;
 $color-orange: #ff9d09;
 .ItemDrag {
@@ -6,9 +6,14 @@ $color-orange: #ff9d09;
   height: 40px;
   border-radius: 6px;
   background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   padding: 4px 5px;
+  -webkit-box-shadow: 0 0 4px 0 #8f8f8f69;
   box-shadow: 0 0 4px 0 #8f8f8f69;
   font-size: 0.9rem;
 
@@ -26,12 +31,20 @@ $color-orange: #ff9d09;
   }
 }
 .Active {
-  border: 2px solid $color-green;
+  border: 3px solid $color-green;
 }
 .ItemDragContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   gap: 5px;
   padding-right: 10px;
@@ -72,6 +85,8 @@ $color-orange: #ff9d09;
       z-index: 99;
       bottom: 0;
       right: 0;
+      -webkit-transform: translate(0, 120%);
+      -ms-transform: translate(0, 120%);
       transform: translate(0, 120%);
     }
   }

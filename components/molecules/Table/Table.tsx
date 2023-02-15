@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { memo, ReactNode } from 'react'
 import Styles from './Table.module.scss'
 import shortid from 'shortid'
 import clsx from 'clsx'
@@ -72,4 +72,4 @@ const Table: React.FC<ITableProps> = ({
   )
 }
 
-export default Table
+export default memo(Table)

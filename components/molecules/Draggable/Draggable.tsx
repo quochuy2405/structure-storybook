@@ -2,16 +2,18 @@ import { ReactSortable } from 'react-sortablejs'
 
 import { ButtonIcon, TextField } from '@/components/atoms'
 import clsx from 'clsx'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, memo, SetStateAction, useEffect, useState } from 'react'
 import { BsLink45Deg } from 'react-icons/bs'
 import { MdDelete, MdDone, MdDragIndicator } from 'react-icons/md'
 import Styles from './Draggable.module.scss'
+import { TFormatCombine } from '@/utils/index'
 
 export type TPreview = {
   id: string
   content: string
   url?: string
   type: string
+  format?: Array<TFormatCombine>
 }
 
 export interface SortableItemProps {
@@ -137,4 +139,4 @@ const Draggable: React.FC<IDraggableProps> = ({
   )
 }
 
-export default Draggable
+export default memo(Draggable)

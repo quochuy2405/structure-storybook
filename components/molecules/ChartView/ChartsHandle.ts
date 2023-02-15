@@ -33,25 +33,31 @@ const handleCreateChart = (
   if (!chartContainerRef.current) return
 
   const chart = createChart(chartContainerRef.current, {
+    localization: {
+      dateFormat: 'yyyy/MM/dd',
+      locale: 'en-US'
+    },
     width: width || 600,
     height: height || 300,
     timeScale: {
       timeVisible: true,
       borderColor: '#D1D4DC'
     },
+
     rightPriceScale: {
-      borderColor: '#D1D4DC'
+      borderColor: '#D1D4DC',
+      borderVisible: false
     },
     layout: {
       backgroundColor: '#ffffff',
-      textColor: '#000'
+      textColor: '#000000'
     },
     grid: {
-      horzLines: {
-        color: '#F0F3FA'
-      },
       vertLines: {
-        color: '#F0F3FA'
+        color: '#ffffff'
+      },
+      horzLines: {
+        color: '#c4c4c440'
       }
     }
   })
@@ -74,19 +80,33 @@ const handleMovingAverage = (
   })
   movingAVG.setData(smaData)
 }
-
+export const colorChartLines = {
+  1: '#3fcf8e',
+  2: '#ff9d09',
+  3: '#850000',
+  4: '#FF597B',
+  5: '#FB2576',
+  6: '#EB6440',
+  7: '#3A8891',
+  8: '#474E68'
+}
 const handleLineChart = (
   chart: IChartApi,
   data: Array<TDataSeries>,
-  isPredict: boolean
+  isPredict: boolean,
+  indexColor: number
 ) => {
-  const color = isPredict ? '#e35353' : '#3fcf8e'
+  const color = isPredict
+    ? indexColor > 8
+      ? Math.floor(Math.random() * 16777215).toString(16)
+      : colorChartLines[indexColor as keyof typeof colorChartLines]
+    : '#5337ee'
   const movingAVG = chart.addLineSeries({
     color: color,
     lineWidth: 2
   })
   movingAVG.setData(
-    data.map((item) => ({
+    data?.map((item) => ({
       time: item.time,
       value: item.close
     }))
@@ -99,9 +119,9 @@ const handleCandleChart = (
   isPredict: boolean
 ) => {
   const upColor = isPredict ? '#0022ffd8' : '#3fcf8e'
-  const downColor = isPredict ? '#ff9d09' : '#e35353'
+  const downColor = isPredict ? '#ff9d09' : '#da3939'
   const borderUpColor = isPredict ? '#0022ffd8' : '#3fcf8e'
-  const borderDownColor = isPredict ? '#ff9d09' : '#e35353'
+  const borderDownColor = isPredict ? '#ff9d09' : '#da3939'
   const candleSeries = chart.addCandlestickSeries({
     upColor,
     downColor,
@@ -171,6 +191,17 @@ const handleHistogram = (chart: IChartApi, data: Array<TDataSeries>) => {
   })
   volumeSeries.setData(data)
 }
+
+const handleAreaSeries = (chart: IChartApi, data: Array<TDataSeries>) => {
+  const areaSeries = chart.addAreaSeries({
+    lineColor: '#2962FF',
+    topColor: '#2962FF',
+    bottomColor: 'rgba(41, 98, 255, 0.28)'
+  })
+  areaSeries.setData(data)
+
+  chart.timeScale().fitContent()
+}
 export {
   handleCandleChart,
   handleCreateChart,
@@ -178,5 +209,6 @@ export {
   handleMovingAverage,
   calculateSMA,
   handleHistogram,
-  handleLineChart
+  handleLineChart,
+  handleAreaSeries
 }

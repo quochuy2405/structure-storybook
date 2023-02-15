@@ -31,15 +31,11 @@
       "@/constants/*": ["constants/*"],
       "@/providers/*": ["providers/*"],
       "@/layouts/*": ["layouts/*"],
-      "@/motions/*": ["motions/*"]
+      "@/motions/*": ["motions/*"],
+      "@/features/*": ["features/*"],
+      "@/firebase/*": ["firebase/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "components/molecules/CheckboxGroup/CheckboxGroupFormtsx",
-    "stories/page/EditorCreatePage/.stories.tsx"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js"],
   "exclude": ["node_modules"]
 }

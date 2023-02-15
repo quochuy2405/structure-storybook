@@ -1,14 +1,14 @@
 @use './base/reset';
 @use './abstracts/variables';
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
-
 * {
   -ms-overflow-style: none;
   scrollbar-width: none;
   scroll-behavior: smooth;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
   image-rendering: optimizeSpeed;
+  font-family: 'Poppins', Arial, sans-serif;
 }
 
 *::-webkit-scrollbar {
@@ -17,8 +17,9 @@
 
 body {
   width: 100%;
-  font-family: 'Poppins', Arial, sans-serif;
-  background-color: #232323;
+  background-color: #ffffff;
+  // background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnUB7y4Cj925u6R_0VUdoTlrEGwqniyIZvDbdHrrDkmNIsWZkwPdv823nzKdC7WCMmoDA&usqp=CAU');
+  // background-size: cover;
 
   ::-moz-selection {
     /* Code for Firefox */

@@ -2,7 +2,7 @@
 $color-green: #3fcf8e;
 $color-white: white;
 $color-blue: #0d76c1;
-$color-red: #e35353;
+$color-red: #da3939;
 $color-gray: #608276;
 $color-orange: #ff9d09;
 $color-mint: #0cceab;
@@ -14,9 +14,14 @@ $color-mint: #0cceab;
   font-weight: 500;
   font-size: 0.9rem;
   width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   min-height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 10px;
 
@@ -41,7 +46,11 @@ $color-mint: #0cceab;
   }
 }
 .TitleBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   .Title {
     font-size: 0.9rem;
@@ -49,19 +58,19 @@ $color-mint: #0cceab;
     padding: 4px 2px;
   }
   .DotRequired {
-    color: #e35353;
+    color: #da3939;
   }
 }
 
 .InputTagError {
-  border-color: #e35353;
+  border-color: #da3939;
 }
 .TextError {
   font-weight: 500;
   font-size: 0.8rem;
   padding: 0 5px;
   min-height: 20px;
-  color: #e35353;
+  color: #da3939;
 }
 .InputText {
   width: 120px;

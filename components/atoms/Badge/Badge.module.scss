@@ -3,24 +3,38 @@
 $color-green: #3fcf8e;
 $color-white: white;
 $color-blue: #0d76c1;
-$color-red: #e35353;
+$color-red: #da3939;
 $color-gray: #608276;
 $color-orange: #ff9d09;
 $color-mint: #0cceab;
 
 .Container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 8px;
 }
 
 .Badge {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   min-width: 80px;
   min-height: 20px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   background-color: $color-green;
   color: $color-white;

@@ -1,11 +1,18 @@
-import { Avatar, Button, ButtonIcon, NavLink } from '@/components/atoms'
+import { Logo } from '@/assets/svg'
+import MetaMask from '@/assets/svg/MetaMask'
+import { Avatar, Button, ButtonIcon } from '@/components/atoms'
 import { Navigation } from '@/components/molecules'
 import MarketInfo from '@/components/molecules/MarketInfo'
+import { resetUser, setUser } from '@/features/slices/auth/login'
+import { auth } from '@/firebase/config'
+import { useAppDispatch, useAppSelector } from '@/hooks/useRedux'
 import clsx from 'clsx'
-import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { Fragment, memo, useEffect } from 'react'
 import { AiOutlineHome } from 'react-icons/ai'
-import { FaBlogger, FaChartLine, FaQq, FaQuestionCircle } from 'react-icons/fa'
-import { GiDevilMask } from 'react-icons/gi'
+import { FaBlogger, FaChartLine, FaQq } from 'react-icons/fa'
 import { IoLanguageOutline } from 'react-icons/io5'
 import Styles from './Header.module.scss'
 
@@ -19,44 +26,101 @@ export interface IHeaderProps {
 }
 
 const Header: React.FC<IHeaderProps> = ({}) => {
+  const { asPath } = useRouter()
+  const user = useAppSelector((state) => state.user)
+  const dispatch = useAppDispatch()
+
+  const handleSignOut = () => {
+    auth.signOut()
+    dispatch(resetUser())
+  }
+
+  useEffect(() => {
+    const unsubscribed = auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        const { displayName, email, photoURL } = userAuth
+        dispatch(setUser({ name: displayName, email, photo: photoURL }))
+
+        return
+      }
+    })
+    return () => {
+      unsubscribed()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user])
+  const links: Array<TypeRouter> = [
+    {
+      name: 'How Is Works',
+      url: '/'
+    },
+    {
+      name: 'Articles',
+      url: '/articles'
+    },
+    {
+      name: 'Prices',
+      url: '/prices'
+    },
+    {
+      name: 'Blogs',
+      url: '/blogs'
+    }
+  ]
   return (
-    <>
-      <div className={Styles.HeaderContainer}>
+    <Fragment>
+      <header className={Styles.HeaderContainer}>
         <MarketInfo />
         <div className={Styles.Header}>
-          <div className={Styles.Logo}>
-            <Avatar />
-            <p>Predict</p>
-          </div>
+          <Link href="/">
+            <div className={Styles.Logo}>
+              <Logo />
+              <p>Predict</p>
+            </div>
+          </Link>
           <div className={Styles.NavLinks}>
-            <NavLink href="/" exact key={'a'}>
-              <p>How Is Works</p>
-            </NavLink>
-            <NavLink href="/" exact key={'a1'}>
-              <p>Product</p>
-            </NavLink>
-            <NavLink href="/predictions" exact key={'a3'}>
-              <p>Predictions</p>
-            </NavLink>
-            <NavLink href="/" exact key={'a2'}>
-              <p>Blog</p>
-            </NavLink>
-            <NavLink href="/" exact key={'a4'}>
-              <p>FAQ</p>
-            </NavLink>
+            {links.map((item) => (
+              <Link href={item.url} key={item.url + item.name}>
+                <a className={item.url === asPath ? 'active' : ''}>
+                  <p>{item.name}</p>
+                </a>
+              </Link>
+            ))}
           </div>
           <div className={Styles.User}>
+            {!!user.name ? (
+              <>
+                <Avatar>
+                  <Image src={user.photo || ''} alt={user.name} layout="fill" />
+                </Avatar>
+                <Button
+                  mode="warning"
+                  className={Styles.MdButton}
+                  onClick={handleSignOut}
+                >
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link href="/login">
+                  <Button mode="primary" className={Styles.MdButton}>
+                    Sign In
+                  </Button>
+                </Link>
+
+                <Button mode="warning" className={Styles.MdButton}>
+                  Register
+                </Button>
+              </>
+            )}
+
             <Button
               mode="primary"
-              outline={true}
-              className={clsx(Styles.ButtonSignIn, Styles.MdButton)}
+              icon={<MetaMask />}
+              className={clsx(Styles.ButtonMetaMask, Styles.MdButton)}
+              outline
             >
-              Sign In
-            </Button>
-            <Button mode="warning" className={Styles.MdButton}>
-              Register
-            </Button>
-            <Button mode="primary" icon={<GiDevilMask />} className={Styles.MdButton}>
               MetaMask
             </Button>
             <ButtonIcon className={Styles.ButtonLang}>
@@ -64,18 +128,17 @@ const Header: React.FC<IHeaderProps> = ({}) => {
             </ButtonIcon>
           </div>
         </div>
-      </div>
+      </header>
       <Navigation
         navigations={[
           { icon: <AiOutlineHome />, url: '/' },
-          { icon: <FaQq />, url: '/#' },
-          { icon: <FaChartLine />, url: '/predictions' },
-          { icon: <FaBlogger />, url: '/#' },
-          { icon: <FaQuestionCircle />, url: '/#' }
+          { icon: <FaQq />, url: '/articles' },
+          { icon: <FaChartLine />, url: '/prices' },
+          { icon: <FaBlogger />, url: '/blogs' }
         ]}
       />
-    </>
+    </Fragment>
   )
 }
 
-export default Header
+export default memo(Header)

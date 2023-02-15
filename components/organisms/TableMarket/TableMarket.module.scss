@@ -1,0 +1,56 @@
+$color-green: #3fcf8e;
+$color-black: #000000;
+$color-red: #da3939;
+$color-orange: #ff9d09;
+$color-gray: #363636cb;
+$color-shadow: #5856563e;
+$color-opacity-white: #e4e4e474;
+$color-header: #2727277c;
+.ReactTable {
+  width: 100%;
+  overflow-y: scroll;
+  border-collapse: collapse;
+  .Header {
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: left;
+  }
+  .Body {
+    font-weight: 500;
+    font-size: 0.9rem;
+    tr {
+      height: 60px;
+      border-spacing: 0;
+      margin: 0;
+      td {
+        padding: 0 2px;
+      }
+      &:hover {
+        background-color: $color-opacity-white;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.ButtonPredict {
+  background-color: $color-black;
+  padding: 4px 10px;
+  height: fit-content;
+  border-radius: 100rem;
+  p {
+    font-weight: 600;
+  }
+}
+
+.NameOfTable {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  .Capitalize {
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+  .SubTitle {
+    font-size: 0.8rem;
+  }
+}

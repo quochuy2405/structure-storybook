@@ -2,11 +2,9 @@
 import { Toast } from '@/components/molecules'
 import { IToastProps } from '@/components/molecules/Toast/Toast'
 import ToastContext from '@/contexts/ToastContext'
-import { useImperativeHandle } from 'react'
-import { useRef } from 'react'
-import { forwardRef } from 'react'
+import { forwardRef, useImperativeHandle, useRef } from 'react'
 
-import { ReactNode, useState, useEffect } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 interface IToastProviderProps {
   children?: ReactNode
   limit?: number
@@ -59,7 +57,8 @@ const ToastList = forwardRef<ToastListHandle, IToastList>(({ limit }, ref) => {
         flexDirection: 'column',
         position: 'fixed',
         top: 0,
-        width: '100%'
+        width: '100%',
+        zIndex: '999'
       }}
     >
       {toasts.map((toast: Partial<IToastProps>) => (
@@ -77,6 +76,7 @@ const ToastProvider: React.FC<IToastProviderProps> = ({ children, limit = 4 }) =
     addToast: (newToast: Partial<IToastProps>) => toastRef.current?.addToast(newToast),
     closeToast: (id?: string) => toastRef.current?.closeToast(id)
   }
+
   return (
     <ToastContext.Provider value={{ addToast, closeToast }}>
       {children}

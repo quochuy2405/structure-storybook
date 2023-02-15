@@ -1,0 +1,220 @@
+@use '../../../../styles/abstracts/mixins' as *;
+
+$color-gray: #2b2b2bcb;
+$color-green: #3fcf8e;
+$color-black: #36423e;
+$color-red: #da3939;
+$color-orange: #ff9d09;
+.CreatePage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70vw;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 20px;
+  gap: 20px;
+  margin: 0 auto;
+}
+.Sections {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  min-width: 300px;
+  max-height: 510px;
+  &Body {
+    margin-top: 10px;
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+  }
+}
+.Editor {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+
+  &Body {
+    width: 100%;
+    height: 90%;
+    margin-top: 10px;
+    background-color: $color-gray;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: 1px solid rgba(187, 187, 187, 0.84);
+    border-radius: 8px;
+    color: white;
+  }
+}
+.Preview {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  max-width: 70vw;
+  margin: 0 auto;
+  padding: 20px;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 40%;
+
+  &Body {
+    width: 100%;
+    height: 90%;
+    margin-top: 10px;
+    border: 1px solid rgba(187, 187, 187, 0.84);
+    border-radius: 8px;
+    padding: 10px;
+    color: $color-black;
+    overflow-y: auto;
+    background-color: white;
+  }
+}
+.Title {
+  color: $color-black;
+  font-weight: 600;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+.Head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.ButtonNewSection {
+  width: 100%;
+  height: 120px;
+  padding: 0;
+}
+.Modal {
+  padding: 20px;
+
+  width: 50%;
+  padding-bottom: 80px;
+  overflow: hidden;
+}
+
+.ModalContent {
+  padding-top: 20px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 45%);
+  gap: 8px;
+  overflow-y: auto;
+}
+.TitleModel {
+  width: 100%;
+  height: 30px;
+  line-height: 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  -webkit-box-shadow: 0 0 10px 2px white;
+  box-shadow: 0 0 10px 2px white;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.OptionEditor {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: 50px;
+  gap: 4px;
+}
+
+.ItemColor {
+  width: 20px;
+  height: 20px;
+  border-radius: 100rem;
+  cursor: pointer;
+  &.ColorActive,
+  &:hover {
+    box-shadow: 0 0 0 2px white;
+  }
+}
+.ButtonColor {
+  position: relative;
+}
+.ColorList {
+  width: fit-content;
+  height: fit-content;
+  min-height: 40px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0px;
+  top: 50%;
+
+  transform: translate(100%, -50%);
+  cursor: pointer;
+}
+.BoxColor {
+  position: relative;
+  width: fit-content;
+  .ColorList {
+    opacity: 0;
+  }
+  @for $i from 1 through 9 {
+    .ItemColor:nth-child(#{$i}) {
+      transition: all linear 0.3s;
+      right: 0px;
+      transform: translateX(calc(-100% *#{$i}));
+    }
+  }
+  &:hover {
+    .ColorList {
+      opacity: 1;
+    }
+    @for $i from 1 through 9 {
+      .ItemColor:nth-child(#{$i}) {
+        transition: all linear 0.3s;
+        right: 0px;
+        transform: translateX(calc(20% *#{$i}));
+      }
+    }
+  }
+}
+
+.ShowPreview {
+  margin: 20px;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  * {
+    white-space: wrap;
+  }
+}

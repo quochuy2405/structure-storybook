@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React from 'react'
+import React, { memo } from 'react'
 import { GoPrimitiveDot } from 'react-icons/go'
 import shortid from 'shortid'
 import Styles from './TextArea.module.scss'
@@ -43,4 +43,4 @@ const TextArea: React.FC<ITextArea> = ({
   )
 }
 
-export default TextArea
+export default memo(TextArea)

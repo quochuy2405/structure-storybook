@@ -73,7 +73,7 @@ const DatePicker: React.FC<IDatePickerProps> = forwardRef<
           render={(value: string, openCalendar: () => void) => {
             return (
               <div onClick={openCalendar} className={Styles.DatePicker}>
-                <div>{value}</div>
+                <p>{value}</p>
                 <IoCalendarClearOutline color="#000" size={20} />
               </div>
             )

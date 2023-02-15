@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { ReactNode } from 'react'
+import React, { memo, ReactNode } from 'react'
 import Styles from './Title.module.scss'
 
 export interface ITitleProps {
@@ -17,4 +17,4 @@ const Title: React.FC<ITitleProps> = ({ size, children, className }) => {
   )
 }
 
-export default Title
+export default memo(Title)

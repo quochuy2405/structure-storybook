@@ -1,42 +1,76 @@
 @use '../../../styles/abstracts/mixins' as *;
-
+$color-green: #3fcf8e;
+$color-black: #292929;
+$color-red: #da3939;
+$color-orange: #ff9d09;
+$color-gray: #6469675c;
 .Header {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
 .Banner {
   width: 100%;
-  height: 90vh;
-
+  min-height: 90vh;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   overflow: hidden;
   padding: 2% 5%;
   gap: 40px;
   @include md {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     padding: 2% 5%;
   }
   .Content {
+    -webkit-box-flex: 2;
+    -ms-flex: 2;
     flex: 2;
     height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 
     gap: 20px;
     .ButtonContent {
+      -ms-flex-item-align: start;
       align-self: flex-start;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
 
       gap: 30px;
 
       @include md {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         width: 100%;
         padding: 20px 0;
@@ -54,12 +88,12 @@
       }
 
       .ButtonOutline {
-        border-color: #ffffff;
-        color: #ffffff;
+        border-color: $color-black;
+        color: $color-black;
       }
     }
     h2 {
-      color: #ffffff;
+      color: $color-black;
       font-size: 3rem;
       font-weight: 600;
       text-transform: capitalize;
@@ -69,10 +103,11 @@
       }
     }
     .SubTitle {
+      -ms-flex-item-align: start;
       align-self: flex-start;
       font-size: 1.2rem;
       font-weight: 300;
-      color: #ffffff;
+      color: $color-black;
       opacity: 0.8;
     }
     @include md {
@@ -80,12 +115,20 @@
     }
   }
   .CoinSystem {
+    -webkit-box-flex: 2;
+    -ms-flex: 2;
     flex: 2;
     width: 40%;
-    height: 70%;
+    height: 340px;
     margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     @include md {
       width: 100%;
@@ -101,24 +144,46 @@
   margin: 40px auto;
   margin-bottom: 200px;
 
+  display: -webkit-box;
+
+  display: -ms-flexbox;
+
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 10px;
-  color: white;
+  color: $color-black;
+
   @include md {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
   }
 
   .PromotionContent {
+    width: 100%;
     height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     text-align: center;
     border-radius: 1.2rem;
-    box-shadow: 0 0 4px 2px rgba(200, 200, 200, 0.559);
+    -webkit-box-shadow: 0 0 4px 2px #c8c8c85d;
+    box-shadow: 0 0 4px 2px #c8c8c85d;
 
     padding: 20px;
     .TitleContent {
@@ -133,13 +198,19 @@
         -webkit-line-clamp: 6;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        -o-text-overflow: ellipsis;
         text-overflow: ellipsis;
         width: 100%;
       }
     }
   }
   .ButtonSlide {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     gap: 20px;
     .ButtonNav {
@@ -153,6 +224,8 @@
   margin: 0 auto;
   padding: 10px;
   display: grid;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 300px);
   gap: 40px;
@@ -161,5 +234,5 @@
   margin: 30px 0;
   margin-top: 170px;
   text-align: center;
-  color: white;
+  color: $color-black;
 }

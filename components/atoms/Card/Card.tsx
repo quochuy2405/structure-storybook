@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Styles from './Card.module.scss'
-import React, { ReactNode } from 'react'
+import React, { memo, ReactNode } from 'react'
 export interface ICardProps {
   className?: string
   children?: ReactNode
@@ -21,4 +21,4 @@ const Card = React.forwardRef<HTMLDivElement, ICardProps>(
 
 Card.displayName = 'card'
 
-export default Card
+export default memo(Card)

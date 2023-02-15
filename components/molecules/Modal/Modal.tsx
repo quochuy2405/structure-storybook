@@ -1,6 +1,6 @@
 import { Button } from '@/components/atoms'
 import clsx from 'clsx'
-import React, { Fragment, ReactNode } from 'react'
+import React, { Fragment, memo, ReactNode } from 'react'
 import Styles from './Modal.module.scss'
 export interface IModalProps {
   className?: string
@@ -40,4 +40,4 @@ const Modal: React.FC<IModalProps> = ({
   )
 }
 
-export default Modal
+export default memo(Modal)

@@ -10,9 +10,17 @@ $color-mint: #01be92;
 
 .Button {
   height: 34px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   border-radius: 4px;
   gap: 10px;
@@ -21,6 +29,10 @@ $color-mint: #01be92;
   color: white;
   border: none;
   outline: none;
+
+  -webkit-transition: all linear 0.1s;
+
+  -o-transition: all linear 0.1s;
 
   transition: all linear 0.1s;
   background-color: $color-black;
@@ -39,10 +51,12 @@ $color-mint: #01be92;
     background: none;
   }
   &:not(:disabled):hover {
-    transform: scale(1.03);
     opacity: 1;
+    -webkit-transition: all linear 0.1s;
+    -o-transition: all linear 0.1s;
     transition: all linear 0.1s;
     text-rendering: optimizeLegibility;
+    -webkit-box-shadow: 0 0 4px 2px $color-gray;
     box-shadow: 0 0 4px 2px $color-gray;
   }
 }
@@ -62,6 +76,16 @@ $color-mint: #01be92;
   &.Outline {
     border: 2px solid $color-red;
     color: $color-red;
+    background: none;
+  }
+}
+
+.ButtonWhite {
+  background-color: $color-red;
+  color: white;
+  &.Outline {
+    border: 2px solid white;
+    color: white;
     background: none;
   }
 }

@@ -2,38 +2,61 @@
 
 $color-green: #3fcf8e;
 $color-blue: #4c6ad3;
-$color-red: #e35353;
+$color-red: #da3939;
 $color-black: #36423e;
 $color-orange: #fa9d24;
 
 .Toast {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 10px;
   padding: 2px 20px;
   padding-right: 30px;
+  -webkit-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
   transition: all linear 0.5s;
 
   .Button {
     background-color: white;
     color: $color-black;
+    -webkit-box-shadow: none;
     box-shadow: none;
     font-weight: 600;
     &:hover {
+      -webkit-transform: scale(1.04);
+      -ms-transform: scale(1.04);
       transform: scale(1.04);
     }
   }
   .ContentToast {
     width: 100%;
+    -webkit-box-flex: 6;
+    -ms-flex: 6;
     flex: 6;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
   .ButtonToast {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 30px;
     color: white;
@@ -42,19 +65,29 @@ $color-orange: #fa9d24;
 .Icon {
   width: 60px;
   height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .Content {
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 400;
   color: white;
 }
 .IconDelete {
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
   transition: all linear 0.2s;
   cursor: pointer;
   &:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
     transform: scale(1.2);
+    -webkit-transition: all linear 0.2s;
+    -o-transition: all linear 0.2s;
     transition: all linear 0.2s;
   }
 }
@@ -62,6 +95,7 @@ $color-orange: #fa9d24;
 .BoxToast {
   width: 100%;
   overflow: hidden;
+  -webkit-transition: all ease-in-out 0.2s;
+  -o-transition: all ease-in-out 0.2s;
   transition: all ease-in-out 0.2s;
-  background-color: $color-blue;
 }

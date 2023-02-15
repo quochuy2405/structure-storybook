@@ -1,10 +1,14 @@
-import { Facebook, LinkerIn } from '@/assets/svg'
-import React, { ReactNode } from 'react'
+import { Facebook, YouTube } from '@/assets/svg'
+import GitHub from '@/assets/svg/GitHub'
+import Google from '@/assets/svg/Google'
+import React, { memo, ReactNode } from 'react'
 
 type TIcon = { [key: string]: ReactNode }
 const ICONS: TIcon = {
   facebook: <Facebook />,
-  linker: <LinkerIn />
+  youtube: <YouTube />,
+  google: <Google />,
+  github: <GitHub />
 }
 
 export interface IconProps {
@@ -21,4 +25,4 @@ const Icon: React.FC<IconProps> = ({ className, type, size }) => {
   )
 }
 
-export default Icon
+export default memo(Icon)

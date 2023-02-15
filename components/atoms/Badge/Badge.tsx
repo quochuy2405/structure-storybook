@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import clsx from 'clsx'
 import Styles from './Badge.module.scss'
 import shortid from 'shortid'
@@ -30,4 +30,4 @@ const Badge: React.FC<IBadgeProps> = ({ options = {}, mode = 'primary' }) => {
   )
 }
 
-export default Badge
+export default memo(Badge)

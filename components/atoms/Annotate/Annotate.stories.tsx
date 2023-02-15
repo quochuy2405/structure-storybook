@@ -12,6 +12,6 @@ const Template: ComponentStory<typeof Annotate> = (args) => {
 
 export const Default = Template.bind({})
 Default.args = {
-  color: '#e35353',
+  color: '#da3939',
   content: 'Regular'
 }

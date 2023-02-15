@@ -1,15 +1,16 @@
 import { SortableItemProps, TPreview } from '@/components/molecules/Draggable/Draggable'
 import { ArticleCreatePage } from '@/components/templates'
 import { FORMAT_NEW_SECTION } from '@/constants/index'
-import { Layouts } from '@/layouts/index'
+import Layouts from '@/layouts/index'
 import { NextPageWithLayout } from '@/pages/_app'
 import { combineEditorToHTML } from '@/utils/index'
 import 'prismjs/themes/prism-tomorrow.css'
-import { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import shortid from 'shortid'
 const initEditor = [
   { id: '1', content: '', type: 'heading' },
   { id: '2', content: '', type: 'desc' },
+  { id: '8', content: '', type: 'part' },
   { id: '3', content: '', type: 'code' },
   { id: '4', content: '', type: 'text' },
   { id: '5', content: '', type: 'list' },
@@ -17,9 +18,10 @@ const initEditor = [
   { id: '7', content: '', url: 'https ://example', type: 'url' }
 ]
 const initSections = [
-  { id: '1', name: 'Title Heading' },
+  { id: '1', name: 'Heading' },
   { id: '2', name: 'Description ' },
-  { id: '3', name: 'MarkDown' },
+  { id: '8', name: 'Part' },
+  { id: '3', name: 'Code' },
   { id: '4', name: 'Content ' },
   { id: '5', name: 'List' },
   { id: '6', name: 'Image ' },
@@ -78,7 +80,6 @@ const ArticleCreate: NextPageWithLayout = () => {
     setSections(renameSection)
   }
   const handleUpdateURL = (id: string, url: string) => {
-    console.log(id, url)
     const renameEditor = editor.map((item) =>
       item.id === id ? { ...item, url: url } : item
     )
