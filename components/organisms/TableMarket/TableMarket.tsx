@@ -33,7 +33,7 @@ const TableMarket: React.FC<ITableMarketProps> = ({ data, columns }) => {
           </tr>
         ))}
       </thead>
-      <tbody>
+      <tbody className={Styles.Body}>
         {table.getRowModel().rows.map((row) => {
           return (
             <tr key={row.id}>

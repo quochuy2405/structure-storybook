@@ -33,6 +33,7 @@ export interface IArticleCreatePageProps {
   handleOpenModel: (isOpen: boolean) => void
   handleRenameSection: (id: string, newName: string) => void
   handleUpdateURL?: (id: string, url: string) => void
+  handleSubmitArticle: () => void
 }
 
 const ArticleCreatePage: React.FC<IArticleCreatePageProps> = ({
@@ -46,7 +47,8 @@ const ArticleCreatePage: React.FC<IArticleCreatePageProps> = ({
   handleRemoveSection,
   handleOpenModel,
   handleRenameSection,
-  handleUpdateURL
+  handleUpdateURL,
+  handleSubmitArticle
 }) => {
   useEffect(() => {
     Prism.highlightAll()
@@ -240,7 +242,9 @@ const ArticleCreatePage: React.FC<IArticleCreatePageProps> = ({
       <div className={Styles.Preview}>
         <div className={Styles.Head}>
           <p className={Styles.Title}>Preview</p>
-          <Button mode="primary">Submit</Button>
+          <Button mode="primary" onClick={handleSubmitArticle}>
+            Submit
+          </Button>
         </div>
 
         <div className={Styles.PreviewBody}>

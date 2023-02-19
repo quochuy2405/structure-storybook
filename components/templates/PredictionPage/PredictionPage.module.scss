@@ -23,7 +23,7 @@ $color-gray: #6469675c;
   justify-content: flex-end;
   margin: 20px 50px;
   color: $color-black;
-  @include md {
+  @include lg-small {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -73,7 +73,7 @@ $color-gray: #6469675c;
   color: $color-black;
   margin: 0;
 
-  @include md {
+  @include lg-small {
     width: 100%;
   }
   .FilterCol {
@@ -138,7 +138,7 @@ $color-gray: #6469675c;
   width: 100%;
   padding: 10px;
   gap: 20px;
-  @include md {
+  @include lg-small {
     width: 100%;
     padding: 10px 0;
     gap: 10px;
@@ -173,7 +173,7 @@ $color-gray: #6469675c;
   position: absolute;
   margin: 0;
 
-  @include md {
+  @include lg-small {
     position: relative;
     width: 100%;
   }
@@ -189,7 +189,7 @@ $color-gray: #6469675c;
   justify-content: space-between;
   grid-template-columns: repeat(auto-fill, 30%);
   gap: 3.3333%;
-  @include md {
+  @include lg-small {
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;

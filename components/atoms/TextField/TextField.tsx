@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { memo, useState } from 'react'
+import React, { forwardRef, memo, useState } from 'react'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { GoPrimitiveDot } from 'react-icons/go'
 import shortid from 'shortid'
@@ -12,93 +12,99 @@ const optionRegex: typeReg = {
   number: regexOnlyNumber,
   char: regexOnlyChar
 }
+
 export interface ITextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   title?: string
   name: string
   type?: 'text' | 'password'
-  errors?: object
-  isRequired?: boolean
+  errors?: any
+  required?: boolean
   className?: string
   regex?: 'number' | 'char'
 }
 
-const TextField: React.FC<ITextFieldProps> = ({
-  title,
-  name,
-  type = 'text',
-  errors = {},
-  className,
-  isRequired = false,
-  regex,
-  ...props
-}) => {
-  const [isShowPass, setIsShowPass] = useState(false)
-  const [value, setValue] = useState('')
-  const classNames = clsx(Styles.Input, {
-    [Styles.InputError]: Object.keys(errors).length,
-    [className as string]: className
-  })
+const TextField = forwardRef<HTMLInputElement, ITextFieldProps>(
+  (
+    {
+      title,
+      name,
+      type = 'text',
+      errors = {},
+      className,
+      required = false,
+      regex,
+      ...props
+    },
+    ref
+  ) => {
+    const [isShowPass, setIsShowPass] = useState(false)
+    const [value, setValue] = useState('')
+    const classNames = clsx(Styles.Input, {
+      [Styles.InputError]: Object.keys(errors).length,
+      [className as string]: className
+    })
 
-  const requiredValueByRegex = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (regex && !e.target.value.match(optionRegex[regex])) {
-      setValue((val) => val)
-    } else {
-      setValue(e.target.value)
+    const requiredValueByRegex = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (regex && !e.target.value.match(optionRegex[regex])) {
+        setValue((val) => val)
+      } else {
+        setValue(e.target.value)
+      }
+      if (regex && !e.target.value.matchAll(optionRegex[regex])) {
+        setValue('')
+      }
     }
-    if (regex && !e.target.value.matchAll(optionRegex[regex])) {
-      setValue('')
-    }
-  }
 
-  return (
-    <div className={Styles.InputBox}>
-      {title && (
-        <div className={Styles.TitleBox}>
-          {isRequired && <GoPrimitiveDot className={Styles.DotRequired} />}
-          <p className={Styles.Title}>{title}</p>
-        </div>
-      )}
-      {type === 'password' ? (
-        <div className={classNames}>
+    return (
+      <div className={Styles.InputBox}>
+        {title && (
+          <div className={Styles.TitleBox}>
+            {required && <GoPrimitiveDot className={Styles.DotRequired} />}
+            <p className={Styles.Title}>{title}</p>
+          </div>
+        )}
+        {type === 'password' ? (
+          <div className={classNames}>
+            <input
+              {...props}
+              className={Styles.Password}
+              type={isShowPass ? 'text' : type}
+              name={name}
+            />
+            {isShowPass ? (
+              <AiFillEyeInvisible
+                size={20}
+                className={Styles.Icon}
+                onClick={() => setIsShowPass(false)}
+              />
+            ) : (
+              <AiFillEye
+                size={20}
+                className={Styles.Icon}
+                onClick={() => setIsShowPass(true)}
+              />
+            )}
+          </div>
+        ) : (
           <input
-            {...props}
-            className={Styles.Password}
-            type={isShowPass ? 'text' : type}
+            ref={ref}
+            onChange={requiredValueByRegex}
+            value={value}
+            className={classNames}
+            type={type}
             name={name}
+            {...props}
           />
-          {isShowPass ? (
-            <AiFillEyeInvisible
-              size={20}
-              className={Styles.Icon}
-              onClick={() => setIsShowPass(false)}
-            />
-          ) : (
-            <AiFillEye
-              size={20}
-              className={Styles.Icon}
-              onClick={() => setIsShowPass(true)}
-            />
-          )}
-        </div>
-      ) : (
-        <input
-          onChange={requiredValueByRegex}
-          value={value}
-          className={classNames}
-          type={type}
-          name={name}
-          {...props}
-        />
-      )}
+        )}
 
-      {!!Object.keys(errors).length &&
-        Object.keys(errors)?.map((key) => (
+        {!!errors?.message && required && (
           <p key={shortid.generate()} className={Styles.TextError}>
-            {errors[key as keyof typeof errors]}
+            {errors?.message}
           </p>
-        ))}
-    </div>
-  )
-}
-
+        )}
+      </div>
+    )
+  }
+)
+TextField.displayName = 'TextField'
 export default memo(TextField)

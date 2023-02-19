@@ -1,13 +1,13 @@
 import { TextField } from '@/components/atoms'
 import React, { memo } from 'react'
-import { Controller, FieldValues, UseFormReturn } from 'react-hook-form'
+import { Controller, UseFormReturn } from 'react-hook-form'
 
 export interface ITextFieldFormProps extends React.InputHTMLAttributes<HTMLInputElement> {
   title?: string
   name: string
   type?: 'text' | 'password'
   className?: string
-  methods: UseFormReturn<FieldValues, object>
+  methods: UseFormReturn<any, object>
 }
 
 const TextFieldForm: React.FC<ITextFieldFormProps> = ({
@@ -23,13 +23,14 @@ const TextFieldForm: React.FC<ITextFieldFormProps> = ({
       defaultValue=""
       name={name}
       control={methods.control}
-      render={({ field }) => (
+      render={({ field, fieldState }) => (
         <TextField
           title={title}
           type={type}
           className={className}
-          {...props}
+          errors={fieldState.error}
           {...field}
+          {...props}
         />
       )}
     />

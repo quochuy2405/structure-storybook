@@ -1,13 +1,13 @@
-import Price from '@/pages/prices'
+import Crypto from '@/pages/cryptos'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {
-  title: 'Components/Templates/Price',
-  component: Price
-} as ComponentMeta<typeof Price>
+  title: 'Components/Templates/Crypto',
+  component: Crypto
+} as ComponentMeta<typeof Crypto>
 
-const Template: ComponentStory<typeof Price> = () => {
-  return <Price />
+const Template: ComponentStory<typeof Crypto> = () => {
+  return <Crypto />
 }
 
 export const Default = Template.bind({})

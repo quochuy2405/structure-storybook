@@ -7,16 +7,16 @@ import dynamic from 'next/dynamic'
 import React, { ReactNode } from 'react'
 import { GrBitcoin } from 'react-icons/gr'
 import { SiBinance } from 'react-icons/si'
-import Styles from './PricePage.module.scss'
+import Styles from './StockPage.module.scss'
 const ChartView = dynamic(import('@/components/molecules/ChartView/ChartView'), {
   ssr: false
 })
 
-interface IPricePageProps {
+interface IStockPageProps {
   data: Array<object>
   columns: ColumnDef<object, unknown>[]
   dataChart: TResponsePredict
-  coin: string
+  name: string
 }
 
 export const detailCoin: Record<string, ReactNode> = {
@@ -50,12 +50,12 @@ export const detailCoin: Record<string, ReactNode> = {
   )
 }
 
-const PricePage: React.FC<IPricePageProps> = ({ data, columns, dataChart, coin }) => {
+const StockPage: React.FC<IStockPageProps> = ({ data, columns, dataChart, name }) => {
   return (
     <div className={Styles.Container}>
       <Card className={Styles.IntroContainer}>
         <div className={Styles.CryptoInfo}>
-          <h2 className={Styles.Title}>Cryptocurrency Prices</h2>
+          <h2 className={Styles.Title}>Stocks</h2>
           <p className={Styles.Description}>
             The cryptocurrency market is valued at $1.2T, and on average a 1.56% increase
             over the last day. The total marketcap for stablecoins is $134.4B. The total
@@ -73,7 +73,7 @@ const PricePage: React.FC<IPricePageProps> = ({ data, columns, dataChart, coin }
           </p>
         </div>
         <div className={Styles.ChartPreview}>
-          <div>{detailCoin[coin]}</div>
+          <div>{detailCoin[name]}</div>
           <ChartView type="line" size="full" data={[dataChart]} />
         </div>
       </Card>
@@ -84,4 +84,4 @@ const PricePage: React.FC<IPricePageProps> = ({ data, columns, dataChart, coin }
   )
 }
 
-export default PricePage
+export default StockPage

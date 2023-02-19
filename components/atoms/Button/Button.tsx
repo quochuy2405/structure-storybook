@@ -13,7 +13,10 @@ export interface IButtonProps
 }
 
 const Button: React.FC<IButtonProps> = forwardRef<HTMLButtonElement, IButtonProps>(
-  ({ mode = 'default', outline, className, icon, children, ...props }, ref) => {
+  (
+    { mode = 'default', outline, className, icon, children, type = 'button', ...props },
+    ref
+  ) => {
     const classNames = clsx(Styles.Button, {
       [Styles.ButtonPrimary]: mode === 'primary',
       [Styles.ButtonDanger]: mode === 'danger',
@@ -23,7 +26,7 @@ const Button: React.FC<IButtonProps> = forwardRef<HTMLButtonElement, IButtonProp
       [className as string]: className
     })
     return (
-      <button ref={ref} {...props} className={classNames}>
+      <button ref={ref} type={type} {...props} className={classNames}>
         {icon && icon}
         {children || 'Default'}
       </button>

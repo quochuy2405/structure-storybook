@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import marker from '@/features/slices/predictions/marker'
-import user from '@/features/slices/auth/login'
+import user from '@/features/slices/auth/user'
 import movingAverage from '@/features/slices/predictions/movingAverage'
 import predicting from '@/features/slices/predictions/predicting'
 import timer from '@/features/slices/predictions/timer'

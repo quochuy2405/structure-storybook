@@ -4,6 +4,7 @@ $color-red: #da3939;
 $color-green: #3fcf8e;
 
 .InputBox {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -88,9 +89,14 @@ $color-green: #3fcf8e;
 .TextError {
   color: #da3939;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 0 5px;
   min-height: 20px;
+  position: absolute;
+  bottom: -20px;
+}
+.TextError + .TextError {
+  margin-top: 10px;
 }
 
 .TitleBox {

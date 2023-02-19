@@ -137,6 +137,11 @@ $color-header: #2727277c;
     gap: 20px;
     padding: 0 20px;
     border-left: 1px solid $color-gray;
+    .AvatarUser {
+      @include lg {
+        margin-top: 20px;
+      }
+    }
 
     @include md {
       display: none;
@@ -159,6 +164,10 @@ $color-header: #2727277c;
 .ButtonLang {
   @include md {
     display: none;
+  }
+
+  @include lg {
+    margin-top: 20px;
   }
 }
 .ButtonMetaMask {

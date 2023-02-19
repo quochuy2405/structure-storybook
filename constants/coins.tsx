@@ -304,7 +304,8 @@ export const subTitle: Record<string, string> = {
 export const urls: Record<string, string> = {
   bitcoin: 'btc',
   ethereum: 'eth',
-  binance: 'bnb'
+  binance: 'bnb',
+  vcb: 'vcb'
 }
 
 export const fullNameCoins: Record<string, string> = {

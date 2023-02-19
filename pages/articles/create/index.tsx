@@ -85,6 +85,11 @@ const ArticleCreate: NextPageWithLayout = () => {
     )
     setEditor(renameEditor)
   }
+
+  const handleSubmitArticle = () => {
+    console.log(JSON.stringify(preview))
+  }
+
   const props = {
     items: sections,
     isOpenModel,
@@ -96,7 +101,8 @@ const ArticleCreate: NextPageWithLayout = () => {
     handleRemoveSection,
     handleOpenModel,
     handleRenameSection,
-    handleUpdateURL
+    handleUpdateURL,
+    handleSubmitArticle
   }
 
   return <ArticleCreatePage {...props} />

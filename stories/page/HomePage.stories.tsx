@@ -1,4 +1,4 @@
-import Home from '@/pages/home'
+import Home from '@/pages/index'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {

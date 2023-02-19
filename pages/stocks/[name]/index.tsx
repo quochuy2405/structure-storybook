@@ -27,11 +27,16 @@ const initChart: TResponsePredict = {
 interface IPredictionProps {
   chart?: TResponsePredictData
 }
+const initLoading = {
+  status: '',
+  message: ''
+}
 
 const Prediction: NextPageWithLayout<IPredictionProps> = ({ chart = initChart.data }) => {
   const { enqueueSnackbar } = useSnackbar()
   const { query, isReady } = useRouter()
   const { methods, handleClearForm } = useValidate<TPredictQuery>({})
+  const [statusLoading, setStatusLoading] = useState(initLoading)
   const [dataChart, setDataChart] = useState<TResponsePredict[]>([
     {
       model: '',
@@ -45,7 +50,7 @@ const Prediction: NextPageWithLayout<IPredictionProps> = ({ chart = initChart.da
   const getCoin = async () => {
     try {
       const { status, data } = await axiosClient.get(
-        `/${urlCoins[query.coin as string]}`,
+        `/${urlCoins[query.stock as string]}`,
         {
           timeout: 3000
         }
@@ -69,23 +74,37 @@ const Prediction: NextPageWithLayout<IPredictionProps> = ({ chart = initChart.da
   const handleSubmitForm = async (data: TPredictQuery) => {
     dispatch(setPredicting(true))
     dispatch(incrementByAmount(10))
-    const models = data.models.join('_').toLowerCase()
-    const url = urlCoins[query?.coin as string]
-    if (models) {
-      const { status, data: response } = await axiosClient(
-        `/${url}/predict/${models}/${data.amount.value}`
-      )
 
-      if (status === 200) {
-        const chartData = response as Array<TResponsePredict>
-        const predictTime = setTimeout(() => {
+    const models = data.models.join('_').toLowerCase()
+    const url = urlCoins[query?.name as string]
+    if (models.split('_')[0]) {
+      setStatusLoading({
+        status: 'running',
+        message: 'Models are predicting...'
+      })
+      axiosClient(`/${url}/predict/${models}/${data.amount.value}`)
+        .then(({ data }) => {
+          const chartData = data as Array<TResponsePredict>
+          const predictTime = setTimeout(() => {
+            dispatch(setPredicting(false))
+            setStatusLoading({
+              status: 'success',
+              message: 'Models predicted'
+            })
+            setDataChart(chartData)
+          }, 2000)
+          const time = setTimeout(() => {
+            setStatusLoading(initLoading)
+          }, 4000)
+          return () => {
+            clearTimeout(predictTime)
+            clearTimeout(time)
+          }
+        })
+        .catch(() => {
           dispatch(setPredicting(false))
-          setDataChart(chartData)
-        }, 1000)
-        return () => clearTimeout(predictTime)
-      } else {
-        dispatch(setPredicting(false))
-      }
+          setStatusLoading(initLoading)
+        })
     } else {
       enqueueSnackbar('\xa0\xa0You need choose minimum a model', {
         variant: 'warning',
@@ -113,6 +132,7 @@ const Prediction: NextPageWithLayout<IPredictionProps> = ({ chart = initChart.da
     dataChart,
     chartType,
     viewChart: viewChart.current,
+    statusLoading,
     setChartType,
     handleSubmitForm,
     handleReset

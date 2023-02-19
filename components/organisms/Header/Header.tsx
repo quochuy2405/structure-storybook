@@ -3,7 +3,7 @@ import MetaMask from '@/assets/svg/MetaMask'
 import { Avatar, Button, ButtonIcon } from '@/components/atoms'
 import { Navigation } from '@/components/molecules'
 import MarketInfo from '@/components/molecules/MarketInfo'
-import { resetUser, setUser } from '@/features/slices/auth/login'
+import { resetUser, setUser } from '@/features/slices/auth/user'
 import { auth } from '@/firebase/config'
 import { useAppDispatch, useAppSelector } from '@/hooks/useRedux'
 import clsx from 'clsx'
@@ -59,8 +59,12 @@ const Header: React.FC<IHeaderProps> = ({}) => {
       url: '/articles'
     },
     {
-      name: 'Prices',
-      url: '/prices'
+      name: 'Cryptos',
+      url: '/cryptos'
+    },
+    {
+      name: 'Stocks',
+      url: '/stocks'
     },
     {
       name: 'Blogs',
@@ -90,7 +94,7 @@ const Header: React.FC<IHeaderProps> = ({}) => {
           <div className={Styles.User}>
             {!!user.name ? (
               <>
-                <Avatar>
+                <Avatar className={Styles.AvatarUser}>
                   <Image src={user.photo || ''} alt={user.name} layout="fill" />
                 </Avatar>
                 <Button
@@ -108,10 +112,11 @@ const Header: React.FC<IHeaderProps> = ({}) => {
                     Sign In
                   </Button>
                 </Link>
-
-                <Button mode="warning" className={Styles.MdButton}>
-                  Register
-                </Button>
+                <Link href="/register">
+                  <Button mode="warning" className={Styles.MdButton}>
+                    Register
+                  </Button>
+                </Link>
               </>
             )}
 
@@ -133,7 +138,7 @@ const Header: React.FC<IHeaderProps> = ({}) => {
         navigations={[
           { icon: <AiOutlineHome />, url: '/' },
           { icon: <FaQq />, url: '/articles' },
-          { icon: <FaChartLine />, url: '/prices' },
+          { icon: <FaChartLine />, url: '/cryptos' },
           { icon: <FaBlogger />, url: '/blogs' }
         ]}
       />

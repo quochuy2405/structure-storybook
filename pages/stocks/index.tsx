@@ -1,5 +1,5 @@
 import { columnTableMarket } from '@/components/organisms/TableMarket/makeColums'
-import { PricePage } from '@/components/templates'
+import { StockPage } from '@/components/templates'
 import Layouts from '@/layouts/index'
 import { TResponsePredict } from '@/types/predictions'
 import { ReactElement, useEffect, useState } from 'react'
@@ -7,12 +7,12 @@ import axiosClient from '../api/axiosClient'
 import { NextPageWithLayout } from '../_app'
 const data = [
   {
-    name: 'Bitcoin',
+    name: 'VCB',
     price: '22,971.06',
     day: '+0.98%',
     market_cap: '$244,971.06',
     volume: '12121,971',
-    type: 'bitcoin'
+    type: 'vcb'
   },
   {
     name: 'Ethereum',
@@ -35,16 +35,16 @@ const initChart = {
   model: '',
   data: { actual: [], predict: [] }
 }
-const Price: NextPageWithLayout = () => {
-  const [coinActive, setCoinActive] = useState('bitcoin')
+const Stock: NextPageWithLayout = () => {
+  const [stockActive, setCoinActive] = useState('bitcoin')
   const [dataChart, setDataChart] = useState<TResponsePredict>(initChart)
   const handelChangeCoin = (coin: string) => setCoinActive(coin)
-  const columns = columnTableMarket(coinActive, handelChangeCoin)
+  const columns = columnTableMarket(stockActive, handelChangeCoin, 'stocks')
 
   useEffect(() => {
     const getCoin = async () => {
       try {
-        const { status, data } = await axiosClient.get(`/${coinActive}`, {
+        const { status, data } = await axiosClient.get(`/${stockActive}`, {
           timeout: 3000
         })
 
@@ -63,18 +63,18 @@ const Price: NextPageWithLayout = () => {
     }
     getCoin()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [coinActive])
+  }, [stockActive])
 
   const props = {
     data,
     columns,
     dataChart,
-    coin: coinActive
+    name: stockActive
   }
-  return <PricePage {...props} />
+  return <StockPage {...props} />
 }
 
-Price.getLayout = function getLayout(page: ReactElement) {
+Stock.getLayout = function getLayout(page: ReactElement) {
   return <Layouts>{page}</Layouts>
 }
-export default Price
+export default Stock
